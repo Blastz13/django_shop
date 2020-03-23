@@ -3,6 +3,7 @@ from django.utils import timezone
 from datetime import datetime
 
 from .models import Feed
+from .models import OurBrand
 
 
 def index(request):
@@ -18,7 +19,10 @@ def index(request):
                                       date_published_to__gte=datetime.now(tz=timezone.utc)
                                       )
 
+    our_brands = OurBrand.objects.all()
+
     return render(request, 'core/index.html', context={"feeds": slider_feeds,
                                                        "small_feeds": small_feeds,
+                                                       "our_brands": our_brands,
                                                        })
 # Create your views here.
