@@ -3,6 +3,8 @@ from django.utils.safestring import mark_safe
 
 from .models import Feed
 from .models import OurBrand
+from .models import Tag
+from .models import Comment
 
 
 @admin.register(Feed)
@@ -27,3 +29,6 @@ class AdminOurBrand(admin.ModelAdmin):
             return mark_safe(f'<img src={obj.image.url} width="320" height="180"')
 
     get_image.short_description = "Фото"
+
+admin.site.register(Tag)
+admin.site.register(Comment)
