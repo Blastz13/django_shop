@@ -10,7 +10,7 @@ class Feed(models.Model):
     sup_title = models.CharField(max_length=128, blank=True, default='', verbose_name='Подзаголовок')
     description = models.CharField(max_length=512, blank=True, default='', verbose_name='Описание')
     body = models.TextField(max_length=10000, blank=True, default='', verbose_name='Текст статьи')
-    image = models.ImageField(upload_to='', blank=True, null=True, verbose_name='Изображение')
+    image = models.ImageField(upload_to='Feed/%Y/%m/%d/%H', blank=True, null=True, verbose_name='Изображение')
     slug = models.SlugField(max_length=128, unique=True, db_index=True, verbose_name='Ссылка на новость')
     text_button = models.CharField(max_length=64, blank=True, default='', verbose_name='Надпись кнопки')
     url_button = models.SlugField(max_length=512, blank=True, default='', verbose_name='Ссылка кнопки')
@@ -75,7 +75,7 @@ class Comment(models.Model):
 
 class OurBrand(models.Model):
     title = models.CharField(max_length=128, db_index=True, blank=True, verbose_name='Название бренда')
-    image = models.ImageField(upload_to='OurBrands/', verbose_name='Логотип')
+    image = models.ImageField(upload_to='OurBrands/%Y/%m/%d/%H', verbose_name='Логотип')
     order = models.IntegerField(default=0, verbose_name='Порядок')
 
     def __str__(self):

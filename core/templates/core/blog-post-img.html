@@ -64,39 +64,19 @@
 					<aside class="widget widget-recent">
 						<h3 class="sidebar-title">Recent</h3>
 						<ul>
-							<li>
-								<div class="post-wrapper">
-									<div class="post-sidebar-img">
-										<a href="#"><img src="../../static/core/img/blog/sidebar/1.jpg" alt="" /></a>
-									</div>
-									<div class="post-sidebar-info">
-										<h3><a href="#">Single post in Gallery format</a></h3>
-										<div class="r-post-date"> February 5, 2015</div>
-									</div>
-								</div>
-							</li>
-							<li>
-								<div class="post-wrapper">
-									<div class="post-sidebar-img">
-										<a href="#"><img src="../../static/core/img/blog/sidebar/2.jpg" alt="" /></a>
-									</div>
-									<div class="post-sidebar-info">
-										<h3><a href="#">Post in Video format</a></h3>
-										<div class="r-post-date">November 30, 2014</div>
-									</div>
-								</div>
-							</li>
-							<li>
-								<div class="post-wrapper">
-									<div class="post-sidebar-img">
-										<a href="#"><img src="../../static/core/img/blog/sidebar/3.jpg" alt="" /></a>
-									</div>
-									<div class="post-sidebar-info">
-										<h3><a href="#">Blog image post layout</a></h3>
-										<div class="r-post-date">November 28, 2014</div>
-									</div>
-								</div>
-							</li>
+                            {% for last_feed in last_three_feeds %}
+                                <li>
+                                    <div class="post-wrapper">
+                                        <div class="post-sidebar-img">
+                                            <a href="{{ last_feed.get_absolute_url }}"><img src="{{ last_feed.image.url }}" alt="{{ last_feed.title }}" /></a>
+                                        </div>
+                                        <div class="post-sidebar-info">
+                                            <h3><a href="#">{{ last_feed }}</a></h3>
+                                            <div class="r-post-date"> {{ last_feed.date_published_from|date:'N d, Y' }}</div>
+                                        </div>
+                                    </div>
+                                </li>
+                            {% endfor %}
 						</ul>
 					</aside>
 					<!-- widget-recent end -->
@@ -104,16 +84,9 @@
 					<aside class="widget widget-tags">
 						<h3 class="sidebar-title">Tags</h3>
 						<ul>
-							<li><a href="#">asian</a></li>
-							<li><a href="#">brown</a></li>
-							<li><a href="#">euro</a></li>
-							<li><a href="#">fashion</a></li>
-							<li><a href="#">france</a></li>
-							<li><a href="#">hat</a></li>
-							<li><a href="#">travel</a></li>
-							<li><a href="#">white</a></li>
-							<li><a href="#">t-shirt</a></li>
-							<li><a href="#">teen</a></li>
+                            {% for tag in all_tags_feeds %}
+							    <li><a href="{{ tag.get_absolute_url }}">{{ tag.title }}</a></li>
+                            {% endfor %}
 						</ul>
 					</aside>
 					<!-- widget-tags end -->
@@ -129,7 +102,7 @@
 							<h2>{{ feed.title }}</h2>
 							<div class="entry-meta">
 								<span class="author-meta"><i class="fa fa-user"></i> <a href="#">admin</a></span>
-								<span><i class="fa fa-clock-o"></i> {{ feed.date_published_from }}</span>
+								<span><i class="fa fa-clock-o"></i> {{ feed.date_published_from|date:'N d, Y' }}</span>
 								<span>
 									<i class="fa fa-tags"></i>
 									{% for tag in feed.tag.all %}
@@ -183,7 +156,7 @@
                                                 <div class="comments-content-wrap">
                                                     <span>
                                                         <b><a href="#">{{ comment.name }}</a></b>
-                                                        <span class="post-time">{{ comment.date_publicate }}</span>
+                                                        <span class="post-time">{{ comment.date_publicate|date:'N d, Y | G:i' }}</span>
                                                         <a href="#form-add-comment" onclick="addReview('{{ comment.name }}', '{{ comment.id }}')">Reply</a>
                                                     </span>
                                                     <p>{{ comment.text }}</p>
@@ -199,7 +172,7 @@
                                                         <div class="comments-content-wrap">
                                                             <span>
                                                                 <b><a href="#">{{ sup_comment.name }}</a></b>
-                                                                <span class="post-time">{{ sup_comment.date_publicate }}</span>
+                                                                <span class="post-time">{{ sup_comment.date_publicate|date:'N d, Y | G:i' }}</span>
                                                                 <a href="#form-add-comment" onclick="addReview('{{ sup_comment.name }}', '{{ comment.id }}')">Reply</a>
                                                             </span>
                                                             <p>{{ sup_comment.text }}</p>
@@ -214,7 +187,7 @@
                             <div class="comment-respond">
 							<h3 class="comment-reply-title">Leave a Reply </h3>
 							<span class="email-notes">Your email address will not be published. Required fields are marked *</span>
-							<form action="{% url 'feed_detail' feed.id %}" id="form-add-comment" method="post">{% csrf_token %}
+							<form action="{% url 'feed_detail' feed.slug %}" id="form-add-comment" method="post">{% csrf_token %}
 								<div class="row">
                                     <input type="hidden" name="parent" id="contactparent" value="">
 									<div class="col-md-4">
@@ -237,10 +210,10 @@
 					</div>
 					<nav class="nav-single">
 						<span class="nav-previous">
-							{% if feed.get_previous_by_date_publicate.get_absolute_url %}<a href="{{feed.get_previous_by_date_publicate.get_absolute_url}}"><span>←</span> {{feed.get_previous_by_date_publicate.title}}</a>{% endif %}
+							{% if previous_feed %}<a href="{{previous_feed.get_absolute_url}}"><span>←</span> {{previous_feed.title}}</a>{% endif %}
 						</span>
 						<span class="nav-next">
-							{% if feed.get_next_by_date_publicate.get_absolute_url %}<a href="{{ feed.get_next_by_date_publicate.get_absolute_url }}">{{ feed.get_next_by_date_publicate.title}} <span>→</span></a>{% endif %}
+							{% if next_feed %}<a href="{{ next_feed.get_absolute_url }}">{{ next_feed.title}} <span>→</span></a>{% endif %}
 						</span>
 					</nav>
 					<!-- single-blog end -->

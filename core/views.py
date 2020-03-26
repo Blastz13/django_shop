@@ -1,14 +1,17 @@
-from django.shortcuts import render, HttpResponse, get_object_or_404, redirect
-from django.utils import timezone
-from django.views.generic import View
 from datetime import datetime
 
-from .models import Feed
-from .models import OurBrand
+from django.shortcuts import render, get_object_or_404, redirect
+from django.utils import timezone
+from django.views.generic import View
 
 from .forms import CommentForm
 
+from .models import Feed
+from .models import OurBrand
+from .models import Tag
 
+
+# TODO: fix date feed's and upload default *fix bag with display feed *fix bag with add comment * add display all tags and last 3 feed
 class HomePage(View):
     def get(self, request):
         slider_feeds = Feed.objects.filter(is_publish=True,
@@ -33,13 +36,38 @@ class HomePage(View):
 
 class FeedDetail(View):
     def get(self, request, slug):
-        feed = get_object_or_404(Feed, slug__iexact=slug)
-        #
-        # print(feed.get_next_by_date_publicate())
-        # print(feed.get_previous_by_date_publicate())
         comment_form = CommentForm()
+        feed = get_object_or_404(Feed,
+                                 slug__iexact=slug,
+                                 is_publish=True,
+                                 is_blog=True,
+                                 date_published_from__lte=datetime.now(tz=timezone.utc))
+
+        try:
+            next_obj_feed = feed.get_next_by_date_publicate(is_publish=True,
+                                                            is_blog=True,
+                                                            date_published_from__lte=datetime.now(tz=timezone.utc))
+        except Feed.DoesNotExist:
+            next_obj_feed = None
+
+        try:
+            previuos_obj_feed = feed.get_previous_by_date_publicate(is_publish=True,
+                                                                    is_blog=True,
+                                                                    date_published_from__lte=datetime.now(tz=timezone.utc))
+        except Feed.DoesNotExist:
+            previuos_obj_feed = None
+
+        all_tags_feeds = Tag.objects.all()
+        last_three_feeds = Feed.objects.filter(is_publish=True,
+                                                is_blog=True,
+                                                date_published_from__lte=datetime.now(tz=timezone.utc))[0:3]
+        # TODO: add fitering
         return render(request, 'core/blog-post-img.html', context={'feed': feed,
                                                                    'comment_form': comment_form,
+                                                                   'next_feed': next_obj_feed,
+                                                                   'previous_feed': previuos_obj_feed,
+                                                                   'last_three_feeds': last_three_feeds,
+                                                                   'all_tags_feeds': all_tags_feeds
                                                                    })
 
     def post(self, request, slug):
