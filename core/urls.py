@@ -4,8 +4,9 @@ from django.urls import path
 from core.views import *
 
 urlpatterns = [
-    path('', HomePage.as_view()),
-    path('blog/<str:slug>', FeedDetail.as_view(), name='feed_detail'),
+    path('', HomePage.as_view(), name='HomePage'),
+    path('blog/', FeedList.as_view(), name='FeedList'),
+    path('blog/<str:slug>/', FeedDetail.as_view(), name='FeedDetail'),
 ]
 
 if settings.DEBUG is True:

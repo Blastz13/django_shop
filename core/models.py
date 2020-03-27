@@ -3,8 +3,8 @@ from django.shortcuts import reverse
 from datetime import datetime, timedelta
 
 
-#TODO: Add tags
-#TODO: Add comments
+# TODO: Add tags
+# TODO: Add comments
 class Feed(models.Model):
     title = models.CharField(max_length=128, blank=True, db_index=True, default='', verbose_name='Заголовок')
     sup_title = models.CharField(max_length=128, blank=True, default='', verbose_name='Подзаголовок')
@@ -25,7 +25,7 @@ class Feed(models.Model):
     tag = models.ManyToManyField('Tag', blank=True, related_name='feeds', verbose_name='Тэг')
 
     def get_absolute_url(self):
-        return reverse('feed_detail', kwargs={
+        return reverse('FeedDetail', kwargs={
             'slug': self.slug
         })
 

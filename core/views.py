@@ -11,20 +11,18 @@ from .models import OurBrand
 from .models import Tag
 
 
-# TODO: fix date feed's and upload default *fix bag with display feed *fix bag with add comment * add display all tags and last 3 feed
+# TODO: edited admin panel
 class HomePage(View):
     def get(self, request):
         slider_feeds = Feed.objects.filter(is_publish=True,
                                            is_slider=True,
                                            date_published_from__lte=datetime.now(tz=timezone.utc),
-                                           date_published_to__gte=datetime.now(tz=timezone.utc)
-                                           )
+                                           date_published_to__gte=datetime.now(tz=timezone.utc))
 
         small_feeds = Feed.objects.filter(is_publish=True,
                                           is_blog=True,
                                           date_published_from__lte=datetime.now(tz=timezone.utc),
-                                          date_published_to__gte=datetime.now(tz=timezone.utc)
-                                          )
+                                          date_published_to__gte=datetime.now(tz=timezone.utc))
 
         our_brands = OurBrand.objects.all()
 
@@ -59,8 +57,8 @@ class FeedDetail(View):
 
         all_tags_feeds = Tag.objects.all()
         last_three_feeds = Feed.objects.filter(is_publish=True,
-                                                is_blog=True,
-                                                date_published_from__lte=datetime.now(tz=timezone.utc))[0:3]
+                                               is_blog=True,
+                                               date_published_from__lte=datetime.now(tz=timezone.utc))[0:3]
         # TODO: add fitering
         return render(request, 'core/blog-post-img.html', context={'feed': feed,
                                                                    'comment_form': comment_form,
@@ -80,3 +78,19 @@ class FeedDetail(View):
             form.feed = feed
             form.save()
         return redirect(feed.get_absolute_url())
+
+
+class FeedList(View):
+    def get(self, request):
+        feeds_all = Feed.objects.filter(is_publish=True,
+                                       is_blog=True,
+                                       date_published_from__lte=datetime.now(tz=timezone.utc))
+        all_tags_feeds = Tag.objects.all()
+        last_three_feeds = Feed.objects.filter(is_publish=True,
+                                               is_blog=True,
+                                               date_published_from__lte=datetime.now(tz=timezone.utc))[0:3]
+
+        return render(request, 'core/blog.html', context={'feeds_all': feeds_all,
+                                                          'all_tags_feeds': all_tags_feeds,
+                                                          'last_three_feeds': last_three_feeds
+                                                          })

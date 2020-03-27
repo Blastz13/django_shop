@@ -7,9 +7,9 @@
 				<div class="col-md-12">
 					<div class="breadcrumb">
 						<ul>
-							<li><a href="index.html">Home</a> <i class="fa fa-angle-right"></i></li>
+							<li><a href="{% url 'HomePage' %}">Home</a> <i class="fa fa-angle-right"></i></li>
 							<li><a href="#">blog</a> <i class="fa fa-angle-right"></i></li>
-							<li>Blog image post layout</li>
+							<li>{{ feed.title }}</li>
 						</ul>
 					</div>
 				</div>
@@ -187,7 +187,7 @@
                             <div class="comment-respond">
 							<h3 class="comment-reply-title">Leave a Reply </h3>
 							<span class="email-notes">Your email address will not be published. Required fields are marked *</span>
-							<form action="{% url 'feed_detail' feed.slug %}" id="form-add-comment" method="post">{% csrf_token %}
+							<form action="{% url 'FeedDetail' feed.slug %}" id="form-add-comment" method="post">{% csrf_token %}
 								<div class="row">
                                     <input type="hidden" name="parent" id="contactparent" value="">
 									<div class="col-md-4">
