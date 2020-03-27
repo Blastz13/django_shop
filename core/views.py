@@ -3,6 +3,7 @@ from datetime import datetime
 from django.shortcuts import render, get_object_or_404, redirect
 from django.utils import timezone
 from django.views.generic import View
+from django.core.paginator import Paginator
 
 from .forms import CommentForm
 
@@ -89,8 +90,25 @@ class FeedList(View):
         last_three_feeds = Feed.objects.filter(is_publish=True,
                                                is_blog=True,
                                                date_published_from__lte=datetime.now(tz=timezone.utc))[0:3]
+        paginator = Paginator(feeds_all, 4)
+        number_page = request.GET.get('page', 1)
+        feed_page = paginator.get_page(number_page)
+        is_has_other_page = feed_page.has_other_pages()
 
-        return render(request, 'core/blog.html', context={'feeds_all': feeds_all,
+        if feed_page.has_previous():
+            prev_page = f"?page={feed_page.previous_page_number()}"
+        else:
+            prev_page = ""
+
+        if feed_page.has_next():
+            next_page = f"?page={feed_page.next_page_number()}"
+        else:
+            next_page = ""
+
+        return render(request, 'core/blog.html', context={'feeds_all': feed_page,
                                                           'all_tags_feeds': all_tags_feeds,
-                                                          'last_three_feeds': last_three_feeds
+                                                          'last_three_feeds': last_three_feeds,
+                                                          'is_has_other_page': is_has_other_page,
+                                                          'next_page': next_page,
+                                                          'prev_page': prev_page,
                                                           })

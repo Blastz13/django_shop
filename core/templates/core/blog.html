@@ -67,7 +67,7 @@
                                 <li>
                                     <div class="post-wrapper">
                                         <div class="post-sidebar-img">
-                                            <a href="{{ last_feed.get_absolute_url }}"><img src="{{ last_feed.image.url }}" alt="{{ last_feed.title }}" /></a>
+                                            <a href=""><img src="{{ last_feed.image.url }}" alt="{{ last_feed.title }}" /></a>
                                         </div>
                                         <div class="post-sidebar-info">
                                             <h3><a href="#">{{ last_feed }}</a></h3>
@@ -84,7 +84,7 @@
 						<h3 class="sidebar-title">Tags</h3>
 						<ul>
                             {% for tag in all_tags_feeds %}
-							    <li><a href="{{ tag.get_absolute_url }}">{{ tag.title }}</a></li>
+							    <li><a href="">{{ tag.title }}</a></li>
                             {% endfor %}
 						</ul>
 					</aside>
@@ -119,16 +119,27 @@
 					<!-- single-blog start -->
 
 					<!-- single-blog end -->
-					<!-- pagination start -->
-					<div class="pagination">
-						<ul>
-							<li class="active">1</li>
-							<li><a href="#">2</a></li>
-							<li><a href="#">3</a></li>
-							<li><a href="#"><i class="fa fa-chevron-right"></i></a></li>
-						</ul>
-					</div>
-					<!-- pagination end -->
+                    {% if is_has_other_page %}
+                        <!-- pagination start -->
+                        <div class="pagination">
+                            <ul>
+                                {% if prev_page %}
+                                <li><a href="{{ prev_page }}"><i class="fa fa-chevron-left"></i></a></li>
+                                {% endif %}
+                                {% for number_page in feeds_all.paginator.page_range %}
+                                    {% if feeds_all.number == number_page %}
+                                        <li class="active">{{ number_page }}</li>
+                                    {% elif number_page > feeds_all.number|add:-2 and number_page < feeds_all.number|add:2 %}
+                                        <li><a href="?page={{ number_page }}"> {{ number_page }} </a></li>
+                                    {% endif %}
+                                {% endfor %}
+                                {% if next_page %}
+                                <li><a href="{{ next_page }}"><i class="fa fa-chevron-right"></i></a></li>
+                                {% endif %}
+                            </ul>
+                        </div>
+                        <!-- pagination end -->
+                    {% endif %}
 				</div>
 			</div>
 		</div>
