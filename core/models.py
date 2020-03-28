@@ -10,8 +10,11 @@ class Feed(models.Model):
     sup_title = models.CharField(max_length=128, blank=True, default='', verbose_name='Подзаголовок')
     description = models.CharField(max_length=512, blank=True, default='', verbose_name='Описание')
     body = models.TextField(max_length=10000, blank=True, default='', verbose_name='Текст статьи')
-    image = models.ImageField(upload_to='Feed/%Y/%m/%d/%H', default='default_img/news.jpeg', blank=True, null=True, verbose_name='Изображение')
+    image = models.ImageField(upload_to='Feed/%Y/%m/%d/%H', default='default_img/news.jpeg', blank=True, null=True,
+                              verbose_name='Изображение')
     slug = models.SlugField(max_length=128, unique=True, db_index=True, verbose_name='Ссылка на новость')
+    category = models.ForeignKey('CategoryFeed', on_delete=models.SET_NULL, blank=True, null=True,
+                                 verbose_name='Категория')
     text_button = models.CharField(max_length=64, blank=True, default='', verbose_name='Надпись кнопки')
     url_button = models.SlugField(max_length=512, blank=True, default='', verbose_name='Ссылка кнопки')
     is_slider = models.BooleanField(default=False, verbose_name='Слайдер')
@@ -41,9 +44,26 @@ class Feed(models.Model):
         verbose_name_plural = "Новости"
 
 
+class CategoryFeed(models.Model):
+    title = models.CharField(max_length=64, unique=True, verbose_name='Название категории')
+    slug = models.SlugField(max_length=128, unique=True, db_index=True, verbose_name='Ссылка на категорию')
+
+    def get_absolute_url(self):
+        return reverse('', kwargs={'slug': self.slug})
+
+    def __str__(self):
+        return "{}".format(self.title)
+
+    class Meta:
+        ordering = ['title']
+        verbose_name = "Категория"
+        verbose_name_plural = "Категории"
+
+
 class Tag(models.Model):
     title = models.CharField(max_length=50, verbose_name="Название")
     slug = models.SlugField(max_length=50, unique=True, verbose_name="Ссылка")
+
     #
     # def get_absolute_url(self):
     #     return reverse('tag_list', kwargs={"slug": self.slug})

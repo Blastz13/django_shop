@@ -1,4 +1,5 @@
 {% extends 'core/extends/base.html' %}
+{% load filters %}
 {% block content %}
     <!-- breadcrumb-area start -->
 	<div class="breadcrumb-area">
@@ -61,34 +62,16 @@
 					</aside>
 					<!-- widget-archive end -->
 					<!-- widget-recent start -->
-					<aside class="widget widget-recent">
-						<h3 class="sidebar-title">Recent</h3>
-						<ul>
-                            {% for last_feed in last_three_feeds %}
-                                <li>
-                                    <div class="post-wrapper">
-                                        <div class="post-sidebar-img">
-                                            <a href="{{ last_feed.get_absolute_url }}"><img src="{{ last_feed.image.url }}" alt="{{ last_feed.title }}" /></a>
-                                        </div>
-                                        <div class="post-sidebar-info">
-                                            <h3><a href="#">{{ last_feed }}</a></h3>
-                                            <div class="r-post-date"> {{ last_feed.date_published_from|date:'N d, Y' }}</div>
-                                        </div>
-                                    </div>
-                                </li>
-                            {% endfor %}
-						</ul>
-					</aside>
+					{# loading an inclusion tag that outputs all recent feeds (input count feeds, default output all feeds)#}
+                    {# inclusion tag is located in 'templatetags/filters.py' #}
+                    {# the template tag's is located in 'template/core/inclusion_html/widget-recent-feeds.html' #}
+                    {% recent_feeds %}
 					<!-- widget-recent end -->
 					<!-- widget-tags start -->
-					<aside class="widget widget-tags">
-						<h3 class="sidebar-title">Tags</h3>
-						<ul>
-                            {% for tag in all_tags_feeds %}
-							    <li><a href="{{ tag.get_absolute_url }}">{{ tag.title }}</a></li>
-                            {% endfor %}
-						</ul>
-					</aside>
+                    {# loading an inclusion tag that outputs all tags (input count tags, default output all tags)#}
+                    {# inclusion tag is located in 'templatetags/filters.py' #}
+                    {# the template tag's is located in 'template/core/inclusion_html/widget-tags-feeds.html' #}
+                    {% all_tags %}
 					<!-- widget-tags end -->
 				</div>
 				<!-- blog-left-sidebar end -->

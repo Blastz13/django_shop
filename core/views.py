@@ -56,7 +56,6 @@ class FeedDetail(View):
         except Feed.DoesNotExist:
             previuos_obj_feed = None
 
-        all_tags_feeds = Tag.objects.all()
         last_three_feeds = Feed.objects.filter(is_publish=True,
                                                is_blog=True,
                                                date_published_from__lte=datetime.now(tz=timezone.utc))[0:3]
@@ -65,8 +64,6 @@ class FeedDetail(View):
                                                                    'comment_form': comment_form,
                                                                    'next_feed': next_obj_feed,
                                                                    'previous_feed': previuos_obj_feed,
-                                                                   'last_three_feeds': last_three_feeds,
-                                                                   'all_tags_feeds': all_tags_feeds
                                                                    })
 
     def post(self, request, slug):
@@ -86,7 +83,7 @@ class FeedList(View):
         feeds_all = Feed.objects.filter(is_publish=True,
                                        is_blog=True,
                                        date_published_from__lte=datetime.now(tz=timezone.utc))
-        all_tags_feeds = Tag.objects.all()
+
         last_three_feeds = Feed.objects.filter(is_publish=True,
                                                is_blog=True,
                                                date_published_from__lte=datetime.now(tz=timezone.utc))[0:3]
@@ -106,8 +103,6 @@ class FeedList(View):
             next_page = ""
 
         return render(request, 'core/blog.html', context={'feeds_all': feed_page,
-                                                          'all_tags_feeds': all_tags_feeds,
-                                                          'last_three_feeds': last_three_feeds,
                                                           'is_has_other_page': is_has_other_page,
                                                           'next_page': next_page,
                                                           'prev_page': prev_page,

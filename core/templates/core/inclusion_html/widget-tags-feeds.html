@@ -1,0 +1,9 @@
+<aside class="widget widget-tags">
+    <h3 class="sidebar-title">Tags</h3>
+    <ul>
+        {# all_tags - the variable is taken from the inclusion tag is located in 'templatetags/filters.py' #}
+        {% for tag in  all_tags %}
+            <li><a href="">{{ tag.title }}</a></li>
+        {% endfor %}
+    </ul>
+</aside>

@@ -5,6 +5,7 @@ from .models import Feed
 from .models import OurBrand
 from .models import Tag
 from .models import Comment
+from .models import CategoryFeed
 
 
 @admin.register(OurBrand)
@@ -54,3 +55,11 @@ class AdminFeed(admin.ModelAdmin):
             return mark_safe(f'<img src={obj.image.url} width="640" height="360"')
 
     get_image.short_description = "Фото"
+
+
+@admin.register(CategoryFeed)
+class AdminFeed(admin.ModelAdmin):
+    list_display = ['title', 'slug']
+    list_display_links = ['title', 'slug']
+    search_fields = ('title', 'slug')
+
