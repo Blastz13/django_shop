@@ -1,0 +1,8 @@
+<aside class="widget widget-categories">
+    <h3 class="sidebar-title">Categories</h3>
+    <ul class="sidebar-menu">
+        {% for category in all_categories_feeds %}
+            <li><a href="">{{ category.title }}</a> ({{ category.feed_set.count }})</li>
+        {% endfor %}
+    </ul>
+</aside>

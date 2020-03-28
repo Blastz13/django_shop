@@ -5,6 +5,7 @@ from django import template
 from ..models import Feed
 from ..models import Tag
 from ..models import OurBrand
+from ..models import CategoryFeed
 
 register = template.Library()
 
@@ -23,6 +24,10 @@ def recent_feeds(count=3):
                                                 date_published_from__lte=datetime.now(tz=timezone.utc))[0:count]}
 
 
+# this tag outputs all categories feeds using the template 'template/core/inclusion_html/widget-categories-feeds.html'
+@register.inclusion_tag('core/inclusion_html/widget-categories-feeds.html')
+def all_categories_feeds():
+    return {'all_categories_feeds': CategoryFeed.objects.all()}
 # @register.inclusion_tag('core/inclusion_html/widget-recent-feeds.html')
 # def our_brands():
 #     return {'our_brands': OurBrand.objects.all()}

@@ -34,7 +34,7 @@ class HomePage(View):
 
 
 class FeedDetail(View):
-    def get(self, request, slug):
+    def get(self, request, category, slug):
         comment_form = CommentForm()
         feed = get_object_or_404(Feed,
                                  slug__iexact=slug,
@@ -66,7 +66,7 @@ class FeedDetail(View):
                                                                    'previous_feed': previuos_obj_feed,
                                                                    })
 
-    def post(self, request, slug):
+    def post(self, request, category, slug):
         form = CommentForm(request.POST)
         feed = Feed.objects.get(slug=slug)
         if form.is_valid():

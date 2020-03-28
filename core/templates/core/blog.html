@@ -8,7 +8,7 @@
 				<div class="col-md-12">
 					<div class="breadcrumb">
 						<ul>
-							<li><a href="index.html">Home</a> <i class="fa fa-angle-right"></i></li>
+							<li><a href="{%  url 'HomePage' %}">Home</a> <i class="fa fa-angle-right"></i></li>
 							<li>Blog</li>
 						</ul>
 					</div>
@@ -17,7 +17,7 @@
 		</div>
 	</div>
 	<!-- breadcrumb-area end -->
-	
+
 	<!-- blog-area start -->
 	<div class="blog-area pad-60">
 		<div class="container">
@@ -30,35 +30,18 @@
 						<form action="#">
 							<div class="widget-form">
 								<input type="text" placeholder="search" />
-								<button type="submit"><i class="fa fa-search"></i></button>					
+								<button type="submit"><i class="fa fa-search"></i></button>
 							</div>
 						</form>
 					</aside>
 					<!-- widget-search end -->
 					<!-- widget-categories start -->
-					<aside class="widget widget-categories">
-						<h3 class="sidebar-title">Categories</h3>
-						<ul class="sidebar-menu">
-							<li><a href="#">Creative</a> (2)</li>
-							<li><a href="#">Fashion</a> (1)</li>
-							<li><a href="#">Image</a> (1)</li>
-							<li><a href="#">Photography</a> (1)</li>
-							<li><a href="#">Travel</a> (5)</li>
-							<li><a href="#">Videos</a> (2)</li>
-							<li><a href="#">WordPress</a> (4)</li>
-						</ul>
-					</aside>
+                    {# loading an inclusion tag that outputs all categories feeds #}
+                    {# inclusion tag is located in 'templatetags/filters.py' #}
+                    {# the template tag's is located in 'template/core/inclusion_html/widget-categories-feeds.html' #}
+					{% all_categories_feeds %}
 					<!-- widget-categories end -->
 					<!-- widget-archive start -->
-					<aside class="widget widget-archive">
-						<h3 class="sidebar-title">Archives</h3>
-						<ul class="sidebar-menu">
-							<li><a href="#">February 2015</a></li>
-							<li><a href="#">November 2014</a></li>
-							<li><a href="#">September 2014</a></li>
-							<li><a href="#">august 2015</a></li>
-						</ul>						
-					</aside>
 					<!-- widget-archive end -->
 					<!-- widget-recent start -->
                     {# loading an inclusion tag that outputs all recent feeds (input count feeds, default output all feeds)#}
@@ -99,9 +82,6 @@
                         </article>
                         <!-- single-blog end -->
                     {% endfor %}
-					<!-- single-blog start -->
-
-					<!-- single-blog end -->
                     {% if is_has_other_page %}
                         <!-- pagination start -->
                         <div class="pagination">

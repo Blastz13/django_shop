@@ -1,5 +1,6 @@
 {% extends 'core/extends/base.html' %}
 {% load filters %}
+{% load static %}
 {% block content %}
     <!-- breadcrumb-area start -->
 	<div class="breadcrumb-area">
@@ -9,7 +10,8 @@
 					<div class="breadcrumb">
 						<ul>
 							<li><a href="{% url 'HomePage' %}">Home</a> <i class="fa fa-angle-right"></i></li>
-							<li><a href="#">blog</a> <i class="fa fa-angle-right"></i></li>
+							<li><a href="{% url 'FeedList' %}">Blog</a> <i class="fa fa-angle-right"></i></li>
+                            <li><a href="{{ feed.category.get_absolute_url }}">{{ feed.category }}</a> <i class="fa fa-angle-right"></i></li>
 							<li>{{ feed.title }}</li>
 						</ul>
 					</div>
@@ -18,7 +20,7 @@
 		</div>
 	</div>
 	<!-- breadcrumb-area end -->
-	
+
 	<!-- blog-area start -->
 	<div class="blog-area single-blog pad-60">
 		<div class="container">
@@ -31,35 +33,18 @@
 						<form action="#">
 							<div class="widget-form">
 								<input type="text" placeholder="search" />
-								<button type="submit"><i class="fa fa-search"></i></button>					
+								<button type="submit"><i class="fa fa-search"></i></button>
 							</div>
 						</form>
 					</aside>
 					<!-- widget-search end -->
 					<!-- widget-categories start -->
-					<aside class="widget widget-categories">
-						<h3 class="sidebar-title">Categories</h3>
-						<ul class="sidebar-menu">
-							<li><a href="#">Creative</a> (2)</li>
-							<li><a href="#">Fashion</a> (1)</li>
-							<li><a href="#">Image</a> (1)</li>
-							<li><a href="#">Photography</a> (1)</li>
-							<li><a href="#">Travel</a> (5)</li>
-							<li><a href="#">Videos</a> (2)</li>
-							<li><a href="#">WordPress</a> (4)</li>
-						</ul>
-					</aside>
+                    {# loading an inclusion tag that outputs all categories feeds #}
+                    {# inclusion tag is located in 'templatetags/filters.py' #}
+                    {# the template tag's is located in 'template/core/inclusion_html/widget-categories-feeds.html' #}
+					{% all_categories_feeds %}
 					<!-- widget-categories end -->
 					<!-- widget-archive start -->
-					<aside class="widget widget-archive">
-						<h3 class="sidebar-title">Archives</h3>
-						<ul class="sidebar-menu">
-							<li><a href="#">February 2015</a></li>
-							<li><a href="#">November 2014</a></li>
-							<li><a href="#">September 2014</a></li>
-							<li><a href="#">august 2015</a></li>
-						</ul>						
-					</aside>
 					<!-- widget-archive end -->
 					<!-- widget-recent start -->
 					{# loading an inclusion tag that outputs all recent feeds (input count feeds, default output all feeds)#}
@@ -96,13 +81,6 @@
 							</div>
 							<div class="entry-content">
 			                    {{ feed.body }}
-{#                                <p>Donec vitae hendrerit arcu, sit amet faucibus nisl. Cras pretium arcu ex. Aenean posuere libero eu augue condimentum rhoncus. Praesent ornare tortor ac ante egestas hendrerit.</p>#}
-{#								<p>Aliquam et metus pharetra, bibendum massa nec, fermentum odio. Nunc id leo ultrices, mollis ligula in, finibus tortor. Mauris eu dui ut lectus fermentum eleifend. Pellentesque faucibus sem ante, non malesuada odio varius nec. Suspendisse potenti. Proin consectetur aliquam odio nec fringilla. Sed interdum at justo in efficitur. Vivamus gravida volutpat sodales. Fusce ornare sit amet ligula condimentum sagittis.</p>#}
-{#								<blockquote>#}
-{#									<p>Quisque semper nunc vitae erat pellentesque, ac placerat arcu consectetur. In venenatis elit ac ultrices convallis. Duis est nisi, tincidunt ac urna sed, cursus blandit lectus. In ullamcorper sit amet ligula ut eleifend. Proin dictum tempor ligula, ac feugiat metus. Sed finibus tortor eu scelerisque scelerisque.</p>#}
-{#								</blockquote>							#}
-{#								<p>Aenean et tempor eros, vitae sollicitudin velit. Etiam varius enim nec quam tempor, sed efficitur ex ultrices. Phasellus pretium est vel dui vestibulum condimentum. Aenean nec suscipit nibh. Phasellus nec lacus id arcu facilisis elementum. Curabitur lobortis, elit ut elementum congue, erat ex bibendum odio, nec iaculis lacus sem non lorem. Duis suscipit metus ante, sed convallis quam posuere quis. Ut tincidunt eleifend odio, ac fringilla mi vehicula nec. Nunc vitae lacus eget lectus imperdiet tempus sed in dui. Nam molestie magna at risus consectetur, placerat suscipit justo dignissim. Sed vitae fringilla enim, nec ullamcorper arcu.</p>#}
-{#								<p>Suspendisse turpis ipsum, tempus in nulla eu, posuere pharetra nibh. In dignissim vitae lorem non mollis. Praesent pretium tellus in tortor viverra condimentum. Nullam dignissim facilisis nisl, accumsan placerat justo ultricies vel. Vivamus finibus mi a neque pretium, ut convallis dui lacinia. Morbi a rutrum velit. Curabitur sagittis quam quis consectetur mattis. Aenean sit amet quam vel turpis interdum sagittis et eget neque. Nunc ante quam, luctus et neque a, interdum iaculis metus. Aliquam vel ante mattis, placerat orci id, vehicula quam. Suspendisse quis eros cursus, viverra urna sed, commodo mauris. Cras diam arcu, fringilla a sem condimentum, viverra facilisis nunc. Curabitur vitae orci id nulla maximus maximus. Nunc pulvinar sollicitudin molestie.</p>#}
 							</div>
 							<div class="social-sharing">
 								<h3>Share this post</h3>
@@ -134,7 +112,7 @@
 									    <li>
                                             <div class="comments-details">
                                                 <div class="comments-list-img">
-                                                    <img src="../../static/core/img/blog/comments/1.png" alt="" />
+                                                    <img src="{% static 'core/img/blog/comments/1.png' %}" alt="" />
                                                 </div>
                                                 <div class="comments-content-wrap">
                                                     <span>
@@ -150,7 +128,7 @@
                                                 <li class="threaded-comments">
                                                     <div class="comments-details">
                                                         <div class="comments-list-img">
-                                                            <img src="../../static/core/img/blog/comments/2.jpg" alt="" />
+                                                            <img src="{% static 'core/img/blog/comments/2.jpg' %}" alt="{{ sup_comment.name }}" />
                                                         </div>
                                                         <div class="comments-content-wrap">
                                                             <span>
@@ -170,7 +148,7 @@
                             <div class="comment-respond">
 							<h3 class="comment-reply-title">Leave a Reply </h3>
 							<span class="email-notes">Your email address will not be published. Required fields are marked *</span>
-							<form action="{% url 'FeedDetail' feed.slug %}" id="form-add-comment" method="post">{% csrf_token %}
+							<form action="{% url 'FeedDetail' feed.slug feed.slug %}" id="form-add-comment" method="post">{% csrf_token %}
 								<div class="row">
                                     <input type="hidden" name="parent" id="contactparent" value="">
 									<div class="col-md-4">
