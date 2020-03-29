@@ -12,8 +12,9 @@ register = template.Library()
 
 # this tag outputs all feeds tags using the template 'template/core/inclusion_html/widget-tags-feeds.html'
 @register.inclusion_tag('core/inclusion_html/widget-tags-feeds.html')
-def all_tags(count=None):
-    return {'all_tags': Tag.objects.filter()[:count]}
+def all_tags(slug_selected_tag=None, count=None):
+    return {'all_tags': Tag.objects.filter()[:count],
+            'slug_selected_tag': slug_selected_tag}
 
 
 # this tag outputs all feeds using the template 'template/core/inclusion_html/widget-recent-feeds.html'
@@ -26,8 +27,11 @@ def recent_feeds(count=3):
 
 # this tag outputs all categories feeds using the template 'template/core/inclusion_html/widget-categories-feeds.html'
 @register.inclusion_tag('core/inclusion_html/widget-categories-feeds.html')
-def all_categories_feeds():
-    return {'all_categories_feeds': CategoryFeed.objects.all()}
+def all_categories_feeds(slug_selected_category=None):
+    return {'all_categories_feeds': CategoryFeed.objects.all(),
+            'slug_selected_category': slug_selected_category}
+
+
 # @register.inclusion_tag('core/inclusion_html/widget-recent-feeds.html')
 # def our_brands():
 #     return {'our_brands': OurBrand.objects.all()}

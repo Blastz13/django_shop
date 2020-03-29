@@ -48,8 +48,8 @@ class CategoryFeed(models.Model):
     title = models.CharField(max_length=64, unique=True, verbose_name='Название категории')
     slug = models.SlugField(max_length=128, unique=True, db_index=True, verbose_name='Ссылка на категорию')
 
-    # def get_absolute_url(self):
-    #     return reverse('', kwargs={'slug': self.slug})
+    def get_absolute_url(self):
+        return reverse('FeedListCategory', kwargs={'category': self.slug})
 
     def __str__(self):
         return "{}".format(self.title)
@@ -64,9 +64,8 @@ class Tag(models.Model):
     title = models.CharField(max_length=50, verbose_name="Название")
     slug = models.SlugField(max_length=50, unique=True, verbose_name="Ссылка")
 
-    #
-    # def get_absolute_url(self):
-    #     return reverse('tag_list', kwargs={"slug": self.slug})
+    def get_absolute_url(self):
+        return reverse('FeedListTag', kwargs={"slug": self.slug})
 
     def __str__(self):
         return str(self.title)
