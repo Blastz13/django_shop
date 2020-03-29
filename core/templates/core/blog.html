@@ -76,7 +76,7 @@
                                     <span><i class="fa fa-calendar"></i> {{ feed.date_published_from|date:'N d, Y' }}</span>
                                     <a href="#"><i class="fa fa-comments-o"></i> {{ feed.comments.count }} comments</a>
                                 </div>
-                                <p>{{ feed.body|truncatewords:20 }}</p>
+                                <p>{% autoescape off %} {{ feed.body|truncatewords:20 }} {% endautoescape %}</p>
                                 <a class="readmore" href="{{ feed.get_absolute_url }}">read more</a>
                             </div>
                         </article>

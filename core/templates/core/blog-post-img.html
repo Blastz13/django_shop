@@ -80,7 +80,7 @@
 								<span><i class="fa fa-comments-o"></i> <a href="#">{{ feed.comments.count }} comments</a></span>
 							</div>
 							<div class="entry-content">
-			                    {{ feed.body }}
+                                {% autoescape off %} {{ feed.body }} {% endautoescape %}
 							</div>
 							<div class="social-sharing">
 								<h3>Share this post</h3>

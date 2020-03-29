@@ -1,7 +1,7 @@
 from django.db import models
 from django.shortcuts import reverse
 from datetime import datetime, timedelta
-
+from ckeditor_uploader.fields import RichTextUploadingField
 
 # TODO: Add tags
 # TODO: Add comments
@@ -9,7 +9,7 @@ class Feed(models.Model):
     title = models.CharField(max_length=128, blank=True, db_index=True, default='', verbose_name='Заголовок')
     sup_title = models.CharField(max_length=128, blank=True, default='', verbose_name='Подзаголовок')
     description = models.CharField(max_length=512, blank=True, default='', verbose_name='Описание')
-    body = models.TextField(max_length=10000, blank=True, default='', verbose_name='Текст статьи')
+    body = RichTextUploadingField()
     image = models.ImageField(upload_to='Feed/%Y/%m/%d/%H', default='default_img/news.jpeg', blank=True, null=True,
                               verbose_name='Изображение')
     slug = models.SlugField(max_length=128, unique=True, db_index=True, verbose_name='Ссылка на новость')

@@ -2,16 +2,13 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="e9a1af9a-01da-4e77-a472-403f7de6d2a0" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/core/templates/core/inclusion_html/widget-categories-feeds.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/core/admin.py" beforeDir="false" afterPath="$PROJECT_DIR$/core/admin.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/core/models.py" beforeDir="false" afterPath="$PROJECT_DIR$/core/models.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/core/templates/core/blog-post-img.html" beforeDir="false" afterPath="$PROJECT_DIR$/core/templates/core/blog-post-img.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/core/templates/core/blog.html" beforeDir="false" afterPath="$PROJECT_DIR$/core/templates/core/blog.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/core/templatetags/filters.py" beforeDir="false" afterPath="$PROJECT_DIR$/core/templatetags/filters.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/core/urls.py" beforeDir="false" afterPath="$PROJECT_DIR$/core/urls.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/core/views.py" beforeDir="false" afterPath="$PROJECT_DIR$/core/views.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/db.sqlite3" beforeDir="false" afterPath="$PROJECT_DIR$/db.sqlite3" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/django_shop/settings.py" beforeDir="false" afterPath="$PROJECT_DIR$/django_shop/settings.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/django_shop/urls.py" beforeDir="false" afterPath="$PROJECT_DIR$/django_shop/urls.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -104,7 +101,7 @@
   </component>
   <component name="TaskManager">
     <task active="true" id="Default" summary="Default task">
-      <changelist id="3d67b953-cdfd-4794-bff6-c32e0e2c2bce" name="Default Changelist" comment="" />
+      <changelist id="e9a1af9a-01da-4e77-a472-403f7de6d2a0" name="Default Changelist" comment="" />
       <created>1584867184592</created>
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
@@ -118,7 +115,16 @@
       <workItem from="1585314742654" duration="5343000" />
       <workItem from="1585328981484" duration="2148000" />
       <workItem from="1585398333215" duration="9967000" />
+      <workItem from="1585474075841" duration="1850000" />
     </task>
+    <task id="LOCAL-00001" summary="problems with the database were resolved">
+      <created>1585431833635</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1585431833635</updated>
+    </task>
+    <option name="localTasksCounter" value="2" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -137,15 +143,19 @@
       </map>
     </option>
   </component>
+  <component name="VcsManagerConfiguration">
+    <MESSAGE value="problems with the database were resolved" />
+    <option name="LAST_COMMIT_MESSAGE" value="problems with the database were resolved" />
+  </component>
   <component name="WindowStateProjectService">
     <state x="160" y="123" key="#com.intellij.execution.impl.EditConfigurationsDialog" timestamp="1584868515669">
       <screen x="0" y="0" width="1920" height="1080" />
     </state>
     <state x="160" y="123" key="#com.intellij.execution.impl.EditConfigurationsDialog/0.0.1920.1080@0.0.1920.1080" timestamp="1584868515669" />
-    <state x="947" y="48" key="CommitChangelistDialog2" timestamp="1584869349093">
+    <state x="947" y="48" key="CommitChangelistDialog2" timestamp="1585431832617">
       <screen x="0" y="0" width="1920" height="1080" />
     </state>
-    <state x="947" y="48" key="CommitChangelistDialog2/0.0.1920.1080@0.0.1920.1080" timestamp="1584869349093" />
+    <state x="947" y="48" key="CommitChangelistDialog2/0.0.1920.1080@0.0.1920.1080" timestamp="1585431832617" />
     <state x="1103" y="298" key="FileChooserDialogImpl" timestamp="1584987859274">
       <screen x="0" y="0" width="1920" height="1080" />
     </state>
