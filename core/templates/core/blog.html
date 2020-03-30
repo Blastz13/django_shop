@@ -28,9 +28,9 @@
 					<!-- widget-search start -->
 					<aside class="widget widget-search">
 						<h3 class="sidebar-title">Search</h3>
-						<form action="#">
+						<form action="{% url 'FeedList' %}" method="get">
 							<div class="widget-form">
-								<input type="text" placeholder="search" />
+								<input type="text" placeholder="search" name="search-feed" />
 								<button type="submit"><i class="fa fa-search"></i></button>
 							</div>
 						</form>

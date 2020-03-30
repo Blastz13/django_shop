@@ -3,8 +3,7 @@ from django.shortcuts import reverse
 from datetime import datetime, timedelta
 from ckeditor_uploader.fields import RichTextUploadingField
 
-# TODO: Add tags
-# TODO: Add comments
+
 class Feed(models.Model):
     title = models.CharField(max_length=128, blank=True, db_index=True, default='', verbose_name='Заголовок')
     sup_title = models.CharField(max_length=128, blank=True, default='', verbose_name='Подзаголовок')
