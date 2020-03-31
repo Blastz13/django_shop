@@ -103,3 +103,19 @@ class OurBrand(models.Model):
         ordering = ['order']
         verbose_name = "Наши бренды"
         verbose_name_plural = "Наши бренды"
+
+
+class ContactForm(models.Model):
+    name = models.CharField(max_length=64, verbose_name='Имя')
+    email = models.EmailField(verbose_name='Почта')
+    subject = models.CharField(max_length=64, verbose_name='Тема')
+    message = models.TextField(max_length=1000, verbose_name='Сообщение')
+    date_send = models.DateTimeField(auto_now_add=True, verbose_name='Дата отправки')
+
+    def __str__(self):
+        return "{0} - {1}, {2}".format(self.email, self.subject, self.date_send)
+
+    class Meta:
+        ordering = ['-date_send']
+        verbose_name = "Сообщения контактной формы"
+        verbose_name_plural = "Сообщения контактной формы"

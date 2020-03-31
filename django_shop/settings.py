@@ -120,9 +120,17 @@ STATIC_URL = '/static/'
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media/')
 MEDIA_URL = '/media/'
 
+# settings ckeditor
 CKEDITOR_UPLOAD_PATH = "uploads_ckeditor/"
 CKEDITOR_CONFIGS = {
     'default': {
-     'toolbar': 'None'
+        'toolbar': 'None'
     },
 }
+
+# settings email
+EMAIL_HOST = 'smtp.mail.ru'
+EMAIL_PORT = 2525
+EMAIL_HOST_USER = "django_shop@mail.ru"
+EMAIL_HOST_PASSWORD = "ipm-dTu2TP8Y"
+EMAIL_USE_TLS = True

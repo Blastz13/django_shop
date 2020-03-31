@@ -1,4 +1,3 @@
-from django.conf import settings
 from django.conf.urls.static import static
 from django.urls import path
 
@@ -6,6 +5,7 @@ from core.views import *
 
 urlpatterns = [
     path('', HomePage.as_view(), name='HomePage'),
+    path('contact/', LeaveMessage.as_view(), name='LeaveMessage'),
     path('blog/', FeedList.as_view(), name='FeedList'),
     path('blog/tag/<str:slug>/', FeedListTag.as_view(), name='FeedListTag'),
     path('blog/<str:category>/', FeedListCategory.as_view(), name='FeedListCategory'),

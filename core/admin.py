@@ -6,6 +6,8 @@ from .models import Feed
 from .models import OurBrand
 from .models import Tag
 from .models import CategoryFeed
+from .models import ContactForm
+
 
 @admin.register(OurBrand)
 class AdminOurBrand(admin.ModelAdmin):
@@ -32,7 +34,7 @@ class AdminComment(admin.ModelAdmin):
     list_display = ['email', 'name', 'text', 'date_publicate']
     list_display_links = ['email', 'name', 'text', 'date_publicate']
     search_fields = ('email', 'name', 'text', 'date_publicate',)
-
+    readonly_fields = ('date_publicate',)
 
 class СommentItemInline(admin.TabularInline):
     model = Comment
@@ -61,3 +63,11 @@ class AdminCategoryFeed(admin.ModelAdmin):
     list_display = ['title', 'slug']
     list_display_links = ['title', 'slug']
     search_fields = ('title', 'slug')
+
+
+@admin.register(ContactForm)
+class AdminContactForm(admin.ModelAdmin):
+    list_display = ['name', 'email', 'subject', 'date_send']
+    list_display_links = ['name', 'email', 'subject', 'date_send']
+    search_fields = ('name', 'email', 'subject', 'date_send')
+    readonly_fields = ('date_send',)
