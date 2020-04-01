@@ -27,6 +27,10 @@
 				<div class="col-lg-3 col-md-3">
 					<!-- widget-search start -->
 					<aside class="widget widget-search">
+                        {% if query_search_user %}
+                            <h4 class="sidebar-title" style="font-size: 16px;">Result of search by query:</h4>
+                            <p style="font-size: 13px; font-weight: 600; margin-bottom: 30px; font-style: italic; text-decoration: underline;">{{ query_search_user }}</p>
+                        {% endif %}
 						<h3 class="sidebar-title">Search</h3>
 						<form action="{% url 'FeedList' %}" method="get">
 							<div class="widget-form">
@@ -88,17 +92,17 @@
                         <div class="pagination">
                             <ul>
                                 {% if prev_page %}
-                                <li><a href="{{ prev_page }}"><i class="fa fa-chevron-left"></i></a></li>
+                                <li><a href="{{ prev_page }}{{ query_search_feed }}"><i class="fa fa-chevron-left"></i></a></li>
                                 {% endif %}
                                 {% for number_page in feeds_all.paginator.page_range %}
                                     {% if feeds_all.number == number_page %}
                                         <li class="active">{{ number_page }}</li>
                                     {% elif number_page > feeds_all.number|add:-2 and number_page < feeds_all.number|add:2 %}
-                                        <li><a href="?page={{ number_page }}"> {{ number_page }} </a></li>
+                                        <li><a href="?page={{ number_page }}{{ query_search_feed }}"> {{ number_page }} </a></li>
                                     {% endif %}
                                 {% endfor %}
                                 {% if next_page %}
-                                <li><a href="{{ next_page }}"><i class="fa fa-chevron-right"></i></a></li>
+                                <li><a href="{{ next_page }}{{ query_search_feed }}"><i class="fa fa-chevron-right"></i></a></li>
                                 {% endif %}
                             </ul>
                         </div>

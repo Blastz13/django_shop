@@ -113,7 +113,7 @@ class FeedListTag(ObjectSortPaginate, View):
                                         is_blog=True,
                                         date_published_from__lte=datetime.now(tz=timezone.utc))
 
-        return render(request, 'core/blog_filter_by_tags.html',
+        return render(request, 'core/blog-filter-by-tags.html',
                       context=self.get_pagination(feeds_all, obj_selected_category))
 
 
