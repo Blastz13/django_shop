@@ -10,27 +10,36 @@
 		<div class="container">
 			<div class="row">
 				<!-- contact-info start -->
-				<div class="col-md-6 col-sm-12 col-xs-12">
-					<div class="contact-info">
-						<h3>Contact info</h3>
-						<ul>
-							<li>
-								<i class="fa fa-map-marker"></i> <strong>Address</strong>
-								1234 Pall Mall Street, London England
-							</li>
-							<li>
-								<i class="fa fa-envelope"></i> <strong>Phone</strong>
-								(800) 0123 4567 890
-							</li>
-							<li>
-								<i class="fa fa-mobile"></i> <strong>Email</strong>
-								<a href="#">admin@themepure.net</a>
-							</li>
-						</ul>
-					</div>
-				</div>
+                {% for contact in contact_address %}
+                    <div class="col-md-6 col-sm-12 col-xs-12" style="margin-bottom: 25px;">
+                            <div class="contact-info">
+                                {% if contact.title %}
+                                    <h3>{{ contact.title }}</h3>
+                                {% endif %}
+                                    <address>
+                                    <ul>
+                                        <li>
+                                            <i class="fa fa-map-marker"></i> <strong>Address</strong>
+                                            <strong>{{ contact.address }}</strong>
+                                        <li>
+                                            {% if contact.phone %}
+                                                <i class="fa fa-envelope"></i> <strong>Phone</strong>
+                                                <strong><a href="tel:{{ contact.phone }}">{{ contact.phone }}</a></strong>
+                                            {% endif %}
+                                        </li>
+                                        <li>
+                                            {% if contact.email %}
+                                                <i class="fa fa-mobile"></i> <strong>Email</strong>
+                                                <strong><a href="mailto:{{ contact.email }}">{{ contact.email }}</a></strong>
+                                            {% endif %}
+                                        </li>
+                                    </ul>
+                                    </address>
+                            </div>
+                    </div>
+                {% endfor %}
 				<!-- contact-info end -->
-				<div class="col-md-6 col-sm-12 col-xs-12">
+				<div class="col-md-6 col-sm-12 col-xs-12" style="margin-top: 15px;">
 					<div class="contact-form">
 						<h3><i class="fa fa-envelope-o"></i> Leave a Message</h3>
 						<div class="row">
@@ -86,6 +95,6 @@
 		<!-- plugins js -->
         <script src="../../static/core/js/plugins.js"></script>
 		
-		<!-- main js -->
-        <script src="../../static/core/js/main.js"></script>
+{#		<!-- main js -->#}
+{#        <script src="../../static/core/js/main.js"></script>#}
 {% endblock %}

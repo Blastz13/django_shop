@@ -119,3 +119,19 @@ class ContactForm(models.Model):
         ordering = ['-date_send']
         verbose_name = "Сообщения контактной формы"
         verbose_name_plural = "Сообщения контактной формы"
+
+
+class ContactAddress(models.Model):
+    title = models.CharField(max_length=64, blank=True, verbose_name='Заголовок')
+    address = models.CharField(max_length=128, verbose_name='Адрес')
+    phone = models.CharField(max_length=12, blank=True, verbose_name='Телефон')
+    email = models.EmailField(blank=True, verbose_name='Почта')
+    order = models.PositiveIntegerField(default=0, verbose_name='Порядок')
+
+    def __str__(self):
+        return "{0} - {1}, {2}".format(self.address, self.phone, self.email)
+
+    class Meta:
+        ordering = ['order']
+        verbose_name = "Контактный адрес"
+        verbose_name_plural = "Контактные адреса"

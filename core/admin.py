@@ -7,7 +7,7 @@ from .models import OurBrand
 from .models import Tag
 from .models import CategoryFeed
 from .models import ContactForm
-
+from .models import ContactAddress
 
 @admin.register(OurBrand)
 class AdminOurBrand(admin.ModelAdmin):
@@ -71,3 +71,11 @@ class AdminContactForm(admin.ModelAdmin):
     list_display_links = ['name', 'email', 'subject', 'date_send']
     search_fields = ('name', 'email', 'subject', 'date_send')
     readonly_fields = ('date_send',)
+
+
+@admin.register(ContactAddress)
+class AdminContactForm(admin.ModelAdmin):
+    list_display = ['address', 'email', 'phone', 'order']
+    list_display_links = ['address', 'email', 'phone', 'order']
+    search_fields = ('address', 'email', 'phone', 'order')
+

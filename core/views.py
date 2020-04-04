@@ -13,6 +13,7 @@ from .models import CategoryFeed
 from .models import Feed
 from .models import OurBrand
 from .models import Tag
+from .models import ContactAddress
 
 from .mixins import ObjectSortPaginate
 
@@ -120,8 +121,10 @@ class FeedListTag(ObjectSortPaginate, View):
 class LeaveMessage(View):
     def get(self, request):
         form = MessageContactForm()
+        contact_address = ContactAddress.objects.all()
 
-        return render(request, 'core/contact.html', context={'form': form})
+        return render(request, 'core/contact.html', context={'form': form,
+                                                             'contact_address': contact_address})
 
     def post(self, request):
         form = MessageContactForm(request.POST)

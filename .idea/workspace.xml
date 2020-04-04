@@ -3,11 +3,13 @@
   <component name="ChangeListManager">
     <list default="true" id="e9a1af9a-01da-4e77-a472-403f7de6d2a0" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/core/mixins.py" beforeDir="false" afterPath="$PROJECT_DIR$/core/mixins.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/core/templates/core/blog.html" beforeDir="false" afterPath="$PROJECT_DIR$/core/templates/core/blog.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/core/templates/core/blog_filter_by_tags.html" beforeDir="false" afterPath="$PROJECT_DIR$/core/templates/core/blog-filter-by-tags.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/core/admin.py" beforeDir="false" afterPath="$PROJECT_DIR$/core/admin.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/core/models.py" beforeDir="false" afterPath="$PROJECT_DIR$/core/models.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/core/templates/core/contact.html" beforeDir="false" afterPath="$PROJECT_DIR$/core/templates/core/contact.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/core/templates/core/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/core/templates/core/index.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/core/views.py" beforeDir="false" afterPath="$PROJECT_DIR$/core/views.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/db.sqlite3" beforeDir="false" afterPath="$PROJECT_DIR$/db.sqlite3" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/django_shop/settings.py" beforeDir="false" afterPath="$PROJECT_DIR$/django_shop/settings.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -36,6 +38,9 @@
   <component name="DjangoConsoleOptions" custom-start-script="import sys; print('Python %s on %s' % (sys.version, sys.platform))&#10;import django; print('Django %s' % django.get_version())&#10;sys.path.extend([WORKING_DIR_AND_PYTHON_PATHS])&#10;if 'setup' in dir(django): django.setup()&#10;import django_manage_shell; django_manage_shell.run(PROJECT_ROOT)">
     <option name="myCustomStartScript" value="import sys; print('Python %s on %s' % (sys.version, sys.platform))&#10;import django; print('Django %s' % django.get_version())&#10;sys.path.extend([WORKING_DIR_AND_PYTHON_PATHS])&#10;if 'setup' in dir(django): django.setup()&#10;import django_manage_shell; django_manage_shell.run(PROJECT_ROOT)" />
   </component>
+  <component name="FavoritesManager">
+    <favorites_list name="django_shop" />
+  </component>
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
       <list>
@@ -59,7 +64,7 @@
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/../django" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
     <property name="node.js.detected.package.eslint" value="true" />
     <property name="node.js.detected.package.tslint" value="true" />
     <property name="node.js.path.for.package.eslint" value="project" />
@@ -124,7 +129,11 @@
       <workItem from="1585565948560" duration="1246000" />
       <workItem from="1585568173553" duration="18020000" />
       <workItem from="1585675567267" duration="6717000" />
-      <workItem from="1585736406659" duration="257000" />
+      <workItem from="1585736406659" duration="9469000" />
+      <workItem from="1585763818279" duration="3096000" />
+      <workItem from="1585834868172" duration="60000" />
+      <workItem from="1585853748945" duration="1257000" />
+      <workItem from="1586025064298" duration="3844000" />
     </task>
     <task id="LOCAL-00001" summary="problems with the database were resolved">
       <created>1585431833635</created>
@@ -165,26 +174,26 @@
       <screen x="0" y="0" width="1920" height="1080" />
     </state>
     <state x="947" y="48" key="CommitChangelistDialog2/0.0.1920.1080@0.0.1920.1080" timestamp="1585431832617" />
-    <state x="509" y="150" key="FileChooserDialogImpl" timestamp="1585596377072">
+    <state x="509" y="150" key="FileChooserDialogImpl" timestamp="1585857197485">
       <screen x="0" y="0" width="1920" height="1080" />
     </state>
-    <state x="509" y="150" key="FileChooserDialogImpl/0.0.1920.1080@0.0.1920.1080" timestamp="1585596377072" />
+    <state x="509" y="150" key="FileChooserDialogImpl/0.0.1920.1080@0.0.1920.1080" timestamp="1585857197485" />
     <state x="461" y="182" key="SettingsEditor" timestamp="1585508198008">
       <screen x="0" y="0" width="1920" height="1080" />
     </state>
     <state x="461" y="182" key="SettingsEditor/0.0.1920.1080@0.0.1920.1080" timestamp="1585508198008" />
-    <state x="636" y="364" key="com.intellij.ide.util.TipDialog" timestamp="1585736409275">
+    <state x="636" y="364" key="com.intellij.ide.util.TipDialog" timestamp="1585834881472">
       <screen x="0" y="0" width="1920" height="1080" />
     </state>
-    <state x="636" y="364" key="com.intellij.ide.util.TipDialog/0.0.1920.1080@0.0.1920.1080" timestamp="1585736409275" />
+    <state x="636" y="364" key="com.intellij.ide.util.TipDialog/0.0.1920.1080@0.0.1920.1080" timestamp="1585834881472" />
     <state x="1247" y="455" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2" timestamp="1584868522131">
       <screen x="0" y="0" width="1920" height="1080" />
     </state>
     <state x="1247" y="455" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2/0.0.1920.1080@0.0.1920.1080" timestamp="1584868522131" />
-    <state x="640" y="319" width="627" height="568" key="find.popup" timestamp="1585680466848">
+    <state x="640" y="319" width="627" height="568" key="find.popup" timestamp="1585745969731">
       <screen x="0" y="0" width="1920" height="1080" />
     </state>
-    <state x="640" y="319" width="627" height="568" key="find.popup/0.0.1920.1080@0.0.1920.1080" timestamp="1585680466848" />
+    <state x="640" y="319" width="627" height="568" key="find.popup/0.0.1920.1080@0.0.1920.1080" timestamp="1585745969731" />
     <state x="616" y="328" key="search.everywhere.popup" timestamp="1585680451998">
       <screen x="0" y="0" width="1920" height="1080" />
     </state>
