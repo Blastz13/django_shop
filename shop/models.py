@@ -10,10 +10,13 @@ class Product(models.Model):
     discount_price = models.PositiveIntegerField(blank=True, verbose_name='Цена по скидке')
     is_available = models.BooleanField(verbose_name='Товар в наличии')
     property = JSONField(blank=True, null=True, verbose_name='Свойства товара')
+    date_publicate = models.DateTimeField(auto_now_add=True, verbose_name='Дата добавления товара')
+    order = models.PositiveIntegerField(default=0, verbose_name='Порядок показа товара')
 
     def __str__(self):
         return f"{self.title}"
 
     class Meta:
+        ordering = ['order', '-date_publicate']
         verbose_name = "Товар"
         verbose_name_plural = "Товары"
