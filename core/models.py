@@ -1,6 +1,6 @@
 from django.db import models
+from django.utils import timezone
 from django.shortcuts import reverse
-from datetime import datetime, timedelta
 from ckeditor_uploader.fields import RichTextUploadingField
 
 
@@ -19,9 +19,9 @@ class Feed(models.Model):
     is_blog = models.BooleanField(default=False, verbose_name='Блог')
     is_publish = models.BooleanField(default=False, verbose_name='Опубликовать')
     date_publicate = models.DateTimeField(auto_now_add=True, verbose_name='Дата публикации')
-    date_published_from = models.DateTimeField(default=datetime.now(), blank=True, null=True,
+    date_published_from = models.DateTimeField(default=timezone.now, blank=True, null=True,
                                                verbose_name="Опубликовать c")
-    date_published_to = models.DateTimeField(default=datetime.now() + timedelta(days=7), blank=True, null=True,
+    date_published_to = models.DateTimeField(default=timezone.now() + timezone.timedelta(days=7), blank=True, null=True,
                                              verbose_name="Опубликовать до")
     tag = models.ManyToManyField('Tag', blank=True, related_name='feeds', verbose_name='Тэг')
 
