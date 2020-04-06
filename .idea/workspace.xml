@@ -3,12 +3,17 @@
   <component name="ChangeListManager">
     <list default="true" id="e9a1af9a-01da-4e77-a472-403f7de6d2a0" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/core/templates/core/includes/OurBrands.html" beforeDir="false" afterPath="$PROJECT_DIR$/core/templates/core/inclusion_html/widget-our-brands.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/core/templates/core/blog-filter-by-tags.html" beforeDir="false" afterPath="$PROJECT_DIR$/core/templates/core/blog-filter-by-tags.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/core/templates/core/blog-post-img.html" beforeDir="false" afterPath="$PROJECT_DIR$/core/templates/core/blog-post-img.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/core/templates/core/blog.html" beforeDir="false" afterPath="$PROJECT_DIR$/core/templates/core/blog.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/core/templates/core/inclusion_html/widget-categories-feeds.html" beforeDir="false" afterPath="$PROJECT_DIR$/core/templates/core/inclusion_html/widget-categories-feeds.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/core/templates/core/inclusion_html/widget-recent-feeds.html" beforeDir="false" afterPath="$PROJECT_DIR$/core/templates/core/inclusion_html/widget-recent-feeds.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/core/templates/core/inclusion_html/widget-tags-feeds.html" beforeDir="false" afterPath="$PROJECT_DIR$/core/templates/core/inclusion_html/widget-tags-feeds.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/core/templates/core/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/core/templates/core/index.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/core/templatetags/filters.py" beforeDir="false" afterPath="$PROJECT_DIR$/core/templatetags/filters.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/core/views.py" beforeDir="false" afterPath="$PROJECT_DIR$/core/views.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/requirements.txt" beforeDir="false" afterPath="$PROJECT_DIR$/requirements.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/core/templatetags/filters.py" beforeDir="false" afterPath="$PROJECT_DIR$/core/templatetags/filters_core.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/shop/models.py" beforeDir="false" afterPath="$PROJECT_DIR$/shop/models.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/shop/templates/shop/shop.html" beforeDir="false" afterPath="$PROJECT_DIR$/shop/templates/shop/shop.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/shop/templatetags/filters.py" beforeDir="false" afterPath="$PROJECT_DIR$/shop/templatetags/filters_shop.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/shop/views.py" beforeDir="false" afterPath="$PROJECT_DIR$/shop/views.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -141,7 +146,7 @@
       <workItem from="1586093916809" duration="7092000" />
       <workItem from="1586104910804" duration="1953000" />
       <workItem from="1586109430687" duration="5116000" />
-      <workItem from="1586182023505" duration="2437000" />
+      <workItem from="1586182023505" duration="4536000" />
     </task>
     <task id="LOCAL-00001" summary="problems with the database were resolved">
       <created>1585431833635</created>

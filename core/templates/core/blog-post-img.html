@@ -1,5 +1,5 @@
 {% extends 'core/extends/base.html' %}
-{% load filters %}
+{% load filters_core %}
 {% load static %}
 {% block content %}
     <!-- breadcrumb-area start -->
@@ -40,7 +40,7 @@
 					<!-- widget-search end -->
 					<!-- widget-categories start -->
                     {# loading an inclusion tag that outputs all categories feeds (input count feeds, slug of the feed you want to select, default output all feeds) #}
-                    {# inclusion tag is located in 'templatetags/filters.py' #}
+                    {# inclusion tag is located in 'templatetags/filters_core.py' #}
                     {# the template tag's is located in 'template/core/inclusion_html/widget-categories-feeds.html' #}
 					{% all_categories_feeds %}
 					<!-- widget-categories end -->
@@ -48,13 +48,13 @@
 					<!-- widget-archive end -->
 					<!-- widget-recent start -->
 					{# loading an inclusion tag that outputs all recent feeds (input count feeds, default output all feeds)#}
-                    {# inclusion tag is located in 'templatetags/filters.py' #}
+                    {# inclusion tag is located in 'templatetags/filters_core.py' #}
                     {# the template tag's is located in 'template/core/inclusion_html/widget-recent-feeds.html' #}
                     {% recent_feeds %}
 					<!-- widget-recent end -->
 					<!-- widget-tags start -->
                     {# loading an inclusion tag that outputs all tags (input count tags, slug of the tag you want to select, default output all tags)#}
-                    {# inclusion tag is located in 'templatetags/filters.py' #}
+                    {# inclusion tag is located in 'templatetags/filters_core.py' #}
                     {# the template tag's is located in 'template/core/inclusion_html/widget-tags-feeds.html' #}
                     {% all_tags %}
 					<!-- widget-tags end -->

@@ -12,6 +12,7 @@ class Product(models.Model):
     property = JSONField(blank=True, null=True, verbose_name='Свойства товара')
     date_publicate = models.DateTimeField(auto_now_add=True, verbose_name='Дата добавления товара')
     order = models.PositiveIntegerField(default=0, verbose_name='Порядок показа товара')
+    is_publish = models.BooleanField(default=False, verbose_name='Опубликовать')
 
     def __str__(self):
         return f"{self.title}"
