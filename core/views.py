@@ -30,11 +30,8 @@ class HomePage(View):
                                           date_published_from__lte=datetime.now(tz=timezone.utc),
                                           date_published_to__gte=datetime.now(tz=timezone.utc))
 
-        our_brands = OurBrand.objects.all()
-
         return render(request, 'core/index.html', context={"feeds": slider_feeds,
                                                            "small_feeds": small_feeds,
-                                                           "our_brands": our_brands,
                                                            })
 
 

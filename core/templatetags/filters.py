@@ -32,6 +32,6 @@ def all_categories_feeds(slug_selected_category=None):
             'slug_selected_category': slug_selected_category}
 
 
-# @register.inclusion_tag('core/inclusion_html/widget-recent-feeds.html')
-# def our_brands():
-#     return {'our_brands': OurBrand.objects.all()}
+@register.inclusion_tag('core/inclusion_html/widget-our-brands.html')
+def our_brands():
+    return {'our_brands': OurBrand.objects.all()}

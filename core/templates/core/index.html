@@ -1,4 +1,5 @@
 {% extends 'core/extends/base_main.html' %}
+{% load filters %}
 {% block title %}Главная | Фотомаг{% endblock %}
 {% block content %}
 	<!-- HOME SLIDER -->
@@ -2170,9 +2171,7 @@
 			<!-- section-heading end -->
 			<div class="row">
 				<div class="brand-curosel">
-                    {% for brand in our_brands %}
-                        {% include 'core/includes/OurBrands.html' %}
-                    {% endfor %}
+                    {% our_brands %}
 				</div>
 			</div>
 		</div>
