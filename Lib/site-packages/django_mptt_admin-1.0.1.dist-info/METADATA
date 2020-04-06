@@ -1,0 +1,44 @@
+Metadata-Version: 2.1
+Name: django-mptt-admin
+Version: 1.0.1
+Summary: Django-mptt-admin provides a nice Django Admin interface for Mptt models
+Home-page: https://github.com/mbraak/django-mptt-admin
+Author: Marco Braak
+Author-email: mbraak@ridethepony.nl
+License: Apache License, Version 2.0
+Platform: UNKNOWN
+Classifier: Development Status :: 5 - Production/Stable
+Classifier: Framework :: Django
+Classifier: Framework :: Django :: 2.0
+Classifier: Framework :: Django :: 2.1
+Classifier: Framework :: Django :: 2.2
+Classifier: Framework :: Django :: 3.0
+Classifier: Intended Audience :: Developers
+Classifier: License :: OSI Approved :: Apache Software License
+Classifier: Programming Language :: Python :: 3.5
+Classifier: Programming Language :: Python :: 3.6
+Classifier: Programming Language :: Python :: 3.7
+Classifier: Programming Language :: Python :: 3.8
+Classifier: Programming Language :: Python :: Implementation :: CPython
+Classifier: Programming Language :: Python :: Implementation :: PyPy
+Description-Content-Type: text/markdown
+Requires-Dist: django-mptt
+
+[![Build Status](https://travis-ci.org/mbraak/django-mptt-admin.svg?branch=master)](https://travis-ci.org/mbraak/django-mptt-admin) [![Version](https://badge.fury.io/py/django-mptt-admin.svg)](https://pypi.python.org/pypi/django-mptt-admin/)
+
+[![Coverage Status](https://coveralls.io/repos/mbraak/django-mptt-admin/badge.svg?branch=master&service=github)](https://coveralls.io/github/mbraak/django-mptt-admin?branch=master)
+[![Requirements Status](https://requires.io/github/mbraak/django-mptt-admin/requirements.svg?branch=master)](https://requires.io/github/mbraak/django-mptt-admin/requirements/?branch=master)
+
+[![License](https://img.shields.io/pypi/l/django-mptt-admin.svg)](https://pypi.python.org/pypi/django-mptt-admin/)
+
+Django Mptt Admin
+=================
+
+*Django-mptt-admin* provides a nice Django Admin interface for [django-mptt models](http://django-mptt.github.io/django-mptt/). The source is available on [https://github.com/mbraak/django-mptt-admin](https://github.com/mbraak/django-mptt-admin).
+
+* The source is available on [https://github.com/mbraak/django-mptt-admin](https://github.com/mbraak/django-mptt-admin).
+* Documentation is available on [https://mbraak.github.io/django-mptt-admin/](https://mbraak.github.io/django-mptt-admin/).
+
+![Screenshot](https://raw.github.com/mbraak/django-mptt-admin/master/screenshot.png)
+
+

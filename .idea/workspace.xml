@@ -3,18 +3,8 @@
   <component name="ChangeListManager">
     <list default="true" id="e9a1af9a-01da-4e77-a472-403f7de6d2a0" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/core/templates/core/blog-filter-by-tags.html" beforeDir="false" afterPath="$PROJECT_DIR$/core/templates/core/blog-filter-by-tags.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/core/templates/core/blog-post-img.html" beforeDir="false" afterPath="$PROJECT_DIR$/core/templates/core/blog-post-img.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/core/templates/core/blog.html" beforeDir="false" afterPath="$PROJECT_DIR$/core/templates/core/blog.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/core/templates/core/inclusion_html/widget-categories-feeds.html" beforeDir="false" afterPath="$PROJECT_DIR$/core/templates/core/inclusion_html/widget-categories-feeds.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/core/templates/core/inclusion_html/widget-recent-feeds.html" beforeDir="false" afterPath="$PROJECT_DIR$/core/templates/core/inclusion_html/widget-recent-feeds.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/core/templates/core/inclusion_html/widget-tags-feeds.html" beforeDir="false" afterPath="$PROJECT_DIR$/core/templates/core/inclusion_html/widget-tags-feeds.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/core/templates/core/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/core/templates/core/index.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/core/templatetags/filters.py" beforeDir="false" afterPath="$PROJECT_DIR$/core/templatetags/filters_core.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/shop/admin.py" beforeDir="false" afterPath="$PROJECT_DIR$/shop/admin.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/shop/models.py" beforeDir="false" afterPath="$PROJECT_DIR$/shop/models.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/shop/templates/shop/shop.html" beforeDir="false" afterPath="$PROJECT_DIR$/shop/templates/shop/shop.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/shop/templatetags/filters.py" beforeDir="false" afterPath="$PROJECT_DIR$/shop/templatetags/filters_shop.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/shop/views.py" beforeDir="false" afterPath="$PROJECT_DIR$/shop/views.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -69,7 +59,7 @@
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/shop/templates/shop" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/../django" />
     <property name="node.js.detected.package.eslint" value="true" />
     <property name="node.js.detected.package.tslint" value="true" />
     <property name="node.js.path.for.package.eslint" value="project" />
@@ -146,7 +136,7 @@
       <workItem from="1586093916809" duration="7092000" />
       <workItem from="1586104910804" duration="1953000" />
       <workItem from="1586109430687" duration="5116000" />
-      <workItem from="1586182023505" duration="4536000" />
+      <workItem from="1586182023505" duration="8242000" />
     </task>
     <task id="LOCAL-00001" summary="problems with the database were resolved">
       <created>1585431833635</created>
@@ -187,10 +177,10 @@
       <screen x="0" y="0" width="1920" height="1080" />
     </state>
     <state x="947" y="48" key="CommitChangelistDialog2/0.0.1920.1080@0.0.1920.1080" timestamp="1585431832617" />
-    <state x="509" y="150" key="FileChooserDialogImpl" timestamp="1585857197485">
+    <state x="509" y="150" key="FileChooserDialogImpl" timestamp="1586187477135">
       <screen x="0" y="0" width="1920" height="1080" />
     </state>
-    <state x="509" y="150" key="FileChooserDialogImpl/0.0.1920.1080@0.0.1920.1080" timestamp="1585857197485" />
+    <state x="509" y="150" key="FileChooserDialogImpl/0.0.1920.1080@0.0.1920.1080" timestamp="1586187477135" />
     <state x="461" y="182" key="SettingsEditor" timestamp="1585508198008">
       <screen x="0" y="0" width="1920" height="1080" />
     </state>
