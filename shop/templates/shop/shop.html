@@ -209,10 +209,10 @@
                                         {% if product.discount_price %}
                                             <span class="sale-text">Sale</span>
                                         {% endif %}
-                                        <div class="product-img">
-                                            <a href="#">
-                                                <img class="primary-image" src="../../static/core/img/product/17.jpg" alt="" />
-                                                <img class="secondary-image" src="../../static/core/img/product/18.jpg" alt="" />
+                                        <div class="product-img" style="height: 340px; width: 270px; background: url({{ product.preview_image.url }}) no-repeat center / cover;">
+{#                                          <img class="primary-image" style=" " src="{{ product.preview_image.url }}" alt="" />#}
+                                            <a href="{{ product.get_absolute_url }}">
+{#                                          <img class="secondary-image" src="../../../media/default_img/news.jpeg" alt="" />#}
                                             </a>
                                             <div class="actions">
                                                 <div class="action-buttons">
@@ -235,7 +235,7 @@
                                             </div>
                                         </div>
                                         <div class="product-content">
-                                            <h2 class="product-name"><a href="#">{{ product.title }}</a></h2>
+                                            <h2 class="product-name"><a href="{{ product.get_absolute_url }}">{{ product.title }}</a></h2>
                                             <div class="pro-rating">
                                                 <a href="#"><i class="fa fa-star"></i></a>
                                                 <a href="#"><i class="fa fa-star"></i></a>

@@ -38,6 +38,7 @@ INSTALLED_APPS = [
 
     'core',
     'shop',
+    'mptt',
 
     'ckeditor',
     'ckeditor_uploader',

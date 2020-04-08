@@ -3,8 +3,23 @@
   <component name="ChangeListManager">
     <list default="true" id="e9a1af9a-01da-4e77-a472-403f7de6d2a0" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/core/templates/core/404.html" beforeDir="false" afterPath="$PROJECT_DIR$/core/templates/core/404.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/core/templates/core/about-us.html" beforeDir="false" afterPath="$PROJECT_DIR$/core/templates/core/about-us.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/core/templates/core/cart.html" beforeDir="false" afterPath="$PROJECT_DIR$/core/templates/core/cart.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/core/templates/core/checkout.html" beforeDir="false" afterPath="$PROJECT_DIR$/core/templates/core/checkout.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/core/templates/core/my-account.html" beforeDir="false" afterPath="$PROJECT_DIR$/core/templates/core/my-account.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/core/templates/core/product-virtual.html" beforeDir="false" afterPath="$PROJECT_DIR$/shop/templates/shop/product-virtual.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/core/templates/core/shop-list.html" beforeDir="false" afterPath="$PROJECT_DIR$/core/templates/core/shop-list.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/core/templates/core/thank-you.html" beforeDir="false" afterPath="$PROJECT_DIR$/core/templates/core/thank-you.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/core/templates/core/wishlist.html" beforeDir="false" afterPath="$PROJECT_DIR$/core/templates/core/wishlist.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/core/views.py" beforeDir="false" afterPath="$PROJECT_DIR$/core/views.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/django_shop/settings.py" beforeDir="false" afterPath="$PROJECT_DIR$/django_shop/settings.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/django_shop/urls.py" beforeDir="false" afterPath="$PROJECT_DIR$/django_shop/urls.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/shop/admin.py" beforeDir="false" afterPath="$PROJECT_DIR$/shop/admin.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/shop/models.py" beforeDir="false" afterPath="$PROJECT_DIR$/shop/models.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/shop/templates/shop/shop.html" beforeDir="false" afterPath="$PROJECT_DIR$/shop/templates/shop/shop.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/shop/urls.py" beforeDir="false" afterPath="$PROJECT_DIR$/shop/urls.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/shop/views.py" beforeDir="false" afterPath="$PROJECT_DIR$/shop/views.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -59,7 +74,7 @@
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/../django" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/media/default_img" />
     <property name="node.js.detected.package.eslint" value="true" />
     <property name="node.js.detected.package.tslint" value="true" />
     <property name="node.js.path.for.package.eslint" value="project" />
@@ -70,12 +85,15 @@
   </component>
   <component name="RecentsManager">
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="D:\django_shop\shop\templates\shop" />
       <recent name="D:\django_shop\core\templates\core" />
       <recent name="D:\django_shop\media\default_img" />
       <recent name="D:\django_shop\core\static\core\img" />
       <recent name="D:\django_shop\core\static\core" />
     </key>
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="D:\django_shop\media\default_img" />
+      <recent name="D:\django_shop\core\templates\core" />
       <recent name="D:\django_shop\shop\templates\shop" />
       <recent name="D:\django_shop\shop" />
     </key>
@@ -136,7 +154,9 @@
       <workItem from="1586093916809" duration="7092000" />
       <workItem from="1586104910804" duration="1953000" />
       <workItem from="1586109430687" duration="5116000" />
-      <workItem from="1586182023505" duration="8242000" />
+      <workItem from="1586182023505" duration="12537000" />
+      <workItem from="1586263735290" duration="6093000" />
+      <workItem from="1586343537081" duration="12506000" />
     </task>
     <task id="LOCAL-00001" summary="problems with the database were resolved">
       <created>1585431833635</created>
@@ -177,10 +197,10 @@
       <screen x="0" y="0" width="1920" height="1080" />
     </state>
     <state x="947" y="48" key="CommitChangelistDialog2/0.0.1920.1080@0.0.1920.1080" timestamp="1585431832617" />
-    <state x="509" y="150" key="FileChooserDialogImpl" timestamp="1586187477135">
+    <state x="509" y="150" key="FileChooserDialogImpl" timestamp="1586348204385">
       <screen x="0" y="0" width="1920" height="1080" />
     </state>
-    <state x="509" y="150" key="FileChooserDialogImpl/0.0.1920.1080@0.0.1920.1080" timestamp="1586187477135" />
+    <state x="509" y="150" key="FileChooserDialogImpl/0.0.1920.1080@0.0.1920.1080" timestamp="1586348204385" />
     <state x="461" y="182" key="SettingsEditor" timestamp="1585508198008">
       <screen x="0" y="0" width="1920" height="1080" />
     </state>
@@ -197,9 +217,9 @@
       <screen x="0" y="0" width="1920" height="1080" />
     </state>
     <state x="640" y="319" width="627" height="568" key="find.popup/0.0.1920.1080@0.0.1920.1080" timestamp="1585745969731" />
-    <state x="616" y="328" key="search.everywhere.popup" timestamp="1585680451998">
+    <state x="616" y="328" width="672" height="678" key="search.everywhere.popup" timestamp="1586348616374">
       <screen x="0" y="0" width="1920" height="1080" />
     </state>
-    <state x="616" y="328" key="search.everywhere.popup/0.0.1920.1080@0.0.1920.1080" timestamp="1585680451998" />
+    <state x="616" y="328" width="672" height="678" key="search.everywhere.popup/0.0.1920.1080@0.0.1920.1080" timestamp="1586348616374" />
   </component>
 </project>
