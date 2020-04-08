@@ -19,11 +19,14 @@ class Product(models.Model):
     order = models.PositiveIntegerField(default=0, verbose_name='Порядок показа товара')
     is_publish = models.BooleanField(default=False, verbose_name='Опубликовать')
 
+    def get_product_image(self):
+        return self.image.all()
+
     def get_product_url(self):
         return self.category.get_category_url() + '/' + self.slug
 
     def get_absolute_url(self):
-        path = self.category.get_category_url() + '/' + self.slug
+        path = self.get_product_url()
         return reverse('CategoryProduct', kwargs={
             'slug': path
         })
@@ -36,6 +39,14 @@ class Product(models.Model):
         verbose_name = "Товар"
         verbose_name_plural = "Товары"
 
+
+class ProductImage(models.Model):
+    image = models.ImageField(upload_to='Shop/Product/Image/%Y/%m/%d/%H', verbose_name='Изображения товара')
+    product = models.ForeignKey(Product, on_delete=models.CASCADE, related_name='image', verbose_name='Товар')
+
+    class Meta:
+        verbose_name = 'Изображение товара'
+        verbose_name_plural = 'Изображения товаров'
 
 
 class Category(MPTTModel):

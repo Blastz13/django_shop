@@ -16,8 +16,6 @@
 						<ul>
 							<li><a href="../../../core/templates/core/index.html">Home</a> <i class="fa fa-angle-right"></i></li>
 							<li><a href="shop.html">Shop</a> <i class="fa fa-angle-right"></i></li>
-							<li><a href="#">Women</a> <i class="fa fa-angle-right"></i></li>
-							<li>Integer consequat ante lectus</li>
                             {% for category in product.category.get_ancestors%}
                                  <li><a href="{{ category.get_absolute_url }}">{{ category.title }}</a> <i class="fa fa-angle-right"></i></li>
                             {% endfor %}
@@ -37,18 +35,27 @@
 						<div class="single-product-tab">
 						  <!-- Nav tabs -->
 						  <ul class="nav nav-tabs" role="tablist">
-							<li role="presentation" class="active"><a href="#home" aria-controls="home" role="tab" data-toggle="tab"><img alt="" src="{% static 'core/img/product/tab/s1.jpg' %}"></a></li>
-							<li role="presentation"><a href="#profile" aria-controls="profile" role="tab" data-toggle="tab"><img alt="" src="{% static 'core/img/product/tab/s2.jpg' %}"></a></li>
-							<li role="presentation"><a href="#messages" aria-controls="messages" role="tab" data-toggle="tab"><img alt="" src="{% static 'core/img/product/tab/s3.jpg' %}"></a></li>
-							<li role="presentation"><a href="#settings" aria-controls="settings" role="tab" data-toggle="tab"><img alt="" src="{% static 'core/img/product/tab/s4.jpg' %}"></a></li>
-						  </ul>
+                          {% for image in product.get_product_image %}
+                              {% if forloop.first %}
+							    <li role="presentation" class="active"><a href="#home" aria-controls="home" role="tab" data-toggle="tab"><img alt="" src="{{ image.image.url }}"></a></li>
+                              {% else %}
+							<li role="presentation"><a href="{% cycle '#profile' '#messages' '#settings' %}" aria-controls="{% cycle 'profile' 'messages' 'settings' %}" role="tab" data-toggle="tab"><img alt="" src="{{ image.image.url }}"></a></li>
+                              {% endif %}
+                          {% endfor %}
+                          </ul>
 
 						  <!-- Tab panes -->
 						  <div class="tab-content">
-							<div role="tabpanel" class="tab-pane active" id="home"><img alt="" src="{% static 'core/img/product/1.jpg' %}"></div>
-							<div role="tabpanel" class="tab-pane" id="profile"><img alt="" src="{% static 'core/img/product/tab/2.jpg'%}"></div>
-							<div role="tabpanel" class="tab-pane" id="messages"><img alt="" src="{% static 'core/img/product/tab/3.jpg'%}"></div>
-							<div role="tabpanel" class="tab-pane" id="settings"><img alt="" src="{% static 'core/img/product/tab/4.jpg'%}"></div>
+                          {% for image in product.get_product_image %}
+                              {% if forloop.first %}
+							    <div role="tabpanel" class="tab-pane active" id="home"><img alt="" src="{{ image.image.url }}"></div>
+{# style="height: 560px; width: 445px; background: url({{ image.image.url }}) no-repeat center / contain;"#}
+                              {% else %}
+                              <div role="tabpanel" class="tab-pane" id="{% cycle 'profile' 'messages' 'settings' %}"><img alt="" src="{{ image.image.url }}"></div>
+{#							<div role="tabpanel" class="tab-pane" id="messages"><img alt="" src="{% static 'core/img/product/tab/3.jpg'%}"></div>#}
+{#							<div role="tabpanel" class="tab-pane" id="settings"><img alt="" src="{% static 'core/img/product/tab/4.jpg'%}"></div>#}
+                              {% endif %}
+                          {% endfor %}
 						  </div>
 						</div>
 					</div>

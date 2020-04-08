@@ -3,23 +3,9 @@
   <component name="ChangeListManager">
     <list default="true" id="e9a1af9a-01da-4e77-a472-403f7de6d2a0" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/core/templates/core/404.html" beforeDir="false" afterPath="$PROJECT_DIR$/core/templates/core/404.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/core/templates/core/about-us.html" beforeDir="false" afterPath="$PROJECT_DIR$/core/templates/core/about-us.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/core/templates/core/cart.html" beforeDir="false" afterPath="$PROJECT_DIR$/core/templates/core/cart.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/core/templates/core/checkout.html" beforeDir="false" afterPath="$PROJECT_DIR$/core/templates/core/checkout.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/core/templates/core/my-account.html" beforeDir="false" afterPath="$PROJECT_DIR$/core/templates/core/my-account.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/core/templates/core/product-virtual.html" beforeDir="false" afterPath="$PROJECT_DIR$/shop/templates/shop/product-virtual.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/core/templates/core/shop-list.html" beforeDir="false" afterPath="$PROJECT_DIR$/core/templates/core/shop-list.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/core/templates/core/thank-you.html" beforeDir="false" afterPath="$PROJECT_DIR$/core/templates/core/thank-you.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/core/templates/core/wishlist.html" beforeDir="false" afterPath="$PROJECT_DIR$/core/templates/core/wishlist.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/core/views.py" beforeDir="false" afterPath="$PROJECT_DIR$/core/views.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/django_shop/settings.py" beforeDir="false" afterPath="$PROJECT_DIR$/django_shop/settings.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/django_shop/urls.py" beforeDir="false" afterPath="$PROJECT_DIR$/django_shop/urls.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/shop/admin.py" beforeDir="false" afterPath="$PROJECT_DIR$/shop/admin.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/shop/models.py" beforeDir="false" afterPath="$PROJECT_DIR$/shop/models.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/shop/templates/shop/shop.html" beforeDir="false" afterPath="$PROJECT_DIR$/shop/templates/shop/shop.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/shop/urls.py" beforeDir="false" afterPath="$PROJECT_DIR$/shop/urls.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/shop/views.py" beforeDir="false" afterPath="$PROJECT_DIR$/shop/views.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/shop/templates/shop/product-virtual.html" beforeDir="false" afterPath="$PROJECT_DIR$/shop/templates/shop/product-virtual.html" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -156,7 +142,7 @@
       <workItem from="1586109430687" duration="5116000" />
       <workItem from="1586182023505" duration="12537000" />
       <workItem from="1586263735290" duration="6093000" />
-      <workItem from="1586343537081" duration="12506000" />
+      <workItem from="1586343537081" duration="19477000" />
     </task>
     <task id="LOCAL-00001" summary="problems with the database were resolved">
       <created>1585431833635</created>
