@@ -27,12 +27,11 @@ class CategoryProduct(View):
             instance = get_object_or_404(Category, parent=parent, slug=category_slug[-1])
         except:
             obj = get_object_or_404(Product, slug=category_slug[-1], is_publish=True)
-
+    
             if obj.get_product_url() != user_slug:
                 return HttpResponse('404 - 2')
             # a.get_ancestors(include_self=True)
-            return render(request, 'shop/product-virtual.html', context={'product': obj,
-                                                                         'category': Category.objects.all()})
+            return render(request, 'shop/product-virtual.html', context={'product': obj})
 
         else:
             return HttpResponse(instance.title)
