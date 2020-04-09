@@ -11,6 +11,6 @@ def our_brands():
 
 
 @register.inclusion_tag('shop/inclusion_html/widget-breadcrumb-area.html')
-def breadcrumb_area(obj_category_product=None):
-    print(obj_category_product)
-    return {'obj_category_product': obj_category_product.get_ancestors(include_self=True)}
+def breadcrumb_area(obj_product=None):
+    return {'obj_title_product': obj_product.title,
+            'obj_category_product': obj_product.category.get_ancestors(include_self=True)}

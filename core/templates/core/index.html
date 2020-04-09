@@ -1,5 +1,6 @@
 {% extends 'core/extends/base_main.html' %}
 {% load filters_core %}
+{% load static %}
 {% block title %}Главная | Фотомаг{% endblock %}
 {% block content %}
 	<!-- HOME SLIDER -->
@@ -63,46 +64,46 @@
 		</div>
 	</div>
 	<!-- END HOME SLIDER -->
-	<!-- banner-area start -->
-	<div class="banner-area">
-		<div class="container">
-			<div class="row">
-				<!-- single-banner start -->
-				<div class="col-md-5 col-sm-5 col-xs-12">
-					<div class="single-banner">
-						<a href="#"><img src="../../static/core/img/banner/1.jpg" alt="" /></a>
-					</div>
-				</div>
-				<!-- single-banner end -->
-				<div class="col-md-7 col-sm-7 col-xs-12">
-					<div class="row">
-						<!-- single-banner start -->
-						<div class="col-md-12 col-sm-12 col-xs-12">
-							<div class="single-banner banner-margin">
-								<a href="#"><img src="../../static/core/img/banner/2.jpg" alt="" /></a>
-							</div>
-						</div>
-						<!-- single-banner end -->
-						<!-- single-banner start -->
-						<div class="col-md-6 col-sm-6 col-xs-12">
-							<div class="single-banner">
-								<a href="#"><img src="../../static/core/img/banner/3.jpg" alt="" /></a>
-							</div>
-						</div>
-						<!-- single-banner end -->
-						<!-- single-banner start -->
-						<div class="col-md-6 col-sm-6 col-xs-12">
-							<div class="single-banner">
-								<a href="#"><img src="../../static/core/img/banner/4.jpg" alt="" /></a>
-							</div>
-						</div>
-						<!-- single-banner end -->
-					</div>
-				</div>
-			</div>
-		</div>
-	</div>
-	<!-- banner-area end -->
+{#	<!-- banner-area start -->#}
+{#	<div class="banner-area">#}
+{#		<div class="container">#}
+{#			<div class="row">#}
+{#				<!-- single-banner start -->#}
+{#				<div class="col-md-5 col-sm-5 col-xs-12">#}
+{#					<div class="single-banner">#}
+{#						<a href="#"><img src="{% static 'core/images/gallery/1L.jpg' %}" alt="" /></a>#}
+{#					</div>#}
+{#				</div>#}
+{#				<!-- single-banner end -->#}
+{#				<div class="col-md-7 col-sm-7 col-xs-12">#}
+{#					<div class="row">#}
+{#						<!-- single-banner start -->#}
+{#						<div class="col-md-12 col-sm-12 col-xs-12">#}
+{#							<div class="single-banner banner-margin">#}
+{#								<a href="#"><img src="{% static 'core/images/gallery/1L.jpg' %}" alt="" /></a>#}
+{#							</div>#}
+{#						</div>#}
+{#						<!-- single-banner end -->#}
+{#						<!-- single-banner start -->#}
+{#						<div class="col-md-6 col-sm-6 col-xs-12">#}
+{#							<div class="single-banner">#}
+{#								<a href="#"><img src="{% static 'core/images/gallery/1L.jpg' %}" alt="" /></a>#}
+{#							</div>#}
+{#						</div>#}
+{#						<!-- single-banner end -->#}
+{#						<!-- single-banner start -->#}
+{#						<div class="col-md-6 col-sm-6 col-xs-12">#}
+{#							<div class="single-banner">#}
+{#								<a href="#"><img src="{% static 'core/img/product/1L.jpg' %}" alt="" /></a>#}
+{#							</div>#}
+{#						</div>#}
+{#						<!-- single-banner end -->#}
+{#					</div>#}
+{#				</div>#}
+{#			</div>#}
+{#		</div>#}
+{#	</div>#}
+{#	<!-- banner-area end -->#}
 	<!-- features-area start -->
 	<div class="features-area pad-60">
 		<div class="container">
@@ -1669,35 +1670,35 @@
 		</div>
 	</div>
 	<!-- new-product-area end -->
-	<!-- banner-2-area start -->
-	<div class="banner-2-area pad-60">
-		<div class="container">
-			<div class="row">
-				<!-- single-banner start -->
-				<div class="col-md-4 col-sm-4">
-					<div class="single-banner">
-						<a href="#"><img src="../../static/core/img/banner/5.jpg" alt="" /></a>
-					</div>
-				</div>
-				<!-- single-banner end -->
-				<!-- single-banner start -->
-				<div class="col-md-4 col-sm-4">
-					<div class="single-banner">
-						<a href="#"><img src="../../static/core/img/banner/7.jpg" alt="" /></a>
-					</div>
-				</div>
-				<!-- single-banner end -->
-				<!-- single-banner start -->
-				<div class="col-md-4 col-sm-4">
-					<div class="single-banner">
-						<a href="#"><img src="../../static/core/img/banner/6.jpg" alt="" /></a>
-					</div>
-				</div>
-				<!-- single-banner end -->
-			</div>
-		</div>
-	</div>
-	<!-- banner-2-area end -->
+{#	<!-- banner-2-area start -->#}
+{#	<div class="banner-2-area pad-60">#}
+{#		<div class="container">#}
+{#			<div class="row">#}
+{#				<!-- single-banner start -->#}
+{#				<div class="col-md-4 col-sm-4">#}
+{#					<div class="single-banner">#}
+{#						<a href="#"><img src="{% static 'core/img/banner/6.jpg' %}" alt="" /></a>#}
+{#					</div>#}
+{#				</div>#}
+{#				<!-- single-banner end -->#}
+{#				<!-- single-banner start -->#}
+{#				<div class="col-md-4 col-sm-4">#}
+{#					<div class="single-banner">#}
+{#						<a href="#"><img src="../../static/core/img/banner/7.jpg" alt="" /></a>#}
+{#					</div>#}
+{#				</div>#}
+{#				<!-- single-banner end -->#}
+{#				<!-- single-banner start -->#}
+{#				<div class="col-md-4 col-sm-4">#}
+{#					<div class="single-banner">#}
+{#						<a href="#"><img src="../../static/core/img/banner/6.jpg" alt="" /></a>#}
+{#					</div>#}
+{#				</div>#}
+{#				<!-- single-banner end -->#}
+{#			</div>#}
+{#		</div>#}
+{#	</div>#}
+{#	<!-- banner-2-area end -->#}
 	<!-- top-sells-area start -->
 	<div class="top-sells-area pad-60">
 		<div class="container">

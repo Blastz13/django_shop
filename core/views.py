@@ -11,7 +11,6 @@ from .forms import MessageContactForm
 
 from .models import CategoryFeed
 from .models import Feed
-from .models import OurBrand
 from .models import Tag
 from .models import ContactAddress
 

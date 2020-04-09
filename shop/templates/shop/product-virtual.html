@@ -5,11 +5,11 @@
 {% block extra-scripts %}
     <!-- jquery-ui CSS
 ============================================ -->
-<link rel="stylesheet" href="../../../core/static/core/css/jquery-ui.css">
+<link rel="stylesheet" href="{% static 'core/css/jquery-ui.css' %}">
 {% endblock %}
 {% block content %}
 	<!-- breadcrumb-area start -->
-    {% breadcrumb_area product.category %}
+    {% breadcrumb_area product %}
 	<!-- breadcrumb-area end -->
 	<!-- product-simple-area start -->
 	<div class="product-simple-area">
@@ -466,62 +466,7 @@
 			<!-- section-heading end -->		
 			<div class="row">
 				<div class="brand-curosel">
-					<!-- single-brand start -->
-					<div class="col-md-2">
-						<div class="single-brand">
-							<a href="#"><img src="{% static 'core/img/brand/1.png' %}" alt="" /></a>
-						</div>
-					</div>
-					<!-- single-brand end -->
-					<!-- single-brand start -->
-					<div class="col-md-2">
-						<div class="single-brand">
-							<a href="#"><img src="{% static 'core/img/brand/1.png' %}" alt="" /></a>
-						</div>
-					</div>
-					<!-- single-brand end -->
-					<!-- single-brand start -->
-					<div class="col-md-2">
-						<div class="single-brand">
-							<a href="#"><img src="{% static 'core/img/brand/1.png' %}" alt="" /></a>
-						</div>
-					</div>
-					<!-- single-brand end -->
-					<!-- single-brand start -->
-					<div class="col-md-2">
-						<div class="single-brand">
-							<a href="#"><img src="{% static 'core/img/brand/1.png' %}" alt="" /></a>
-						</div>
-					</div>
-					<!-- single-brand end -->
-					<!-- single-brand start -->
-					<div class="col-md-2">
-						<div class="single-brand">
-							<a href="#"><img src="{% static 'core/img/brand/1.png' %}" alt="" /></a>
-						</div>
-					</div>
-					<!-- single-brand end -->
-					<!-- single-brand start -->
-					<div class="col-md-2">
-						<div class="single-brand">
-							<a href="#"><img src="{% static 'core/img/brand/1.png' %}" alt="" /></a>
-						</div>
-					</div>
-					<!-- single-brand end -->
-					<!-- single-brand start -->
-					<div class="col-md-2">
-						<div class="single-brand">
-							<a href="#"><img src="{% static 'core/img/brand/1.png' %}" alt="" /></a>
-						</div>
-					</div>
-					<!-- single-brand end -->
-					<!-- single-brand start -->
-					<div class="col-md-2">
-						<div class="single-brand">
-							<a href="#"><img src="{% static 'core/img/brand/1.png' %}" alt="" /></a>
-						</div>
-					</div>
-					<!-- single-brand end -->
+					{% our_brands %}
 				</div>
 			</div>
 		</div>

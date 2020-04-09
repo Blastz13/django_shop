@@ -9,6 +9,7 @@
                             {% for category in obj_category_product %}
                                  <li><a href="{{ category.get_absolute_url }}">{{ category.title }}</a> <i class="fa fa-angle-right"></i></li>
                             {% endfor %}
+                            <li>{{ obj_title_product }}</li>
 						</ul>
 					</div>
 				</div>
