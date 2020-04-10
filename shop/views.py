@@ -1,13 +1,18 @@
 from django.http import HttpResponse, Http404
 from django.shortcuts import render, get_object_or_404
 from django.views.generic import View
+
+from .mixins import ObjectSortPaginate
+
 from .models import Product
 from .models import Category
 
 
-class ProductList(View):
+class ProductList(ObjectSortPaginate, View):
     def get(self, request):
-        return render(request, 'shop/shop.html', context={'all_products': Product.objects.filter(is_publish=True)})
+        all_products = Product.objects.filter(is_publish=True)
+        context = self.get_pagination(all_products, 12)
+        return render(request, 'shop/shop.html', context=context)
 
 
 class CategoryProduct(View):
