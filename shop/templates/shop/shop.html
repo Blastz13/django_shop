@@ -32,20 +32,11 @@
 	</div>
 	<!-- shop-header-area end -->	
 	<!-- breadcrumb-area start -->
-	<div class="breadcrumb-area">
-		<div class="container">
-			<div class="row">
-				<div class="col-md-12">
-					<div class="breadcrumb">
-						<ul>
-							<li><a href="index.html">Home</a> <i class="fa fa-angle-right"></i></li>
-							<li>Shop</li>
-						</ul>
-					</div>
-				</div>
-			</div>
-		</div>
-	</div>
+    {% if obj_selected_category %}
+        {% breadcrumb_area_shop obj_selected_category %}
+    {% else %}
+        {% breadcrumb_area_shop %}
+    {% endif %}
 	<!-- breadcrumb-area end -->
 	
 	<!-- blog-area start -->

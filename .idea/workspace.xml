@@ -3,6 +3,8 @@
   <component name="ChangeListManager">
     <list default="true" id="e9a1af9a-01da-4e77-a472-403f7de6d2a0" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/shop/templates/shop/shop.html" beforeDir="false" afterPath="$PROJECT_DIR$/shop/templates/shop/shop.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/shop/templatetags/filters_shop.py" beforeDir="false" afterPath="$PROJECT_DIR$/shop/templatetags/filters_shop.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/shop/views.py" beforeDir="false" afterPath="$PROJECT_DIR$/shop/views.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -38,8 +40,8 @@
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
       <list>
-        <option value="HTML File" />
         <option value="Python Script" />
+        <option value="HTML File" />
       </list>
     </option>
   </component>
@@ -73,18 +75,18 @@
     <property name="settings.editor.selected.configurable" value="preferences.keymap" />
   </component>
   <component name="RecentsManager">
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="D:\django_shop\shop\templates\shop\inclusion_html" />
+      <recent name="D:\django_shop\static\core\img" />
+      <recent name="D:\django_shop\shop\templates\shop" />
+      <recent name="D:\django_shop\core\templates\core" />
+      <recent name="D:\django_shop\media\default_img" />
+    </key>
     <key name="CopyFile.RECENT_KEYS">
       <recent name="D:\django_shop\media\default_img" />
       <recent name="D:\django_shop\core\templates\core" />
       <recent name="D:\django_shop\shop\templates\shop" />
       <recent name="D:\django_shop\shop" />
-    </key>
-    <key name="MoveFile.RECENT_KEYS">
-      <recent name="D:\django_shop\static\core\img" />
-      <recent name="D:\django_shop\shop\templates\shop" />
-      <recent name="D:\django_shop\core\templates\core" />
-      <recent name="D:\django_shop\media\default_img" />
-      <recent name="D:\django_shop\core\static\core\img" />
     </key>
   </component>
   <component name="RunManager">
@@ -148,7 +150,7 @@
       <workItem from="1586343537081" duration="20139000" />
       <workItem from="1586425646962" duration="3992000" />
       <workItem from="1586458150565" duration="373000" />
-      <workItem from="1586514804095" duration="5694000" />
+      <workItem from="1586514804095" duration="7241000" />
     </task>
     <task id="LOCAL-00001" summary="problems with the database were resolved">
       <created>1585431833635</created>

@@ -30,15 +30,17 @@ class CategoryProduct(ObjectSortPaginate, View):
 
         try:
             category = get_object_or_404(Category, parent=parent, slug=category_slug[-1])
-            print(category.get_descendants(include_self=True))
+
         except:
             product = get_object_or_404(Product, slug=category_slug[-1], is_publish=True)
     
             if product.get_product_url() != user_slug:
                 return HttpResponse('404 - 2')
-            # a.get_ancestors(include_self=True)
+
             return render(request, 'shop/product-virtual.html', context={'product': product})
 
         else:
             products_by_category = Product.objects.filter(category__in=category.get_descendants(include_self=True), is_publish=True)
-            return render(request, 'shop/shop.html', context=self.get_pagination(products_by_category))
+            context = self.get_pagination(products_by_category)
+            context['obj_selected_category'] = category
+            return render(request, 'shop/shop.html', context=context)
