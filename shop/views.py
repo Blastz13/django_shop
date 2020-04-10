@@ -15,7 +15,7 @@ class ProductList(ObjectSortPaginate, View):
         return render(request, 'shop/shop.html', context=context)
 
 
-class CategoryProduct(View):
+class CategoryProduct(ObjectSortPaginate, View):
     def get(self, request, slug):
         user_slug = slug
         category_slug = slug.split('/')
@@ -29,14 +29,16 @@ class CategoryProduct(View):
             return HttpResponse('404 - 1')
 
         try:
-            instance = get_object_or_404(Category, parent=parent, slug=category_slug[-1])
+            category = get_object_or_404(Category, parent=parent, slug=category_slug[-1])
+            print(category.get_descendants(include_self=True))
         except:
-            obj = get_object_or_404(Product, slug=category_slug[-1], is_publish=True)
+            product = get_object_or_404(Product, slug=category_slug[-1], is_publish=True)
     
-            if obj.get_product_url() != user_slug:
+            if product.get_product_url() != user_slug:
                 return HttpResponse('404 - 2')
             # a.get_ancestors(include_self=True)
-            return render(request, 'shop/product-virtual.html', context={'product': obj})
+            return render(request, 'shop/product-virtual.html', context={'product': product})
 
         else:
-            return HttpResponse(instance.title)
+            products_by_category = Product.objects.filter(category__in=category.get_descendants(include_self=True), is_publish=True)
+            return render(request, 'shop/shop.html', context=self.get_pagination(products_by_category))
