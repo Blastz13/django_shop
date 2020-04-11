@@ -39,6 +39,7 @@ INSTALLED_APPS = [
     'core',
     'shop',
     'mptt',
+    'django_cleanup',
 
     'ckeditor',
     'ckeditor_uploader',

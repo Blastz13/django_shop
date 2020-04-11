@@ -2,8 +2,11 @@ asgiref==3.2.5
 DateTime==4.3
 Django==3.0.4
 django-ckeditor==5.9.0
+django-cleanup==4.0.0
 django-js-asset==1.2.2
 django-json-widget==1.0.0
+django-mptt==0.11.0
+django-mptt-admin==1.0.1
 future==0.18.2
 jsonfield==3.1.0
 Pillow==7.0.0
