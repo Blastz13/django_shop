@@ -3,13 +3,15 @@ from django.utils import timezone
 from django.shortcuts import reverse
 from ckeditor_uploader.fields import RichTextUploadingField
 
+from .utils import path_upload
+
 
 class Feed(models.Model):
     title = models.CharField(max_length=128, blank=True, db_index=True, default='', verbose_name='Заголовок')
     sup_title = models.CharField(max_length=128, blank=True, default='', verbose_name='Подзаголовок')
     description = models.CharField(max_length=512, blank=True, default='', verbose_name='Описание')
     body = RichTextUploadingField()
-    image = models.ImageField(upload_to='Feed/%Y/%m/%d/%H', default='default_img/news.jpeg', blank=True, null=True,
+    image = models.ImageField(upload_to=path_upload('Feed'), default='default_img/news.jpeg', blank=True, null=True,
                               verbose_name='Изображение')
     slug = models.SlugField(max_length=128, unique=True, db_index=True, verbose_name='Ссылка на новость')
     category = models.ForeignKey('CategoryFeed', on_delete=models.CASCADE, verbose_name='Категория')
@@ -93,7 +95,7 @@ class Comment(models.Model):
 
 class OurBrand(models.Model):
     title = models.CharField(max_length=128, db_index=True, blank=True, verbose_name='Название бренда')
-    image = models.ImageField(upload_to='OurBrands/%Y/%m/%d/%H', verbose_name='Логотип')
+    image = models.ImageField(upload_to=path_upload('OurBrands'), verbose_name='Логотип')
     order = models.IntegerField(default=0, verbose_name='Порядок')
 
     def __str__(self):

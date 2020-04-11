@@ -3,12 +3,17 @@ from django.shortcuts import reverse
 from django.contrib.postgres.fields import JSONField
 from mptt.models import MPTTModel, TreeForeignKey
 
+from PIL import Image
+
+from .utils import path_upload
+
 
 class Product(models.Model):
     title = models.CharField(max_length=128, verbose_name='Название товара')
     description = models.TextField(max_length=10000, verbose_name='Описание товара')
-    preview_image = models.ImageField(upload_to='Shop/Product/%Y/%m/%d/%H', default='default_img/product.jpg', blank=True, null=True,
-                              verbose_name='Изображения для предпросмотра')
+    preview_image = models.ImageField(upload_to=path_upload('Shop/Product'), default='default_img/product.jpg',
+                                      blank=True, null=True,
+                                      verbose_name='Изображения для предпросмотра')
     slug = models.SlugField(unique=True, verbose_name='Ссылка на товар')
     price = models.DecimalField(max_digits=10, decimal_places=2, verbose_name='Цена товара')
     discount_price = models.PositiveIntegerField(blank=True, verbose_name='Цена по скидке')
@@ -34,6 +39,12 @@ class Product(models.Model):
     def __str__(self):
         return f"{self.title}"
 
+    def save(self, *args, **kwargs):
+        super(Product, self).save(*args, **kwargs)
+        image = Image.open(self.preview_image.path)
+        image.save(self.preview_image.path, quality=70, optimize=True)
+        return image
+
     class Meta:
         ordering = ['order', '-date_publicate']
         verbose_name = "Товар"
@@ -41,8 +52,17 @@ class Product(models.Model):
 
 
 class ProductImage(models.Model):
-    image = models.ImageField(upload_to='Shop/Product/Image/%Y/%m/%d/%H', verbose_name='Изображения товара')
+    image = models.ImageField(upload_to=path_upload('Shop/Product/Image'), verbose_name='Изображения товара')
     product = models.ForeignKey(Product, on_delete=models.CASCADE, related_name='image', verbose_name='Товар')
+
+    def save(self, *args, **kwargs):
+        super(ProductImage, self).save(*args, **kwargs)
+        image = Image.open(self.image.path)
+        image.save(self.image.path, quality=70, optimize=True)
+        return image
+
+    def __str__(self):
+        return f"{self.product.title}"
 
     class Meta:
         verbose_name = 'Изображение товара'

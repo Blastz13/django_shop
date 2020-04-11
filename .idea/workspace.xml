@@ -3,10 +3,25 @@
   <component name="ChangeListManager">
     <list default="true" id="e9a1af9a-01da-4e77-a472-403f7de6d2a0" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/django_shop/settings.py" beforeDir="false" afterPath="$PROJECT_DIR$/django_shop/settings.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/media/Shop/Product/2020/04/08/20/7cc3a72373928d474484751d2572d579.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/requirements.txt" beforeDir="false" afterPath="$PROJECT_DIR$/requirements.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/shop/templates/shop/shop.html" beforeDir="false" afterPath="$PROJECT_DIR$/shop/templates/shop/shop.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/core/models.py" beforeDir="false" afterPath="$PROJECT_DIR$/core/models.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/media/1chess.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/media/645994-1024x681.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/media/66bd5c6c1f12722c907333953d6686f8.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/media/Shop/Product/2020/04/08/16/123.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/media/Shop/Product/2020/04/08/16/321.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/media/Shop/Product/2020/04/08/19/1.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/media/Shop/Product/2020/04/08/20/66bd5c6c1f12722c907333953d6686f8.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/media/Shop/Product/2020/04/08/20/конь.jpeg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/media/Shop/Product/2020/04/08/21/42.jpeg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/media/Shop/Product/2020/04/08/21/4334.jfif" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/media/Shop/Product/Image/2020/04/08/21/123.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/media/Shop/Product/Image/2020/04/08/22/1.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/media/Shop/Product/Image/2020/04/08/22/4334.jfif" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/media/Shop/Product/Image/2020/04/08/22/4334_eQpFP7g.jfif" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/media/Shop/Product/Image/2020/04/08/22/IMG_20200407_135805.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/media/Shop/Product/Image/2020/04/08/22/IMG_20200408_112412.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/media/default_img/product.jpg" beforeDir="false" afterPath="$PROJECT_DIR$/media/default_img/product.jpg" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/shop/models.py" beforeDir="false" afterPath="$PROJECT_DIR$/shop/models.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -41,8 +56,8 @@
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
       <list>
-        <option value="Python Script" />
         <option value="HTML File" />
+        <option value="Python Script" />
       </list>
     </option>
   </component>
@@ -76,18 +91,18 @@
     <property name="settings.editor.selected.configurable" value="preferences.keymap" />
   </component>
   <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="D:\django_shop\media\default_img" />
+      <recent name="D:\django_shop\core\templates\core" />
+      <recent name="D:\django_shop\shop\templates\shop" />
+      <recent name="D:\django_shop\shop" />
+    </key>
     <key name="MoveFile.RECENT_KEYS">
       <recent name="D:\django_shop\shop\templates\shop\inclusion_html" />
       <recent name="D:\django_shop\static\core\img" />
       <recent name="D:\django_shop\shop\templates\shop" />
       <recent name="D:\django_shop\core\templates\core" />
       <recent name="D:\django_shop\media\default_img" />
-    </key>
-    <key name="CopyFile.RECENT_KEYS">
-      <recent name="D:\django_shop\media\default_img" />
-      <recent name="D:\django_shop\core\templates\core" />
-      <recent name="D:\django_shop\shop\templates\shop" />
-      <recent name="D:\django_shop\shop" />
     </key>
   </component>
   <component name="RunManager">
@@ -153,7 +168,7 @@
       <workItem from="1586458150565" duration="373000" />
       <workItem from="1586514804095" duration="9457000" />
       <workItem from="1586602519951" duration="1028000" />
-      <workItem from="1586609785911" duration="455000" />
+      <workItem from="1586609785911" duration="11501000" />
     </task>
     <task id="LOCAL-00001" summary="problems with the database were resolved">
       <created>1585431833635</created>
