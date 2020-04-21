@@ -42,7 +42,19 @@ class Product(models.Model):
     def save(self, *args, **kwargs):
         super(Product, self).save(*args, **kwargs)
         image = Image.open(self.preview_image.path)
-        image.save(self.preview_image.path, quality=70, optimize=True)
+        print(1)
+        print(image.height)
+        print(image.width)
+        if image.width < 270 or image.height < 340:
+            fill_color = '#A36FFF'
+            back = Image.new('RGB', (270, 340), fill_color)
+            w = int((270 - image.width) / 2)
+            h = int((340 - image.height) / 2)
+            back.paste(image, (w, h))
+            back.save(self.preview_image.path, quality=70, optimize=True)
+
+        else:
+            image.save(self.preview_image.path, quality=70, optimize=True)
         return image
 
     class Meta:

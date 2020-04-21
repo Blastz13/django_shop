@@ -3,25 +3,9 @@
   <component name="ChangeListManager">
     <list default="true" id="e9a1af9a-01da-4e77-a472-403f7de6d2a0" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/core/models.py" beforeDir="false" afterPath="$PROJECT_DIR$/core/models.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/media/1chess.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/media/645994-1024x681.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/media/66bd5c6c1f12722c907333953d6686f8.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/media/Shop/Product/2020/04/08/16/123.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/media/Shop/Product/2020/04/08/16/321.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/media/Shop/Product/2020/04/08/19/1.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/media/Shop/Product/2020/04/08/20/66bd5c6c1f12722c907333953d6686f8.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/media/Shop/Product/2020/04/08/20/конь.jpeg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/media/Shop/Product/2020/04/08/21/42.jpeg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/media/Shop/Product/2020/04/08/21/4334.jfif" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/media/Shop/Product/Image/2020/04/08/21/123.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/media/Shop/Product/Image/2020/04/08/22/1.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/media/Shop/Product/Image/2020/04/08/22/4334.jfif" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/media/Shop/Product/Image/2020/04/08/22/4334_eQpFP7g.jfif" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/media/Shop/Product/Image/2020/04/08/22/IMG_20200407_135805.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/media/Shop/Product/Image/2020/04/08/22/IMG_20200408_112412.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/media/default_img/product.jpg" beforeDir="false" afterPath="$PROJECT_DIR$/media/default_img/product.jpg" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/django_shop/settings.py" beforeDir="false" afterPath="$PROJECT_DIR$/django_shop/settings.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/shop/models.py" beforeDir="false" afterPath="$PROJECT_DIR$/shop/models.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/shop/templates/shop/shop.html" beforeDir="false" afterPath="$PROJECT_DIR$/shop/templates/shop/shop.html" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -81,7 +65,7 @@
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/media/default_img" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
     <property name="node.js.detected.package.eslint" value="true" />
     <property name="node.js.detected.package.tslint" value="true" />
     <property name="node.js.path.for.package.eslint" value="project" />
@@ -91,12 +75,6 @@
     <property name="settings.editor.selected.configurable" value="preferences.keymap" />
   </component>
   <component name="RecentsManager">
-    <key name="CopyFile.RECENT_KEYS">
-      <recent name="D:\django_shop\media\default_img" />
-      <recent name="D:\django_shop\core\templates\core" />
-      <recent name="D:\django_shop\shop\templates\shop" />
-      <recent name="D:\django_shop\shop" />
-    </key>
     <key name="MoveFile.RECENT_KEYS">
       <recent name="D:\django_shop\shop\templates\shop\inclusion_html" />
       <recent name="D:\django_shop\static\core\img" />
@@ -104,14 +82,43 @@
       <recent name="D:\django_shop\core\templates\core" />
       <recent name="D:\django_shop\media\default_img" />
     </key>
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="D:\django_shop\media\default_img" />
+      <recent name="D:\django_shop\core\templates\core" />
+      <recent name="D:\django_shop\shop\templates\shop" />
+      <recent name="D:\django_shop\shop" />
+    </key>
   </component>
-  <component name="RunManager">
+  <component name="RunManager" selected="Python.img">
+    <configuration name="img" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
+      <module name="django_shop" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$USER_HOME$/Downloads" />
+      <option name="IS_MODULE_SDK" value="false" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <EXTENSION ID="PythonCoverageRunConfigurationExtension" runner="coverage.py" />
+      <option name="SCRIPT_NAME" value="$USER_HOME$/Downloads/img.py" />
+      <option name="PARAMETERS" value="" />
+      <option name="SHOW_COMMAND_LINE" value="false" />
+      <option name="EMULATE_TERMINAL" value="false" />
+      <option name="MODULE_MODE" value="false" />
+      <option name="REDIRECT_INPUT" value="false" />
+      <option name="INPUT_FILE" value="" />
+      <method v="2" />
+    </configuration>
     <configuration name="django_shop" type="Python.DjangoServer" factoryName="Django server">
       <module name="django_shop" />
       <option name="INTERPRETER_OPTIONS" value="" />
       <option name="PARENT_ENVS" value="true" />
       <envs>
         <env name="PYTHONUNBUFFERED" value="1" />
+        <env name="DJANGO_SETTINGS_MODULE" value="django_shop.settings" />
       </envs>
       <option name="SDK_HOME" value="" />
       <option name="WORKING_DIRECTORY" value="" />
@@ -129,6 +136,11 @@
       <option name="customRunCommand" value="" />
       <method v="2" />
     </configuration>
+    <recent_temporary>
+      <list>
+        <item itemvalue="Python.img" />
+      </list>
+    </recent_temporary>
   </component>
   <component name="SvnConfiguration">
     <configuration />
@@ -168,7 +180,10 @@
       <workItem from="1586458150565" duration="373000" />
       <workItem from="1586514804095" duration="9457000" />
       <workItem from="1586602519951" duration="1028000" />
-      <workItem from="1586609785911" duration="11501000" />
+      <workItem from="1586609785911" duration="13314000" />
+      <workItem from="1586624530168" duration="6616000" />
+      <workItem from="1586789927097" duration="1518000" />
+      <workItem from="1587479406219" duration="2805000" />
     </task>
     <task id="LOCAL-00001" summary="problems with the database were resolved">
       <created>1585431833635</created>
@@ -209,18 +224,34 @@
       <screen x="0" y="0" width="1920" height="1080" />
     </state>
     <state x="947" y="48" key="CommitChangelistDialog2/0.0.1920.1080@0.0.1920.1080" timestamp="1585431832617" />
-    <state x="509" y="150" key="FileChooserDialogImpl" timestamp="1586348204385">
+    <state x="509" y="150" key="FileChooserDialogImpl" timestamp="1586791414443">
       <screen x="0" y="0" width="1920" height="1080" />
     </state>
-    <state x="509" y="150" key="FileChooserDialogImpl/0.0.1920.1080@0.0.1920.1080" timestamp="1586348204385" />
+    <state x="509" y="150" key="FileChooserDialogImpl/0.0.1920.1080@0.0.1920.1080" timestamp="1586791414443" />
+    <state width="1875" height="274" key="GridCell.Tab.0.bottom" timestamp="1586632539893">
+      <screen x="0" y="0" width="1920" height="1080" />
+    </state>
+    <state width="1875" height="274" key="GridCell.Tab.0.bottom/0.0.1920.1080@0.0.1920.1080" timestamp="1586632539893" />
+    <state width="1875" height="274" key="GridCell.Tab.0.center" timestamp="1586632539893">
+      <screen x="0" y="0" width="1920" height="1080" />
+    </state>
+    <state width="1875" height="274" key="GridCell.Tab.0.center/0.0.1920.1080@0.0.1920.1080" timestamp="1586632539893" />
+    <state width="1875" height="274" key="GridCell.Tab.0.left" timestamp="1586632539893">
+      <screen x="0" y="0" width="1920" height="1080" />
+    </state>
+    <state width="1875" height="274" key="GridCell.Tab.0.left/0.0.1920.1080@0.0.1920.1080" timestamp="1586632539893" />
+    <state width="1875" height="274" key="GridCell.Tab.0.right" timestamp="1586632539893">
+      <screen x="0" y="0" width="1920" height="1080" />
+    </state>
+    <state width="1875" height="274" key="GridCell.Tab.0.right/0.0.1920.1080@0.0.1920.1080" timestamp="1586632539893" />
     <state x="461" y="182" key="SettingsEditor" timestamp="1585508198008">
       <screen x="0" y="0" width="1920" height="1080" />
     </state>
     <state x="461" y="182" key="SettingsEditor/0.0.1920.1080@0.0.1920.1080" timestamp="1585508198008" />
-    <state x="636" y="364" key="com.intellij.ide.util.TipDialog" timestamp="1586609817111">
+    <state x="636" y="364" key="com.intellij.ide.util.TipDialog" timestamp="1586789934023">
       <screen x="0" y="0" width="1920" height="1080" />
     </state>
-    <state x="636" y="364" key="com.intellij.ide.util.TipDialog/0.0.1920.1080@0.0.1920.1080" timestamp="1586609817111" />
+    <state x="636" y="364" key="com.intellij.ide.util.TipDialog/0.0.1920.1080@0.0.1920.1080" timestamp="1586789934023" />
     <state x="1247" y="455" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2" timestamp="1584868522131">
       <screen x="0" y="0" width="1920" height="1080" />
     </state>
@@ -233,5 +264,8 @@
       <screen x="0" y="0" width="1920" height="1080" />
     </state>
     <state x="616" y="328" width="672" height="678" key="search.everywhere.popup/0.0.1920.1080@0.0.1920.1080" timestamp="1586348616374" />
+  </component>
+  <component name="com.intellij.coverage.CoverageDataManagerImpl">
+    <SUITE FILE_PATH="coverage/django_shop$img.coverage" NAME="img Coverage Results" MODIFIED="1586630891220" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$USER_HOME$/Downloads" />
   </component>
 </project>

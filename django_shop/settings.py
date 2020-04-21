@@ -40,6 +40,7 @@ INSTALLED_APPS = [
     'shop',
     'mptt',
     'django_cleanup',
+    'easy_thumbnails',
 
     'ckeditor',
     'ckeditor_uploader',
@@ -144,3 +145,6 @@ EMAIL_PORT = 2525
 EMAIL_HOST_USER = "django_shop@mail.ru"
 EMAIL_HOST_PASSWORD = "ipm-dTu2TP8Y"
 EMAIL_USE_TLS = True
+
+#settings request.session cart
+CART_SESSION_ID = 'cart'

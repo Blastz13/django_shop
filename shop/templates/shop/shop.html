@@ -187,7 +187,8 @@
 								</div>
 							</form>								
 						</div>
-					</div>	
+					</div>
+                    {% load thumbnail %}
 					<!-- toolbar end -->
 					<div class="clear"></div>
 					<div class="row">
@@ -199,10 +200,12 @@
                                         {% if product.discount_price %}
                                             <span class="sale-text">Sale</span>
                                         {% endif %}
-                                        <div class="product-img" style="height: 340px; width: 270px; background: url({{ product.preview_image.url }}) no-repeat center / cover;">
-{#                                          <img class="primary-image" style=" " src="{{ product.preview_image.url }}" alt="" />#}
+{#                                        style="height: 340px; width: 270px; background: url({{ product.preview_image.url }}) no-repeat center / cover;"#}
+                                        <div class="product-img">
+{#                                          <img class="secondary-image" src="{{ product.preview_image.url }}" alt=""/>#}
                                             <a href="{{ product.get_absolute_url }}">
-{#                                          <img class="secondary-image" src="../../../media/default_img/news.jpeg" alt="" />#}
+                                                <img class="primary-image" src="{% thumbnail product.preview_image 270x340 crop='smart' %}" alt="" />
+{#                                              <img class="secondary-image" src="{{ product.preview_image.url }}" alt="" style="width: 270px; height: 360px;"/>#}
                                             </a>
                                             <div class="actions">
                                                 <div class="action-buttons">
