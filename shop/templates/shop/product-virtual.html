@@ -68,9 +68,14 @@
 						<div class="stock-status">
                             <label>Availability</label>: {% if product.is_available %}<strong>In stock</strong>{% else %}<strong>not available</strong>{% endif %}
 						</div>
-						<form action="#">
-							<div class="quantity">
-								<input type="number" value="1" />
+						<form action="{% url 'CartAdd' slug=product.slug %}" method="post">{% csrf_token %}
+                            {% for field in form %}
+                                <div  style="margin: 10px 0px;">
+                                <strong>{{ field.label }}</strong>
+                                {{ field }}
+                                </div>
+                            {% endfor %}
+                            <div class="quantity">
 								<button type="submit">Add to cart</button>
 							</div>
 						</form>

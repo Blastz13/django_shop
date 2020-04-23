@@ -3,9 +3,12 @@
   <component name="ChangeListManager">
     <list default="true" id="e9a1af9a-01da-4e77-a472-403f7de6d2a0" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/django_shop/settings.py" beforeDir="false" afterPath="$PROJECT_DIR$/django_shop/settings.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/shop/models.py" beforeDir="false" afterPath="$PROJECT_DIR$/shop/models.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/shop/templates/shop/shop.html" beforeDir="false" afterPath="$PROJECT_DIR$/shop/templates/shop/shop.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/media/Shop/Product/6/2020/4/11/19/1/15200-2051586631675.jpg" beforeDir="false" afterPath="$PROJECT_DIR$/media/Shop/Product/6/2020/4/11/19/1/15200-2051586631675.jpg" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/media/Shop/Product/6/2020/4/11/19/1/15200-2051586631675.jpg.270x340_q85_crop-smart.jpg" beforeDir="false" afterPath="$PROJECT_DIR$/media/Shop/Product/6/2020/4/11/19/1/15200-2051586631675.jpg.270x340_q85_crop-smart.jpg" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/shop/cart.py" beforeDir="false" afterPath="$PROJECT_DIR$/shop/cart.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/shop/templates/shop/product-virtual.html" beforeDir="false" afterPath="$PROJECT_DIR$/shop/templates/shop/product-virtual.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/shop/urls.py" beforeDir="false" afterPath="$PROJECT_DIR$/shop/urls.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/shop/views.py" beforeDir="false" afterPath="$PROJECT_DIR$/shop/views.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -183,7 +186,9 @@
       <workItem from="1586609785911" duration="13314000" />
       <workItem from="1586624530168" duration="6616000" />
       <workItem from="1586789927097" duration="1518000" />
-      <workItem from="1587479406219" duration="2805000" />
+      <workItem from="1587479406219" duration="6451000" />
+      <workItem from="1587666122457" duration="2841000" />
+      <workItem from="1587669059197" duration="1116000" />
     </task>
     <task id="LOCAL-00001" summary="problems with the database were resolved">
       <created>1585431833635</created>
@@ -224,9 +229,10 @@
       <screen x="0" y="0" width="1920" height="1080" />
     </state>
     <state x="947" y="48" key="CommitChangelistDialog2/0.0.1920.1080@0.0.1920.1080" timestamp="1585431832617" />
-    <state x="509" y="150" key="FileChooserDialogImpl" timestamp="1586791414443">
-      <screen x="0" y="0" width="1920" height="1080" />
+    <state x="509" y="144" key="FileChooserDialogImpl" timestamp="1587668964150">
+      <screen x="0" y="0" width="1920" height="1040" />
     </state>
+    <state x="509" y="144" key="FileChooserDialogImpl/0.0.1920.1040@0.0.1920.1040" timestamp="1587668964150" />
     <state x="509" y="150" key="FileChooserDialogImpl/0.0.1920.1080@0.0.1920.1080" timestamp="1586791414443" />
     <state width="1875" height="274" key="GridCell.Tab.0.bottom" timestamp="1586632539893">
       <screen x="0" y="0" width="1920" height="1080" />

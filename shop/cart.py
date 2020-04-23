@@ -17,12 +17,10 @@ class Cart(object):
         self.cart = cart
 
     def add(self, product, quantity=1, property=None, update_quantity=False):
-        """
-        Добавить продукт в корзину или обновить его количество.
-        """
         product_id = str(self.__len__())
         if product_id not in self.cart:
-            self.cart[product_id] = {'quantity': 0,
+            self.cart[product_id] = {'product_slug': product.slug,
+                                     'quantity': 0,
                                      'property': property,
                                      'price': str(product.price)}
         if update_quantity:
@@ -39,34 +37,28 @@ class Cart(object):
         self.session.modified = True
 
     def remove(self, product_num):
-    """
-    Удаление товара из корзины.
-    """
-    product_id = str(product_num)
-    if product_id in self.cart:
-        del self.cart[product_id]
-        self.save()
+        product_id = str(product_num)
+        if product_id in self.cart:
+            del self.cart[product_id]
+            self.save()
 
     def __iter__(self):
-    """
-    Перебор элементов в корзине и получение продуктов из базы данных.
-    """
-    product_ids = self.cart.keys()
-    # получение объектов product и добавление их в корзину
-    products = Product.objects.filter(slug__in=product_ids)
-    for product in products:
-        self.cart[str(product.id)]['product'] = product
+        product_ids = self.cart.keys()
+        # получение объектов product и добавление их в корзину
+        products = Product.objects.filter(slug__in=product_ids)
+        for product in products:
+            self.cart[str(product.id)]['product'] = product
 
-    for item in self.cart.values():
-        item['price'] = Decimal(item['price'])
-        item['total_price'] = item['price'] * item['quantity']
-        yield item
+        for item in self.cart.values():
+            item['price'] = Decimal(item['price'])
+            item['total_price'] = item['price'] * item['quantity']
+            yield item
 
     def __len__(self):
         """
         Подсчет всех товаров в корзине.
         """
-        return sum(item['quantity'] for item in self.cart.values())
+        return len(self.cart.values())
 
     def get_total_price(self):
         """
