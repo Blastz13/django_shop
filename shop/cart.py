@@ -17,15 +17,31 @@ class Cart(object):
         self.cart = cart
 
     def add(self, product, quantity=1, property=None, update_quantity=False):
-        product_id = str(self.__len__())
-        if product_id not in self.cart:
-            self.cart[product_id] = {'product_slug': product.slug,
+        is_added = False
+        try:
+            product_id = str(int(list(self.cart.keys())[-1])+1)
+        except IndexError:
+            product_id = 1
+
+        if product.discount_price:
+            price = str(product.discount_price)
+        else:
+            price = str(product.price)
+
+        for key, product_cart in self.cart.items():
+            if product_cart['product_slug'] == product.slug and product_cart['property'] == property:
+                self.cart[key]['quantity'] += quantity
+                is_added = True
+
+        if not is_added:
+            self.cart[product_id] = {'product_id': product_id,
+                                     'product_slug': product.slug,
                                      'quantity': 0,
                                      'property': property,
-                                     'price': str(product.price)}
-        if update_quantity:
-            self.cart[product_id]['quantity'] = quantity
-        else:
+                                     'price': price}
+        # if update_quantity:
+        #     self.cart[product_id]['quantity'] = quantity
+        # else:
             self.cart[product_id]['quantity'] += quantity
 
         self.save()
@@ -43,11 +59,14 @@ class Cart(object):
             self.save()
 
     def __iter__(self):
-        product_ids = self.cart.keys()
+        # product_ids = []
+        for key in self.cart.keys():
+            product = Product.objects.get(slug=self.cart[key]['product_slug'])
+            self.cart[key]['product'] = product
         # получение объектов product и добавление их в корзину
-        products = Product.objects.filter(slug__in=product_ids)
-        for product in products:
-            self.cart[str(product.id)]['product'] = product
+        # products = Product.objects.filter(slug__in=product_ids)
+        # for product in products:
+        #     self.cart[str(product.id)]['product'] = product
 
         for item in self.cart.values():
             item['price'] = Decimal(item['price'])

@@ -3,9 +3,12 @@
   <component name="ChangeListManager">
     <list default="true" id="e9a1af9a-01da-4e77-a472-403f7de6d2a0" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/media/Shop/Product/6/2020/4/11/19/1/15200-2051586631675.jpg" beforeDir="false" afterPath="$PROJECT_DIR$/media/Shop/Product/6/2020/4/11/19/1/15200-2051586631675.jpg" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/media/Shop/Product/1/2020/4/11/15/45/7конь1586619907.jpeg" beforeDir="false" afterPath="$PROJECT_DIR$/media/Shop/Product/1/2020/4/11/15/45/7конь1586619907.jpeg" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/media/Shop/Product/1/2020/4/11/15/45/7конь1586619907.jpeg.270x340_q85_crop-smart.jpg" beforeDir="false" afterPath="$PROJECT_DIR$/media/Shop/Product/1/2020/4/11/15/45/7конь1586619907.jpeg.270x340_q85_crop-smart.jpg" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/media/Shop/Product/6/2020/4/11/19/1/15200-2051586631675.jpg.270x340_q85_crop-smart.jpg" beforeDir="false" afterPath="$PROJECT_DIR$/media/Shop/Product/6/2020/4/11/19/1/15200-2051586631675.jpg.270x340_q85_crop-smart.jpg" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/shop/cart.py" beforeDir="false" afterPath="$PROJECT_DIR$/shop/cart.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/shop/templates/shop/cart.html" beforeDir="false" afterPath="$PROJECT_DIR$/shop/templates/shop/cart.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/shop/templates/shop/extends/base.html" beforeDir="false" afterPath="$PROJECT_DIR$/shop/templates/shop/extends/base.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/shop/templates/shop/product-virtual.html" beforeDir="false" afterPath="$PROJECT_DIR$/shop/templates/shop/product-virtual.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/shop/urls.py" beforeDir="false" afterPath="$PROJECT_DIR$/shop/urls.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/shop/views.py" beforeDir="false" afterPath="$PROJECT_DIR$/shop/views.py" afterDir="false" />
@@ -188,7 +191,8 @@
       <workItem from="1586789927097" duration="1518000" />
       <workItem from="1587479406219" duration="6451000" />
       <workItem from="1587666122457" duration="2841000" />
-      <workItem from="1587669059197" duration="1116000" />
+      <workItem from="1587669059197" duration="4313000" />
+      <workItem from="1587723073805" duration="11846000" />
     </task>
     <task id="LOCAL-00001" summary="problems with the database were resolved">
       <created>1585431833635</created>
@@ -254,9 +258,10 @@
       <screen x="0" y="0" width="1920" height="1080" />
     </state>
     <state x="461" y="182" key="SettingsEditor/0.0.1920.1080@0.0.1920.1080" timestamp="1585508198008" />
-    <state x="636" y="364" key="com.intellij.ide.util.TipDialog" timestamp="1586789934023">
-      <screen x="0" y="0" width="1920" height="1080" />
+    <state x="636" y="351" key="com.intellij.ide.util.TipDialog" timestamp="1587723623857">
+      <screen x="0" y="0" width="1920" height="1040" />
     </state>
+    <state x="636" y="351" key="com.intellij.ide.util.TipDialog/0.0.1920.1040@0.0.1920.1040" timestamp="1587723623857" />
     <state x="636" y="364" key="com.intellij.ide.util.TipDialog/0.0.1920.1080@0.0.1920.1080" timestamp="1586789934023" />
     <state x="1247" y="455" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2" timestamp="1584868522131">
       <screen x="0" y="0" width="1920" height="1080" />
@@ -266,9 +271,10 @@
       <screen x="0" y="0" width="1920" height="1080" />
     </state>
     <state x="640" y="319" width="627" height="568" key="find.popup/0.0.1920.1080@0.0.1920.1080" timestamp="1585745969731" />
-    <state x="616" y="328" width="672" height="678" key="search.everywhere.popup" timestamp="1586348616374">
-      <screen x="0" y="0" width="1920" height="1080" />
+    <state x="616" y="316" width="672" height="653" key="search.everywhere.popup" timestamp="1587733428608">
+      <screen x="0" y="0" width="1920" height="1040" />
     </state>
+    <state x="616" y="316" width="672" height="653" key="search.everywhere.popup/0.0.1920.1040@0.0.1920.1040" timestamp="1587733428608" />
     <state x="616" y="328" width="672" height="678" key="search.everywhere.popup/0.0.1920.1080@0.0.1920.1080" timestamp="1586348616374" />
   </component>
   <component name="com.intellij.coverage.CoverageDataManagerImpl">

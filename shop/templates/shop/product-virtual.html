@@ -52,8 +52,12 @@
 						</div>
 						<h1 class="product_title">{{ product.title }}</h1>
 						<div class="price-box">
-							<span class="new-price">£{{ product.price }}</span>
-							{% if product.discount_price %}<span class="old-price">£{{ product.discount_price }}</span>{% endif %}
+                            {% if product.discount_price %}
+                                <span class="new-price">£{{ product.discount_price }}</span>
+                                <span class="old-price">£{{ product.price }}</span>
+                            {% else %}
+                                <span class="new-price">£{{ product.price }}</span>
+                            {% endif %}
 						</div>
 						<div class="pro-rating">
 							<a href="#"><i class="fa fa-star"></i></a>

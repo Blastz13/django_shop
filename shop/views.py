@@ -9,8 +9,7 @@ from .mixins import ObjectSortPaginate
 
 from .forms import CartAddProductForm
 
-from .models import Product
-from .models import Category
+from .models import Product, Category
 
 
 class ProductList(ObjectSortPaginate, View):
@@ -52,6 +51,12 @@ class CategoryProduct(ObjectSortPaginate, View):
             return render(request, 'shop/shop.html', context=context)
 
 
+class CartProduct(View):
+    def get(self, requset):
+        cart = Cart(requset)
+        return render(requset, 'shop/cart.html', context={'cart': cart})
+
+
 @require_POST
 def cart_add(request, slug):
     cart = Cart(request)
@@ -64,3 +69,9 @@ def cart_add(request, slug):
                  quantity=quantity,
                  property=cd)
     return HttpResponseRedirect(reverse('CategoryProduct', kwargs={'slug': product.get_product_url()}))
+
+
+@require_POST
+def cart_del(request, slug):
+    print(slug)
+    return HttpResponse(status=200)
