@@ -3,6 +3,7 @@
 		============================================ -->
         <meta name="viewport" content="width=device-width, initial-scale=1">
         {% load static %}
+        {% load filters_shop %}
 		<!-- fonts
 		============================================ -->
 		<link href='http://fonts.googleapis.com/css?family=Open+Sans:400,300,600,700,800' rel='stylesheet' type='text/css'>
@@ -136,46 +137,7 @@
 					</div>
 					<!-- logo end -->
 					<div class="col-lg-6 col-md-6 col-sm-8 col-xs-12">
-						<!-- cart-total start -->
-						<div class="cart-total">
-							<ul>
-								<li><a href="{% url 'CartProduct' %}"><span class="cart-icon"><i class="fa fa-shopping-cart"></i></span> <span class="cart-no">My cart: (2)</span></a>
-									<div class="mini-cart-content">
-										<div class="cart-img-details">
-											<div class="cart-img-photo">
-												<a href="#"><img src="../../static/core/img/product/total-cart.jpg" alt="" /></a>
-												<span class="quantity">1</span>
-											</div>
-											<div class="cart-img-contaent">
-												<a href="#"><p>Vestibulum suscipit</p></a>
-												<span>£165.00</span>
-											</div>
-											<div class="pro-del"><a href="#"><i class="fa fa-times-circle"></i></a>
-											</div>
-										</div>
-										<div class="clear"></div>
-										<div class="cart-img-details">
-											<div class="cart-img-photo">
-												<a href="#"><img src="../../static/core/img/product/total-cart2.jpg" alt="" /></a>
-												<span class="quantity">1</span>
-											</div>
-											<div class="cart-img-contaent">
-												<a href="#"><p>Donec sodales mauris in</p></a>
-												<span>£50.00</span>
-											</div>
-											<div class="pro-del"><a href="#"><i class="fa fa-times-circle"></i></a>
-											</div>
-										</div>
-										<div class="cart-inner-bottom">
-											<p class="total">Subtotal: <span class="amount">£215.00</span></p>
-											<div class="clear"></div>
-											<p class="cart-button-top"><a href="checkout.html">Checkout</a></p>
-										</div>
-									</div>
-								</li>
-							</ul>
-						</div>
-						<!-- cart-total end -->
+						{% widget_cart request %}
 						<!-- header-search start -->
 						<div class="header-search">
 							<form action="#">

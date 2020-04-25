@@ -2,6 +2,9 @@ from django import template
 
 from core.models import OurBrand
 
+from shop.cart import Cart
+
+
 register = template.Library()
 
 
@@ -22,3 +25,8 @@ def breadcrumb_area_shop(obj_selected_category=None):
         return {}
     return {'tree_categories': obj_selected_category.get_ancestors(include_self=True)}
 
+
+@register.inclusion_tag('shop/inclusion_html/widget-cart.html')
+def widget_cart(request):
+    cart = Cart(request)
+    return {'cart': cart}

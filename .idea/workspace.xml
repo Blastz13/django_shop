@@ -3,13 +3,23 @@
   <component name="ChangeListManager">
     <list default="true" id="e9a1af9a-01da-4e77-a472-403f7de6d2a0" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/media/Shop/Product/1/2020/4/11/15/45/7конь1586619907.jpeg" beforeDir="false" afterPath="$PROJECT_DIR$/media/Shop/Product/1/2020/4/11/15/45/7конь1586619907.jpeg" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/media/Shop/Product/1/2020/4/11/15/45/7конь1586619907.jpeg.270x340_q85_crop-smart.jpg" beforeDir="false" afterPath="$PROJECT_DIR$/media/Shop/Product/1/2020/4/11/15/45/7конь1586619907.jpeg.270x340_q85_crop-smart.jpg" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/core/templates/core/checkout.html" beforeDir="false" afterPath="$PROJECT_DIR$/shop/templates/shop/checkout.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/core/templates/core/extends/base.html" beforeDir="false" afterPath="$PROJECT_DIR$/core/templates/core/extends/base.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/core/templates/core/extends/base_main.html" beforeDir="false" afterPath="$PROJECT_DIR$/core/templates/core/extends/base_main.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/media/Shop/Product/2/2020/4/11/17/35/57йцу1586626557.jpeg" beforeDir="false" afterPath="$PROJECT_DIR$/media/Shop/Product/2/2020/4/11/17/35/57йцу1586626557.jpeg" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/media/Shop/Product/2/2020/4/11/17/35/57йцу1586626557.jpeg.270x340_q85_crop-smart.jpg" beforeDir="false" afterPath="$PROJECT_DIR$/media/Shop/Product/2/2020/4/11/17/35/57йцу1586626557.jpeg.270x340_q85_crop-smart.jpg" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/media/Shop/Product/3/2020/4/11/17/35/34f1b8cce291d7fff4ea9ad1201441587c_big1586626534.jpg" beforeDir="false" afterPath="$PROJECT_DIR$/media/Shop/Product/3/2020/4/11/17/35/34f1b8cce291d7fff4ea9ad1201441587c_big1586626534.jpg" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/media/Shop/Product/3/2020/4/11/17/35/34f1b8cce291d7fff4ea9ad1201441587c_big1586626534.jpg.270x340_q85_crop-smart.jpg" beforeDir="false" afterPath="$PROJECT_DIR$/media/Shop/Product/3/2020/4/11/17/35/34f1b8cce291d7fff4ea9ad1201441587c_big1586626534.jpg.270x340_q85_crop-smart.jpg" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/media/Shop/Product/4/2020/4/11/17/43/43img131586627023.jpg" beforeDir="false" afterPath="$PROJECT_DIR$/media/Shop/Product/4/2020/4/11/17/43/43img131586627023.jpg" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/media/Shop/Product/4/2020/4/11/17/43/43img131586627023.jpg.270x340_q85_crop-smart.jpg" beforeDir="false" afterPath="$PROJECT_DIR$/media/Shop/Product/4/2020/4/11/17/43/43img131586627023.jpg.270x340_q85_crop-smart.jpg" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/media/Shop/Product/5/2020/4/11/19/3/3sss1586631783.jpg" beforeDir="false" afterPath="$PROJECT_DIR$/media/Shop/Product/5/2020/4/11/19/3/3sss1586631783.jpg" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/media/Shop/Product/5/2020/4/11/19/3/3sss1586631783.jpg.270x340_q85_crop-smart.jpg" beforeDir="false" afterPath="$PROJECT_DIR$/media/Shop/Product/5/2020/4/11/19/3/3sss1586631783.jpg.270x340_q85_crop-smart.jpg" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/media/Shop/Product/6/2020/4/11/19/1/15200-2051586631675.jpg" beforeDir="false" afterPath="$PROJECT_DIR$/media/Shop/Product/6/2020/4/11/19/1/15200-2051586631675.jpg" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/media/Shop/Product/6/2020/4/11/19/1/15200-2051586631675.jpg.270x340_q85_crop-smart.jpg" beforeDir="false" afterPath="$PROJECT_DIR$/media/Shop/Product/6/2020/4/11/19/1/15200-2051586631675.jpg.270x340_q85_crop-smart.jpg" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/shop/cart.py" beforeDir="false" afterPath="$PROJECT_DIR$/shop/cart.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/shop/forms.py" beforeDir="false" afterPath="$PROJECT_DIR$/shop/forms.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/shop/templates/shop/cart.html" beforeDir="false" afterPath="$PROJECT_DIR$/shop/templates/shop/cart.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/shop/templates/shop/extends/base.html" beforeDir="false" afterPath="$PROJECT_DIR$/shop/templates/shop/extends/base.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/shop/templates/shop/product-virtual.html" beforeDir="false" afterPath="$PROJECT_DIR$/shop/templates/shop/product-virtual.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/shop/templatetags/filters_shop.py" beforeDir="false" afterPath="$PROJECT_DIR$/shop/templatetags/filters_shop.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/shop/urls.py" beforeDir="false" afterPath="$PROJECT_DIR$/shop/urls.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/shop/views.py" beforeDir="false" afterPath="$PROJECT_DIR$/shop/views.py" afterDir="false" />
     </list>
@@ -46,8 +56,8 @@
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
       <list>
-        <option value="HTML File" />
         <option value="Python Script" />
+        <option value="HTML File" />
       </list>
     </option>
   </component>
@@ -192,7 +202,8 @@
       <workItem from="1587479406219" duration="6451000" />
       <workItem from="1587666122457" duration="2841000" />
       <workItem from="1587669059197" duration="4313000" />
-      <workItem from="1587723073805" duration="11846000" />
+      <workItem from="1587723073805" duration="16632000" />
+      <workItem from="1587808269714" duration="10187000" />
     </task>
     <task id="LOCAL-00001" summary="problems with the database were resolved">
       <created>1585431833635</created>
@@ -258,10 +269,10 @@
       <screen x="0" y="0" width="1920" height="1080" />
     </state>
     <state x="461" y="182" key="SettingsEditor/0.0.1920.1080@0.0.1920.1080" timestamp="1585508198008" />
-    <state x="636" y="351" key="com.intellij.ide.util.TipDialog" timestamp="1587723623857">
+    <state x="636" y="351" key="com.intellij.ide.util.TipDialog" timestamp="1587808654778">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state x="636" y="351" key="com.intellij.ide.util.TipDialog/0.0.1920.1040@0.0.1920.1040" timestamp="1587723623857" />
+    <state x="636" y="351" key="com.intellij.ide.util.TipDialog/0.0.1920.1040@0.0.1920.1040" timestamp="1587808654778" />
     <state x="636" y="364" key="com.intellij.ide.util.TipDialog/0.0.1920.1080@0.0.1920.1080" timestamp="1586789934023" />
     <state x="1247" y="455" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2" timestamp="1584868522131">
       <screen x="0" y="0" width="1920" height="1080" />

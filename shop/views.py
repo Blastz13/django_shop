@@ -1,5 +1,5 @@
 from django.http import HttpResponse, Http404, HttpResponseRedirect
-from django.shortcuts import render, get_object_or_404, reverse
+from django.shortcuts import render, get_object_or_404, reverse, redirect
 from django.views.decorators.http import require_POST
 from django.views.generic import View
 
@@ -57,6 +57,12 @@ class CartProduct(View):
         return render(requset, 'shop/cart.html', context={'cart': cart})
 
 
+class Checkout(View):
+    def get(self, request):
+        cart = Cart(request)
+        return render(request, 'shop/checkout.html', context={'cart': cart})
+
+
 @require_POST
 def cart_add(request, slug):
     cart = Cart(request)
@@ -73,5 +79,6 @@ def cart_add(request, slug):
 
 @require_POST
 def cart_del(request, slug):
-    print(slug)
-    return HttpResponse(status=200)
+    cart = Cart(request)
+    cart.remove(slug)
+    return redirect('CartProduct')
