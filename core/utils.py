@@ -15,5 +15,4 @@ def path_upload(dir_name=''):
         else:
             template_path = f'{instance}/{date.year}/{date.month}/{date.day}/{date.hour}/{date.minute}'
         return os.path.join(template_path, filename)
-
     return wrap

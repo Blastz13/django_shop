@@ -14,7 +14,7 @@ class ProductImageItemInline(admin.StackedInline):
     model = ProductImage
     list_display = ['get_image', 'product']
     list_display_links = ['get_image', 'product']
-    search_fields = ['get_image', 'product']
+    search_fields = ['get_image']
     extra = 1
 
     def get_image(self, obj):
@@ -23,11 +23,12 @@ class ProductImageItemInline(admin.StackedInline):
 
     get_image.short_description = "Изображение"
 
+
 @admin.register(Product)
 class AdminProduct(admin.ModelAdmin):
     list_display = ['title', 'category', 'price', 'discount_price', 'slug']
     list_display_links = ['title', 'category', 'price', 'discount_price', 'slug']
-    search_fields = ('title', 'category', 'description', 'price', 'discount_price')
+    search_fields = ('title', 'description', 'price', 'discount_price')
     inlines = [ProductImageItemInline]
     formfield_overrides = {
         JSONField: {'widget': JSONEditorWidget},
@@ -38,6 +39,6 @@ class AdminProduct(admin.ModelAdmin):
 class AdminCategory(MPTTModelAdmin):
     list_display = ['title', 'slug', 'parent']
     list_display_links = ['title', 'slug', 'parent']
-    search_fields = ['title', 'slug', 'parent']
+    search_fields = ['title', 'slug']
 
 

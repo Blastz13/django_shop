@@ -40,7 +40,8 @@ class CategoryProduct(ObjectSortPaginate, View):
     
             if product.get_product_url() != user_slug:
                 return HttpResponse('404 - 2')
-            form = CartAddProductForm(request.POST or None, extra={'slug': category_slug[-1]})
+            form = CartAddProductForm(request.POST or None, extra={'slug': category_slug[-1],
+                                                                   'cart': Cart(request)})
             return render(request, 'shop/product-virtual.html', context={'product': product,
                                                                          'form': form})
 
@@ -49,6 +50,26 @@ class CategoryProduct(ObjectSortPaginate, View):
             context = self.get_pagination(products_by_category)
             context['obj_selected_category'] = category
             return render(request, 'shop/shop.html', context=context)
+
+    def post(self, request, slug):
+        cart = Cart(request)
+
+        product = get_object_or_404(Product, slug=slug)
+        form = CartAddProductForm(request.POST, extra={'slug': slug,
+                                                      'cart': Cart(request)})
+        success_form = CartAddProductForm(extra={'slug': slug,
+                                                 'cart': Cart(request)})
+        if form.is_valid():
+            cd = form.cleaned_data
+            price = cd.pop('total_price')
+            quantity = cd.pop('quantity')
+            cart.add(product=product,
+                     price=price,
+                     quantity=quantity,
+                     property=cd)
+        else:
+            return render(request, 'shop/product-virtual.html', context={'product': product, 'form': form})
+        return render(request, 'shop/product-virtual.html', context={'product': product, 'form': success_form})
 
 
 class CartProduct(View):
@@ -61,20 +82,6 @@ class Checkout(View):
     def get(self, request):
         cart = Cart(request)
         return render(request, 'shop/checkout.html', context={'cart': cart})
-
-
-@require_POST
-def cart_add(request, slug):
-    cart = Cart(request)
-    product = get_object_or_404(Product, slug=slug)
-    form = CartAddProductForm(request.POST, extra={'slug': slug})
-    if form.is_valid():
-        cd = form.cleaned_data
-        quantity = cd.pop('quantity')
-        cart.add(product=product,
-                 quantity=quantity,
-                 property=cd)
-    return HttpResponseRedirect(reverse('CategoryProduct', kwargs={'slug': product.get_product_url()}))
 
 
 @require_POST

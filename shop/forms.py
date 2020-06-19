@@ -1,45 +1,106 @@
 from django import forms
 from django.forms.widgets import Select
+from django.core.exceptions import ValidationError
+
+from decimal import Decimal
 
 from shop.models import Product
 
-# class MySelect(Select):
-#
-#     def __init__(self, attrs=None, choices=(), disabled_choices=()):
-#         super(Select, self).__init__(attrs, choices=choices)
-#         # disabled_choices is a list of disabled values
-#         self.disabled_choices = disabled_choices
-#
-#     def create_option(self, name, value, label, selected, index, subindex=None, attrs=None):
-#         option = super(Select, self).create_option(name, value, label, selected, index, subindex, attrs)
-#         if value in self.disabled_choices:
-#             print('============')
-#             print(self.disabled_choices)
-#             print(value)
-#             print('============')
-#             option['attrs']['disabled'] = True
-#             option['attrs']['price'] = '111'
-#         return option
+from shop.cart import Cart
+
+
+class CustomSelectWidget(Select):
+
+    def __init__(self, attrs=None, choices=(), disabled_choices=(), price_choices=()):
+        super(Select, self).__init__(attrs, choices=choices)
+        # disabled_choices is a list of disabled values
+        self.disabled_choices = disabled_choices
+        self.price_choices = price_choices
+
+    def create_option(self, name, value, label, selected, index, subindex=None, attrs=None):
+        option = super(Select, self).create_option(name, value, label, selected, index, subindex, attrs)
+        if value in self.disabled_choices:
+            option['attrs']['disabled'] = True
+        for price_choice in self.price_choices:
+            if value in price_choice:
+                option['attrs']['data-price'] = price_choice[1]
+        return option
 
 
 class CartAddProductForm(forms.Form):
     quantity = forms.IntegerField(min_value=1, max_value=10, initial=1, label="Количество: ")
+    total_price = forms.CharField(widget=forms.TextInput(attrs={'type': 'hidden'}), label="")
 
     def __init__(self, *args, **kwargs):
 
         extra = kwargs.pop('extra')
+
         super().__init__(*args, **kwargs)
 
         self.obj = Product.objects.get(slug=extra['slug'])
+        self.cart = extra['cart']
 
         if self.obj.property:
             for field in self.obj.property:
                 CHOICES = []
-                DIS = []
+                DISABLED = []
+                PRICE = []
                 for value in self.obj.property[field]:
-                    # if value == 'Красный' or value == 'Зеленый':
-                    #     DIS.append(value)
+                    if int(self.obj.property[field][value]['quantity']) <= 0:
+                        DISABLED.append(value)
+                    PRICE.append((value, self.obj.property[field][value]['price']))
                     wrap = (value, value)
                     CHOICES.append(wrap)
-                self.fields[field] = forms.CharField(label=field,  widget=Select(choices=CHOICES))
 
+                self.price_choices = PRICE
+                self.fields[field] = forms.CharField(label=field,  widget=CustomSelectWidget(choices=CHOICES,
+                                                                                             disabled_choices=DISABLED,
+                                                                                             price_choices=PRICE, attrs={'id': 'property'}))
+
+    def clean(self):
+        quantity_cart = 0
+        print(self.cleaned_data)
+        cleaned_data = super(CartAddProductForm, self).clean()
+
+        quantity_select = cleaned_data['quantity']
+        del cleaned_data['quantity']
+
+        total_price = cleaned_data['total_price']
+        del cleaned_data['total_price']
+
+        breadcump = []
+
+        if cleaned_data:
+
+            for item in cleaned_data.items():
+                for prop in item:
+                    breadcump.append(prop)
+
+            obj_quantity = int(self.obj.property[breadcump[0]][breadcump[1]]['quantity'])
+            obj_property_price = Decimal(self.obj.property[breadcump[0]][breadcump[1]]['price'])
+
+            if Decimal(obj_property_price) * Decimal(quantity_select) != Decimal(total_price):
+                raise ValidationError(f'Произошла ошибка')
+
+            for key, product_cart in self.cart.cart.items():
+                if product_cart['product_slug'] == self.obj.slug and product_cart['property'] == cleaned_data:
+                    quantity_cart = product_cart['quantity']
+
+            if obj_quantity < quantity_select + quantity_cart:
+                raise ValidationError(f'Товар закончился, доступно только - {obj_quantity}')
+
+            cleaned_data['total_price'] = str(obj_property_price)
+        else:
+            if self.obj.discount_price:
+                cleaned_data['total_price'] = str(Decimal(self.obj.discount_price))
+            else:
+                cleaned_data['total_price'] = str(Decimal(self.obj.price))
+
+            for key, product_cart in self.cart.cart.items():
+                if product_cart['product_slug'] == self.obj.slug:
+                    quantity_cart = product_cart['quantity']
+
+            if self.obj.quantity < quantity_select + quantity_cart:
+                raise ValidationError(f'Товар закончился, доступно только - {self.obj.quantity}')
+
+        cleaned_data['quantity'] = quantity_select

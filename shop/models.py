@@ -18,6 +18,7 @@ class Product(models.Model):
     price = models.DecimalField(max_digits=10, decimal_places=2, verbose_name='Цена товара')
     discount_price = models.PositiveIntegerField(blank=True, verbose_name='Цена по скидке')
     category = models.ForeignKey('Category', on_delete=models.CASCADE, related_name='product', verbose_name='Категория')
+    quantity = models.PositiveIntegerField(default=0, verbose_name='Количество товара')
     is_available = models.BooleanField(verbose_name='Товар в наличии')
     property = JSONField(blank=True, null=True, verbose_name='Свойства товара')
     date_publicate = models.DateTimeField(auto_now_add=True, verbose_name='Дата добавления товара')
@@ -42,9 +43,6 @@ class Product(models.Model):
     def save(self, *args, **kwargs):
         super(Product, self).save(*args, **kwargs)
         image = Image.open(self.preview_image.path)
-        print(1)
-        print(image.height)
-        print(image.width)
         if image.width < 270 or image.height < 340:
             fill_color = '#A36FFF'
             back = Image.new('RGB', (270, 340), fill_color)
@@ -52,7 +50,6 @@ class Product(models.Model):
             h = int((340 - image.height) / 2)
             back.paste(image, (w, h))
             back.save(self.preview_image.path, quality=70, optimize=True)
-
         else:
             image.save(self.preview_image.path, quality=70, optimize=True)
         return image

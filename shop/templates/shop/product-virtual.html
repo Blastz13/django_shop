@@ -53,10 +53,10 @@
 						<h1 class="product_title">{{ product.title }}</h1>
 						<div class="price-box">
                             {% if product.discount_price %}
-                                <span class="new-price">£{{ product.discount_price }}</span>
+                                <span>£</span><span class="new-price" id="new-price">{{ product.discount_price }}</span>
                                 <span class="old-price">£{{ product.price }}</span>
                             {% else %}
-                                <span class="new-price">£{{ product.price }}</span>
+                                <span>£</span><span class="new-price" id="new-price">{{ product.price }}</span>
                             {% endif %}
 						</div>
 						<div class="pro-rating">
@@ -72,7 +72,10 @@
 						<div class="stock-status">
                             <label>Availability</label>: {% if product.is_available %}<strong>In stock</strong>{% else %}<strong>not available</strong>{% endif %}
 						</div>
-						<form action="{% url 'CartAdd' slug=product.slug %}" method="post">{% csrf_token %}
+                        {% for error in form.non_field_errors %}
+                            <li style="color: red">{{ error }}</li>
+                        {% endfor %}
+						<form action="{% url 'CategoryProduct' slug=product.slug %}" method="post" name="price">{% csrf_token %}
                             {% for field in form %}
                                 <div  style="margin: 10px 0px;">
                                 <strong>{{ field.label }}</strong>
@@ -480,5 +483,30 @@
 			</div>
 		</div>
 	</div>
-	<!-- brand-area end -->	
+	<!-- brand-area end -->
+    <script>
+    let form = document.forms.price;
+    let price_property = document.getElementById("property")
+    try {
+            price_property.onchange = calculate;
+    }
+    catch (e) {
+        price_property = document.getElementById('new-price').innerText;
+    }
+
+    form.quantity.oninput = calculate;
+
+    function calculate() {
+        try{
+          document.getElementById('new-price').innerHTML = price_property.options[price_property.selectedIndex].dataset.price * form.quantity.value;
+          document.getElementById('id_total_price').value = price_property.options[price_property.options.selectedIndex].dataset.price * form.quantity.value;
+          }
+        catch (e) {
+            console.log(parseFloat(price_property.replace(',','.')))
+            document.getElementById('new-price').innerHTML = parseFloat(price_property.replace(',','.')) * form.quantity.value
+            document.getElementById('id_total_price').value = parseFloat(price_property.replace(',','.')) * form.quantity.value
+        }
+    };
+    calculate();
+    </script>
 {% endblock %}

@@ -16,17 +16,12 @@ class Cart(object):
             cart = self.session[settings.CART_SESSION_ID] = {}
         self.cart = cart
 
-    def add(self, product, quantity=1, property=None, update_quantity=False):
+    def add(self, product, price, quantity=1, property=None, update_quantity=False):
         is_added = False
         try:
             product_id = str(int(list(self.cart.keys())[-1])+1)
         except IndexError:
             product_id = 1
-
-        if product.discount_price:
-            price = str(product.discount_price)
-        else:
-            price = str(product.price)
 
         for key, product_cart in self.cart.items():
             if product_cart['product_slug'] == product.slug and product_cart['property'] == property:

@@ -70,7 +70,7 @@
                                 </div>
                             </div>
                             <div class="post-information">
-                                <h2><a href="#">{{ feed.title }}</a></h2>
+                                <h2><a href="{{ feed.get_absolute_url }}">{{ feed.title }}</a></h2>
                                 <div class="small-meta">
                                     <span><i class="fa fa-calendar"></i> {{ feed.date_published_from|date:'N d, Y' }}</span>
                                     <a href="#"><i class="fa fa-comments-o"></i> {{ feed.comments.count }} comments</a>
