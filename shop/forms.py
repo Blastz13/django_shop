@@ -59,7 +59,6 @@ class CartAddProductForm(forms.Form):
 
     def clean(self):
         quantity_cart = 0
-        print(self.cleaned_data)
         cleaned_data = super(CartAddProductForm, self).clean()
 
         quantity_select = cleaned_data['quantity']

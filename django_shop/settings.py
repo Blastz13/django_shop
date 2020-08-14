@@ -38,10 +38,11 @@ INSTALLED_APPS = [
 
     'core',
     'shop',
+    'users',
+
     'mptt',
     'django_cleanup',
     'easy_thumbnails',
-
     'ckeditor',
     'ckeditor_uploader',
     'django_json_widget',
@@ -81,12 +82,13 @@ WSGI_APPLICATION = 'django_shop.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/3.0/ref/settings/#databases
 
+
 DATABASES = {
      'default': {
-     'ENGINE': 'django.db.backends.postgresql_psycopg2',
-     'NAME': 'django_db',
-     'USER': 'postgres',
-     'PASSWORD': '53wgn9te',
+     'ENGINE': 'django.db.backends.postgresql',
+     'NAME': 'dj',
+     'USER': 'postgresu',
+     'PASSWORD': 'postgresu',
      'HOST': 'localhost',
      'PORT': '5432',
  }
@@ -148,3 +150,5 @@ EMAIL_USE_TLS = True
 
 #settings request.session cart
 CART_SESSION_ID = 'cart'
+
+AUTH_USER_MODEL = 'users.CustomUser'
