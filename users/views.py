@@ -1,8 +1,7 @@
 from django.shortcuts import render, redirect
-from django.contrib.auth import authenticate, login
+from django.contrib.auth import authenticate, login, logout
 from django.views.decorators.http import require_POST
 from django.views.generic import View
-
 
 from .forms import CustomUserCreationForm, LoginForm
 
@@ -45,3 +44,8 @@ def sign_up(request):
     else:
         return render(request, 'users/my-account.html', {'form_registration': form_registration,
                                                          'form_login': form_login})
+
+
+def log_out(request):
+    logout(request)
+    return redirect('HomePage')

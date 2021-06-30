@@ -115,7 +115,11 @@
 									<li><a href="my-account.html">My Account</a></li>
 									<li><a href="wishlist.html">My Wishlist</a></li>
 									<li><a href="{% url 'CartProduct' %}">Cart</a></li>
-									<li><a href="#">Login</a></li>
+                                    {% if request.user.is_authenticated %}
+									<li><a href="{% url 'Logout' %}">Logout</a></li>
+                                    {% else %}
+                                    <li><a href="{% url 'Account' %}">Login</a></li>
+                                    {% endif %}
 								</ul>
 							</div>
 						</div>

@@ -102,3 +102,5 @@ class Category(MPTTModel):
 
     class MPTTMeta:
         order_insertion_by = ['title']
+
+

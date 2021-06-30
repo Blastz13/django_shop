@@ -7,6 +7,10 @@ from .models import CustomUser
 
 
 class CustomUserCreationForm(UserCreationForm):
+    def __init__(self, *args, **kwargs):
+        super(CustomUserCreationForm, self).__init__(*args, **kwargs)
+        self.error_messages['password_mismatch'] = 'Пароли не совпадают'
+
     class Meta(UserCreationForm):
         model = CustomUser
         fields = ('email', 'first_name', 'last_name', 'phone')

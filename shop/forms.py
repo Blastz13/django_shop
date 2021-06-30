@@ -1,12 +1,13 @@
-from django import forms
-from django.forms.widgets import Select
-from django.core.exceptions import ValidationError
-
 from decimal import Decimal
+
+from django import forms
+from django.contrib.auth import get_user_model
+from django.core.exceptions import ValidationError
+from django.forms.widgets import Select
 
 from shop.models import Product
 
-from shop.cart import Cart
+User = get_user_model()
 
 
 class CustomSelectWidget(Select):
@@ -103,3 +104,30 @@ class CartAddProductForm(forms.Form):
                 raise ValidationError(f'Товар закончился, доступно только - {self.obj.quantity}')
 
         cleaned_data['quantity'] = quantity_select
+
+
+class OrderUserForm(forms.Form):
+    city = forms.CharField()
+    address = forms.CharField()
+    phone = forms.CharField(max_length=12)
+    order_notes = forms.CharField(widget=forms.Textarea())
+
+
+class OrderUnregisteredUserForm(forms.Form):
+    first_name = forms.CharField()
+    last_name = forms.CharField()
+    password = forms.CharField(widget=forms.PasswordInput())
+    confirm_password = forms.CharField(widget=forms.PasswordInput())
+    email = forms.EmailField()
+    phone = forms.CharField(max_length=12)
+    city = forms.CharField()
+    address = forms.CharField()
+    order_notes = forms.CharField(widget=forms.Textarea())
+
+    def clean(self):
+        cd = super(OrderUnregisteredUserForm, self).clean()
+        if cd['password'] != cd['confirm_password'] and self.password and self.confirm_password:
+            raise ValidationError('Пароли не совпадают')
+        print(User.objects.get(email=cd['email']))
+        if User.objects.get(email=cd['email']):
+            raise ValidationError('Аккаунт с таким email уже существует')

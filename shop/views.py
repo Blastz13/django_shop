@@ -1,14 +1,11 @@
-from django.http import HttpResponse, Http404, HttpResponseRedirect
-from django.shortcuts import render, get_object_or_404, reverse, redirect
+from django.http import HttpResponse
+from django.shortcuts import render, get_object_or_404, redirect
 from django.views.decorators.http import require_POST
 from django.views.generic import View
 
 from .cart import Cart
-
+from .forms import CartAddProductForm, OrderUnregisteredUserForm, OrderUserForm
 from .mixins import ObjectSortPaginate
-
-from .forms import CartAddProductForm
-
 from .models import Product, Category
 
 
@@ -80,8 +77,13 @@ class CartProduct(View):
 
 class Checkout(View):
     def get(self, request):
+        if request.user.is_authenticated:
+            form = OrderUserForm()
+        else:
+            form = OrderUnregisteredUserForm()
         cart = Cart(request)
-        return render(request, 'shop/checkout.html', context={'cart': cart})
+        return render(request, 'shop/checkout.html', context={'cart': cart,
+                                                              'form': form})
 
 
 @require_POST
