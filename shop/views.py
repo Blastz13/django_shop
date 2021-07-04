@@ -1,3 +1,4 @@
+from django.db.models import Min, Max
 from django.http import HttpResponse
 from django.shortcuts import render, get_object_or_404, redirect
 from django.views.decorators.http import require_POST
@@ -14,7 +15,9 @@ class ProductList(ObjectSortPaginate, View):
         all_products = Product.objects.filter(is_publish=True)
         context = self.get_pagination(all_products, 12)
         context['all_category'] = Category.objects.all()
-        print(context['all_category'])
+        context['price_range'] = all_products.aggregate(Min('price'), Max('price'))
+        context['price_range']['price__min'] = str(context['price_range']['price__min'])
+        context['price_range']['price__max'] = str(context['price_range']['price__max'])
         return render(request, 'shop/shop.html', context=context)
 
 
