@@ -12,8 +12,19 @@ from .models import Product, Category
 
 class ProductList(ObjectSortPaginate, View):
     def get(self, request):
-        all_products = Product.objects.filter(is_publish=True, price__gte=1, price__lte=55)
-        context = self.get_pagination(all_products, 1)
+        try:
+            price_range_min_filter = float(request.GET['min-value'])
+        except:
+            price_range_min_filter = 0
+        try:
+            price_range_max_filter = float(request.GET['max-value'])
+        except:
+            price_range_max_filter = 10*100
+
+        all_products = Product.objects.filter(is_publish=True,
+                                              price__gte=price_range_min_filter,
+                                              price__lte=price_range_max_filter)
+        context = self.get_pagination(all_products, 12)
         context['all_category'] = Category.objects.all()
         context['price_range'] = all_products.aggregate(Min('price'), Max('price'))
         context['price_range']['price__min'] = str(context['price_range']['price__min'])
@@ -24,6 +35,14 @@ class ProductList(ObjectSortPaginate, View):
 
 class CategoryProduct(ObjectSortPaginate, View):
     def get(self, request, slug):
+        try:
+            price_range_min_filter = float(request.GET['min-value'])
+        except:
+            price_range_min_filter = 0
+        try:
+            price_range_max_filter = float(request.GET['max-value'])
+        except:
+            price_range_max_filter = 10*100
         user_slug = slug
         category_slug = slug.split('/')
         parent = None
@@ -49,8 +68,15 @@ class CategoryProduct(ObjectSortPaginate, View):
                                                                          'form': form})
 
         else:
-            products_by_category = Product.objects.filter(category__in=category.get_descendants(include_self=True), is_publish=True)
+            products_by_category = Product.objects.filter(category__in=category.get_descendants(include_self=True),
+                                                          is_publish=True,
+                                                          price__gte=price_range_min_filter,
+                                                          price__lte=price_range_max_filter)
             context = self.get_pagination(products_by_category)
+            context['all_category'] = Category.objects.all()
+            context['price_range'] = products_by_category.aggregate(Min('price'), Max('price'))
+            context['price_range']['price__min'] = str(context['price_range']['price__min'])
+            context['price_range']['price__max'] = str(context['price_range']['price__max'])
             context['obj_selected_category'] = category
             return render(request, 'shop/shop.html', context=context)
 
