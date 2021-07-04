@@ -13,12 +13,13 @@ from .models import Product, Category
 class ProductList(ObjectSortPaginate, View):
     def get(self, request):
         all_products = Product.objects.filter(is_publish=True)
-        context = self.get_pagination(all_products, 12)
+        context = self.get_pagination(all_products, 1)
         context['all_category'] = Category.objects.all()
         context['price_range'] = all_products.aggregate(Min('price'), Max('price'))
         context['price_range']['price__min'] = str(context['price_range']['price__min'])
         context['price_range']['price__max'] = str(context['price_range']['price__max'])
         return render(request, 'shop/shop.html', context=context)
+
 
 
 class CategoryProduct(ObjectSortPaginate, View):
@@ -51,7 +52,6 @@ class CategoryProduct(ObjectSortPaginate, View):
             products_by_category = Product.objects.filter(category__in=category.get_descendants(include_self=True), is_publish=True)
             context = self.get_pagination(products_by_category)
             context['obj_selected_category'] = category
-            context['all_category'] = Category.objects.all()
             return render(request, 'shop/shop.html', context=context)
 
     def post(self, request, slug):
