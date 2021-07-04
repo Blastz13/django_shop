@@ -35,8 +35,11 @@ def sign_up(request):
     form_login = LoginForm()
 
     if form_registration.is_valid():
-        user = form_registration.save()
+        email = form_registration.cleaned_data.get('email')
+        password = form_registration.cleaned_data.get('password')
+        user = authenticate(email=email, password=password)
         login(request, user)
+        form_registration.save()
         return redirect('HomePage')
     else:
         return render(request, 'users/my-account.html', {'form_registration': form_registration,
