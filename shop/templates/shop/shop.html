@@ -1,5 +1,6 @@
 {% extends 'shop/extends/base.html' %}
 {% load static %}
+{% load mptt_tags %}
 {% load filters_shop %}
 {% block extra-scripts %}
 		<!-- jquery-ui CSS
@@ -48,11 +49,14 @@
 					<aside class="widget widget-categories">
 						<h3 class="sidebar-title">Categories</h3>
 						<ul class="sidebar-menu">
-							<li><a href="#">Clothes</a> <span class="count">(14)</span></li>
-							<li><a href="#">Men</a> <span class="count">(9)</span></li>
-							<li><a href="#">Shoes</a> <span class="count">(2)</span></li>
-							<li><a href="#">Sunglasses</a> <span class="count">(2)</span></li>
-							<li><a href="#">Women</a> <span class="count">(8)</span></li>
+                            {% recursetree all_category %}
+                                <li><a href="{{ node.get_absolute_url }}">{{ node.title }}</a> <span class="count"></span></li>
+                                {% if not node.is_leaf_node %}
+                                    <ul class="children">
+                                        {{ children }}
+                                    </ul>
+                                {% endif %}
+                            {% endrecursetree %}
 						</ul>
 					</aside>
 					<!-- widget-categories end -->
