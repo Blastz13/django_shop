@@ -13,6 +13,8 @@ class ProductList(ObjectSortPaginate, View):
     def get(self, request):
         all_products = Product.objects.filter(is_publish=True)
         context = self.get_pagination(all_products, 12)
+        context['all_category'] = Category.objects.all()
+        print(context['all_category'])
         return render(request, 'shop/shop.html', context=context)
 
 
@@ -46,6 +48,7 @@ class CategoryProduct(ObjectSortPaginate, View):
             products_by_category = Product.objects.filter(category__in=category.get_descendants(include_self=True), is_publish=True)
             context = self.get_pagination(products_by_category)
             context['obj_selected_category'] = category
+            context['all_category'] = Category.objects.all()
             return render(request, 'shop/shop.html', context=context)
 
     def post(self, request, slug):

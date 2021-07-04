@@ -1,6 +1,7 @@
 {% extends 'shop/extends/base.html' %}
 {% load static %}
 {% load filters_shop %}
+{% load mptt_tags %}
 {% block extra-scripts %}
 		<!-- jquery-ui CSS
 		============================================ -->
@@ -15,15 +16,15 @@
 					<div class="shop-header-title">
 						<h1>Shop All Products</h1>
 						<div class="shop-menu">
-							<ul>
-								<li><a href="#">All</a></li>
-								<li><a href="#">Clothes</a></li>
-								<li><a href="#">Dress</a></li>
-								<li><a href="#">Handbag</a></li>
-								<li><a href="#">Hats</a></li>
-								<li><a href="#">Men</a></li>
-								<li><a href="#">Women</a></li>
-							</ul>							
+{#							<ul>#}
+{#								<li><a href="#">All</a></li>#}
+{#								<li><a href="#">Clothes</a></li>#}
+{#								<li><a href="#">Dress</a></li>#}
+{#								<li><a href="#">Handbag</a></li>#}
+{#								<li><a href="#">Hats</a></li>#}
+{#								<li><a href="#">Men</a></li>#}
+{#								<li><a href="#">Women</a></li>#}
+{#							</ul>							#}
 						</div>
 					</div>
 				</div>
@@ -48,26 +49,42 @@
 					<aside class="widget widget-categories">
 						<h3 class="sidebar-title">Categories</h3>
 						<ul class="sidebar-menu">
-							<li><a href="#">Clothes</a> <span class="count">(14)</span></li>
-							<li><a href="#">Men</a> <span class="count">(9)</span></li>
-							<li><a href="#">Shoes</a> <span class="count">(2)</span></li>
-							<li><a href="#">Sunglasses</a> <span class="count">(2)</span></li>
-							<li><a href="#">Women</a> <span class="count">(8)</span></li>
+                            {% recursetree all_category %}
+                                <li><a href="{{ node.get_absolute_url }}">{{ node.title }}</a> <span class="count"></span></li>
+                                {% if not node.is_leaf_node %}
+                                    <ul class="children">
+                                        {{ children }}
+                                    </ul>
+                                {% endif %}
+                            {% endrecursetree %}
 						</ul>
 					</aside>
 					<!-- widget-categories end -->
 					<!-- shop-filter start -->
+
 					<aside class="widget shop-filter">
-						<h3 class="sidebar-title">price</h3>
-						<div class="info_widget">
-							<div class="price_filter">
-								<div id="slider-range"></div>
-								<div class="price_slider_amount">
-									<input type="text" id="amount" name="price"  placeholder="Add Your Price" />
-									<input type="submit"  value="Filter"/>  
-								</div>
-							</div>
-						</div>							
+						  <div class="row">
+                            <div class="col-sm-12">
+                              <div id="slider-range"></div>
+                            </div>
+                          </div>
+                          <div class="row slider-labels">
+                            <div class="col-xs-6 caption">
+                              <strong>Min:</strong> <span id="slider-range-value1"></span>
+                            </div>
+                            <div class="col-xs-6 text-right caption">
+                              <strong>Max:</strong> <span id="slider-range-value2"></span>
+                            </div>
+                          </div>
+                          <div class="row">
+                            <div class="col-sm-12">
+                              <form method='GET' class="price_slider_amount">
+                                <input type="hidden" id="min-value" name="min-value" value="">
+                                <input type="hidden" id="max-value" name="max-value" value="">
+                               <input type="submit" value="Filter">
+                              </form>
+                            </div>
+                          </div>
 					</aside>
 					<!-- shop-filter end -->
 					<!-- filter-by start -->

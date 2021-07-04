@@ -128,6 +128,5 @@ class OrderUnregisteredUserForm(forms.Form):
         cd = super(OrderUnregisteredUserForm, self).clean()
         if cd['password'] != cd['confirm_password'] and self.password and self.confirm_password:
             raise ValidationError('Пароли не совпадают')
-        print(User.objects.get(email=cd['email']))
         if User.objects.get(email=cd['email']):
             raise ValidationError('Аккаунт с таким email уже существует')
