@@ -12,7 +12,7 @@ from .models import Product, Category
 
 class ProductList(ObjectSortPaginate, View):
     def get(self, request):
-        all_products = Product.objects.filter(is_publish=True)
+        all_products = Product.objects.filter(is_publish=True, price__gte=1, price__lte=55)
         context = self.get_pagination(all_products, 1)
         context['all_category'] = Category.objects.all()
         context['price_range'] = all_products.aggregate(Min('price'), Max('price'))
