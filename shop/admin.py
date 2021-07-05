@@ -26,7 +26,7 @@ class ProductImageItemInline(admin.StackedInline):
 
 @admin.register(Product)
 class AdminProduct(admin.ModelAdmin):
-    list_display = ['title', 'category', 'price', 'discount_price', 'slug']
+    list_display = ['title', 'category', 'price', 'discount_price', 'get_image', 'quantity', 'is_available', 'is_publish', 'slug']
     list_display_links = ['title', 'category', 'price', 'discount_price', 'slug']
     search_fields = ('title', 'description', 'price', 'discount_price')
     inlines = [ProductImageItemInline]
@@ -34,6 +34,11 @@ class AdminProduct(admin.ModelAdmin):
         JSONField: {'widget': JSONEditorWidget},
     }
 
+    def get_image(self, obj):
+        if obj.preview_image:
+            return mark_safe(f'<img src={obj.preview_image.url} width="80" height="100"')
+
+    get_image.short_description = "Изображение"
 
 @admin.register(Category)
 class AdminCategory(MPTTModelAdmin):
