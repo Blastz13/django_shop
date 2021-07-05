@@ -40,10 +40,9 @@ class AdminProduct(admin.ModelAdmin):
 
     get_image.short_description = "Изображение"
 
+
 @admin.register(Category)
 class AdminCategory(MPTTModelAdmin):
     list_display = ['title', 'slug', 'parent']
     list_display_links = ['title', 'slug', 'parent']
     search_fields = ['title', 'slug']
-
-
