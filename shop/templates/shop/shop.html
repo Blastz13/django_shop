@@ -105,7 +105,7 @@
 							<a class="list" href="shop-list.html"><i class="fa fa-th-list"></i></a>
 						</div>
 						<div class="show-result">
-							<p> Showing 1–12 of 19 results</p>
+							<p> Showing {{ products_all.start_index }}–{{ products_all.end_index }} of {{ products_all.paginator.count }} results</p>
 						</div>
 						<div class="toolbar-form">
 							<form action="#">
