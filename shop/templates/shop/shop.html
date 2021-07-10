@@ -19,13 +19,12 @@
 						<h1>Shop All Products</h1>
 						<div class="shop-menu">
 							<ul>
-								<li><a href="#">All</a></li>
-								<li><a href="#">Clothes</a></li>
-								<li><a href="#">Dress</a></li>
-								<li><a href="#">Handbag</a></li>
-								<li><a href="#">Hats</a></li>
-								<li><a href="#">Men</a></li>
-								<li><a href="#">Women</a></li>
+								<li><a href="/shop/">All</a></li>
+                                {% recursetree all_category %}
+                                    {% if node.is_root_node %}
+                                        <li><a href="{{ node.get_absolute_url }}">{{ node.title }}</a></li>
+                                    {% endif %}
+                                {% endrecursetree %}
 							</ul>							
 						</div>
 					</div>
