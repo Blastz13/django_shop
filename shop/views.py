@@ -32,7 +32,6 @@ class ProductList(ObjectSortPaginate, View):
         return render(request, 'shop/shop.html', context=context)
 
 
-
 class CategoryProduct(ObjectSortPaginate, View):
     def get(self, request, slug):
         try:
