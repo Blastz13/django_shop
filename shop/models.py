@@ -24,6 +24,8 @@ class Product(models.Model):
     date_publicate = models.DateTimeField(auto_now_add=True, verbose_name='Дата добавления товара')
     order = models.PositiveIntegerField(default=0, verbose_name='Порядок показа товара')
     is_publish = models.BooleanField(default=False, verbose_name='Опубликовать')
+    count_views = models.PositiveBigIntegerField(default=0, verbose_name='Количество просмотров')
+    count_buys = models.PositiveBigIntegerField(default=0, verbose_name='Количество покупок')
 
     def get_product_image(self):
         return self.image.all()

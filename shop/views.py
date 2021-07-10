@@ -58,7 +58,9 @@ class CategoryProduct(ObjectSortPaginate, View):
 
         except:
             product = get_object_or_404(Product, slug=category_slug[-1], is_publish=True)
-    
+            product.count_views += 1
+            product.save()
+
             if product.get_product_url() != user_slug:
                 return HttpResponse('404 - 2')
             form = CartAddProductForm(request.POST or None, extra={'slug': category_slug[-1],
