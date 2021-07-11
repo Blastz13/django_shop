@@ -80,6 +80,22 @@ class ProductImage(models.Model):
         verbose_name_plural = 'Изображения товаров'
 
 
+class ProductComment(models.Model):
+    email = models.EmailField(verbose_name='Почта')
+    name = models.CharField(max_length=100, verbose_name="Имя")
+    text = models.TextField(max_length=5000, verbose_name="Сообщение")
+    date_publicate = models.DateTimeField(auto_now_add=True, verbose_name="Дата добавления")
+    product = models.ForeignKey(Product, related_name="comments", on_delete=models.CASCADE, verbose_name="Товар")
+
+    def __str__(self):
+        return f"{self.name} - {self.product}"
+
+    class Meta:
+        ordering = ["-date_publicate"]
+        verbose_name = "Комментарий"
+        verbose_name_plural = "Комментарии"
+
+
 class Category(MPTTModel):
     title = models.CharField(max_length=64, unique=True, verbose_name='Название категории')
     slug = models.SlugField(max_length=64, unique=True, verbose_name='Ссылка категории')

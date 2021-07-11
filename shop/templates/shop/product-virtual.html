@@ -144,35 +144,10 @@
 										</ul>
 										<div class="review-form-wrapper">
 											<h3>Add a review</h3>
-											<form action="#">
-												<input type="text" placeholder="your name"/>
-												<input type="email" placeholder="your email"/>
-{#												<div class="your-rating">#}
-{#													<h5>Your Rating</h5>#}
-{#													<span>#}
-{#														<a href="#"><i class="fa fa-star"></i></a>#}
-{#														<a href="#"><i class="fa fa-star"></i></a>#}
-{#													</span>#}
-{#													<span>#}
-{#														<a href="#"><i class="fa fa-star"></i></a>#}
-{#														<a href="#"><i class="fa fa-star"></i></a>#}
-{#														<a href="#"><i class="fa fa-star"></i></a>#}
-{#													</span>#}
-{#													<span>#}
-{#														<a href="#"><i class="fa fa-star"></i></a>#}
-{#														<a href="#"><i class="fa fa-star"></i></a>#}
-{#														<a href="#"><i class="fa fa-star"></i></a>#}
-{#														<a href="#"><i class="fa fa-star"></i></a>#}
-{#													</span>#}
-{#													<span>#}
-{#														<a href="#"><i class="fa fa-star"></i></a>#}
-{#														<a href="#"><i class="fa fa-star"></i></a>#}
-{#														<a href="#"><i class="fa fa-star"></i></a>#}
-{#														<a href="#"><i class="fa fa-star"></i></a>#}
-{#														<a href="#"><i class="fa fa-star"></i></a>#}
-{#													</span>#}
-{#												</div>#}
-												<textarea id="product-message" cols="30" rows="10" placeholder="Your Rating"></textarea>
+											<form action="{% url 'AddProductComment' product.slug %}" method="post">{% csrf_token %}
+												{{ form_product_comment.name }}
+												{{ form_product_comment.email }}
+												{{ form_product_comment.text }}
 												<input type="submit" value="submit" />
 											</form>
 										</div>

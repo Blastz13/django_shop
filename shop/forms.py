@@ -5,7 +5,7 @@ from django.contrib.auth import get_user_model
 from django.core.exceptions import ValidationError
 from django.forms.widgets import Select
 
-from shop.models import Product
+from shop.models import Product, ProductComment
 
 User = get_user_model()
 
@@ -128,6 +128,17 @@ class OrderUnregisteredUserForm(forms.Form):
         cd = super(OrderUnregisteredUserForm, self).clean()
         if cd['password'] != cd['confirm_password'] and self.password and self.confirm_password:
             raise ValidationError('Пароли не совпадают')
-        print(User.objects.get(email=cd['email']))
         if User.objects.get(email=cd['email']):
             raise ValidationError('Аккаунт с таким email уже существует')
+
+
+class ProductCommentForm(forms.ModelForm):
+    class Meta:
+        model = ProductComment
+        fields = ['email', 'name', 'text']
+
+        widgets = {
+            "email": forms.EmailInput(attrs={'placeholder': 'Your email'}),
+            "name": forms.TextInput(attrs={'placeholder': 'Your name'}),
+            "text": forms.Textarea(attrs={'placeholder': 'Your Rating',  'id': 'product-message'},)
+        }

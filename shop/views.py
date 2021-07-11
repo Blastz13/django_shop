@@ -5,9 +5,9 @@ from django.views.decorators.http import require_POST
 from django.views.generic import View
 
 from .cart import Cart
-from .forms import CartAddProductForm, OrderUnregisteredUserForm, OrderUserForm
+from .forms import CartAddProductForm, OrderUnregisteredUserForm, OrderUserForm, ProductCommentForm
 from .mixins import ObjectSortPaginate
-from .models import Product, Category
+from .models import Product, Category, ProductComment
 
 
 class ProductList(ObjectSortPaginate, View):
@@ -67,8 +67,10 @@ class CategoryProduct(ObjectSortPaginate, View):
                 return HttpResponse('404 - 2')
             form = CartAddProductForm(request.POST or None, extra={'slug': category_slug[-1],
                                                                    'cart': Cart(request)})
+            form_product_comment = ProductCommentForm()
             return render(request, 'shop/product-virtual.html', context={'product': product,
-                                                                         'form': form})
+                                                                         'form': form,
+                                                                         'form_product_comment': form_product_comment})
 
         else:
             sort_by = sort_by_key.setdefault(request.GET.get('sort_by', ''), 'order')
@@ -104,6 +106,17 @@ class CategoryProduct(ObjectSortPaginate, View):
         else:
             return render(request, 'shop/product-virtual.html', context={'product': product, 'form': form})
         return render(request, 'shop/product-virtual.html', context={'product': product, 'form': success_form})
+
+
+class AddProductComment(View):
+    def post(self, request, slug):
+        form = ProductCommentForm(request.POST)
+        product = Product.objects.get(slug=slug)
+        if form.is_valid():
+            form = form.save(commit=False)
+            form.product = product
+            form.save()
+        return redirect(product.get_absolute_url())
 
 
 class CartProduct(View):

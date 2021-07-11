@@ -3,6 +3,7 @@ from django.utils.safestring import mark_safe
 from mptt.admin import MPTTModelAdmin
 
 from .models import Product
+from .models import ProductComment
 from .models import Category
 from .models import ProductImage
 
@@ -24,12 +25,21 @@ class ProductImageItemInline(admin.StackedInline):
     get_image.short_description = "Изображение"
 
 
+class ProductCommentItemInline(admin.TabularInline):
+    model = ProductComment
+    list_display = ['email', 'name', 'date_publicate', 'product']
+    list_display_links = ['email', 'name', 'date_publicate', 'product']
+    search_fields = ['email', 'name']
+    readonly_fields = ['email', 'name']
+    extra = 1
+
+
 @admin.register(Product)
 class AdminProduct(admin.ModelAdmin):
     list_display = ['title', 'category', 'price', 'discount_price', 'get_image', 'quantity', 'is_available', 'is_publish', 'slug']
     list_display_links = ['title', 'category', 'price', 'discount_price', 'slug']
     search_fields = ('title', 'description', 'price', 'discount_price')
-    inlines = [ProductImageItemInline]
+    inlines = [ProductImageItemInline, ProductCommentItemInline]
     formfield_overrides = {
         JSONField: {'widget': JSONEditorWidget},
     }
