@@ -21,9 +21,11 @@ class ProductList(ObjectSortPaginate, View):
         except:
             price_range_max_filter = 10*100
 
+        sort_by = sort_by_key.setdefault(request.GET.get('sort_by', ''), 'order')
+
         all_products = Product.objects.filter(is_publish=True,
                                               price__gte=price_range_min_filter,
-                                              price__lte=price_range_max_filter)
+                                              price__lte=price_range_max_filter).order_by(sort_by)
         context = self.get_pagination(all_products, 12)
         context['all_category'] = Category.objects.all()
         context['price_range'] = Product.objects.filter(is_publish=True).aggregate(Min('price'), Max('price'))
@@ -69,10 +71,11 @@ class CategoryProduct(ObjectSortPaginate, View):
                                                                          'form': form})
 
         else:
+            sort_by = sort_by_key.setdefault(request.GET.get('sort_by', ''), 'order')
             products_by_category = Product.objects.filter(category__in=category.get_descendants(include_self=True),
                                                           is_publish=True,
                                                           price__gte=price_range_min_filter,
-                                                          price__lte=price_range_max_filter)
+                                                          price__lte=price_range_max_filter).order_by(sort_by)
             context = self.get_pagination(products_by_category)
             context['all_category'] = Category.objects.all()
             context['price_range'] = Product.objects.filter(category__in=category.get_descendants(include_self=True),
@@ -125,3 +128,12 @@ def cart_del(request, slug):
     cart = Cart(request)
     cart.remove(slug)
     return redirect('CartProduct')
+
+
+sort_by_key = {
+    'default': '-order',
+    'views': '-count_views',
+    'newness': '-date_publicate',
+    'price' : 'price',
+    '-price': '-price'
+}

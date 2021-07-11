@@ -110,14 +110,13 @@
 						<div class="toolbar-form">
 							<form action="#">
 								<div class="tolbar-select">
-									<select>
-									  <option value="volvo">Sort by popularity</option>
-									  <option value="saab">Default sorting</option>
-									  <option value="mercedes">Sort by average rating</option>
-									  <option value="audi">Sort by newness</option>
-									  <option value="audi">Sort by price: low to high</option>
-									  <option value="audi">Sort by price: high to low</option>
-									</select> 
+									<select id="selectBox" onchange="changeFunc()">
+									  <option value="views">Sort by popularity</option>
+									  <option value="default">Default sorting</option>
+									  <option value="newness">Sort by newness</option>
+									  <option value="price">Sort by price: low to high</option>
+									  <option value="-price">Sort by price: high to low</option>
+									</select>
 								</div>
 							</form>								
 						</div>
@@ -233,6 +232,34 @@
 			</div>
 		</div>
 	</div>
+    <script type="text/javascript">
+    var params = window
+                .location
+                .search
+                .replace('?','')
+                .split('&')
+                .reduce(
+                    function(p,e){
+                        var a = e.split('=');
+                        p[ decodeURIComponent(a[0])] = decodeURIComponent(a[1]);
+                        return p;
+                    },
+                    {}
+                );
+    options = document.getElementById("selectBox").options;
+    for (let i = 0; i < options.length; i += 1) {
+      if (options[i].value === params['sort_by']){
+          options[i].selected=true;
+      }
+    }
+   function changeFunc() {
+    var selectBox = document.getElementById("selectBox");
+    var selectedValue = selectBox.options[selectBox.selectedIndex].value;
+    const url = new URL(window.location);
+    url.searchParams.set('sort_by', selectedValue);
+    document.location.href = url
+   }
+    </script>
     <script>
 $(document).ready(function() {
   $('.noUi-handle').on('click', function() {
@@ -261,7 +288,6 @@ $(document).ready(function() {
   max_start = params['max-value']
   min_range = parseFloat({{ price_range.price__min }})
   max_range = parseFloat({{ price_range.price__max }})
-    console.log(123)
     if (min_start == undefined)
     {
         min_start = parseFloat({{ price_range.price__min }})
