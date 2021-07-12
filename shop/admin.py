@@ -36,7 +36,8 @@ class ProductCommentItemInline(admin.TabularInline):
 
 @admin.register(Product)
 class AdminProduct(admin.ModelAdmin):
-    list_display = ['title', 'category', 'price', 'discount_price', 'get_image', 'quantity', 'is_available', 'is_publish', 'slug']
+    list_display = ['title', 'category', 'price', 'discount_price', 'get_image', 'quantity', 'is_available',
+                    'is_publish', 'slug']
     list_display_links = ['title', 'category', 'price', 'discount_price', 'slug']
     search_fields = ('title', 'description', 'price', 'discount_price')
     inlines = [ProductImageItemInline, ProductCommentItemInline]

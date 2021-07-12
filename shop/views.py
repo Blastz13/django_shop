@@ -92,7 +92,7 @@ class CategoryProduct(ObjectSortPaginate, View):
 
         product = get_object_or_404(Product, slug=slug)
         form = CartAddProductForm(request.POST, extra={'slug': slug,
-                                                      'cart': Cart(request)})
+                                                       'cart': Cart(request)})
         success_form = CartAddProductForm(extra={'slug': slug,
                                                  'cart': Cart(request)})
         if form.is_valid():

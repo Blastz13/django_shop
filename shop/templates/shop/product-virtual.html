@@ -108,7 +108,7 @@
 						  <!-- Nav tabs -->
 						  <ul class="nav nav-tabs" role="tablist">
 							<li role="presentation" class="active"><a href="#tab-desc" aria-controls="tab-desc" role="tab" data-toggle="tab">Description</a></li>
-							<li role="presentation"><a href="#page-comments" aria-controls="page-comments" role="tab" data-toggle="tab">Reviews (1)</a></li>
+							<li role="presentation"><a href="#page-comments" aria-controls="page-comments" role="tab" data-toggle="tab">Reviews ({{ product.comments.all.count }})</a></li>
 						  </ul>
 						  <!-- Tab panes -->
 						  <div class="tab-content">
@@ -120,27 +120,23 @@
 							<div role="tabpanel" class="tab-pane" id="page-comments">
 								<div class="product-tab-desc">
 									<div class="product-page-comments">
-										<h2>1 review for Integer consequat ante lectus</h2>
+										<h2>{{ product.comments.all.count }} review for Integer consequat ante lectus</h2>
 										<ul>
-											<li>
-												<div class="product-comments">
-													<img src="../../../core/static/core/img/blog/avatar.png" alt="" />
-													<div class="product-comments-content">
-														<p><strong>admin</strong> -
-															<span>March 7, 2015:</span>
-{#															<span class="pro-comments-rating">#}
-{#																<i class="fa fa-star"></i>								#}
-{#																<i class="fa fa-star"></i>								#}
-{#																<i class="fa fa-star"></i>								#}
-{#																<i class="fa fa-star"></i>								#}
-{#															</span>#}
-														</p>
-														<div class="desc">
-															Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam fringilla augue nec est tristique auctor. Donec non est at libero vulputate rutrum.
-														</div>
-													</div>
-												</div>
-											</li>
+                                            {% for comment in product.comments.all %}
+                                                <li>
+                                                    <div class="product-comments">
+                                                        <img src="../../../core/static/core/img/blog/avatar.png" alt="" />
+                                                        <div class="product-comments-content">
+                                                            <p><strong>{{ comment.name }}</strong> -
+                                                                <span>{{ comment.date_publicate }}:</span>
+                                                            </p>
+                                                            <div class="desc">
+                                                                {{ comment.text }}
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </li>
+                                            {% endfor %}
 										</ul>
 										<div class="review-form-wrapper">
 											<h3>Add a review</h3>
