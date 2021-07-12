@@ -46,6 +46,7 @@ INSTALLED_APPS = [
     'ckeditor',
     'ckeditor_uploader',
     'django_json_widget',
+    'debug_toolbar',
 ]
 
 MIDDLEWARE = [
@@ -56,6 +57,7 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
+    'debug_toolbar.middleware.DebugToolbarMiddleware',
 ]
 
 ROOT_URLCONF = 'django_shop.urls'
@@ -152,3 +154,7 @@ EMAIL_USE_TLS = True
 CART_SESSION_ID = 'cart'
 
 AUTH_USER_MODEL = 'users.CustomUser'
+
+INTERNAL_IPS = [
+    '127.0.0.1',
+]

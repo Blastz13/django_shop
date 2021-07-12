@@ -7,7 +7,7 @@ from django.views.generic import View
 from .cart import Cart
 from .forms import CartAddProductForm, OrderUnregisteredUserForm, OrderUserForm, ProductCommentForm
 from .mixins import ObjectSortPaginate
-from .models import Product, Category, ProductComment
+from .models import Product, Category
 
 
 class ProductList(ObjectSortPaginate, View):
