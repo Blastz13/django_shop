@@ -41,3 +41,10 @@ def widget_top_rated_products(obj_selected_category=None):
     else:
         top_rated_products = Product.objects.filter(is_publish=True).order_by('-count_views')[:5]
     return {'top_rated_products': top_rated_products}
+
+
+@register.inclusion_tag('shop/inclusion_html/widget-up-sells-products.html')
+def widget_up_sells_products(obj_product):
+    up_sells_products = Product.objects.filter(category=obj_product.category).order_by('-count_buys')\
+                                                                             .exclude(id=obj_product.id)[:4]
+    return {'up_sells_products': up_sells_products}
