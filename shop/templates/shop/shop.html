@@ -47,19 +47,32 @@
 				<!-- shop-left-sidebar start -->
 				<div class="col-lg-3 col-md-3 col-sm-12 col-xs-12">
 					<!-- widget-categories start -->
-					<aside class="widget widget-categories">
+					<aside class="widget widget-categories" id="cssmenu">
 						<h3 class="sidebar-title">Categories</h3>
-						<ul class="sidebar-menu">
-                            {% recursetree all_category %}
-                                <li><a href="{{ node.get_absolute_url }}">{{ node.title }}</a> <span class="count"></span></li>
-                                {% if not node.is_leaf_node %}
-                                    <ul class="children">
-                                        {{ children }}
-                                    </ul>
-                                {% endif %}
-                            {% endrecursetree %}
-						</ul>
-					</aside>
+                        <ul class="sidebar-menu" id="css-menu">
+                          {% for node in all_category %}
+                              {% if node.is_root_node %}
+                                  {% include "shop/include_html/accordion-menu.html" %}
+                              {% endif %}
+                          {% endfor %}
+                        </ul>
+
+                    {#            <ul class="sidebar-menu" id="css-menu">#}
+                    {#               <li class='active'><a href='index.html'><span>Товар</span></a></li>#}
+                    {#               <li class='has-sub'><strong style="display: flex; justify-content: space-between;"><a href=''><span>Телефон</span></a> <span style="color: black;">+++</span> </strong>#}
+                    {#                  <ul>#}
+                    {#                     <li class='has-sub'><strong style="display: flex; justify-content: space-between;"><a href=''><span>Смартфон</span></a> <span style="color: black;">+++</span> </strong>#}
+                    {#                        <ul>#}
+                    {#                           <li><a href='#'><span>Apple</span></a></li>#}
+                    {#                           <li><a href='#'><span>Xiaomi</span></a></li>#}
+                    {#                        </ul>#}
+                    {#                     </li>#}
+                    {#                  </ul>#}
+                    {#               </li>#}
+                    {#               <li><a href='#'><span>Ютуа</span></a></li>#}
+                    {#               <li><a href='#'><span>Фен</span></a></li>#}
+                    {#            </ul>#}
+                    </aside>
 					<!-- widget-categories end -->
 					<!-- shop-filter start -->
 					<aside class="widget shop-filter">
@@ -232,6 +245,34 @@
 			</div>
 		</div>
 	</div>
+    <script type="text/javascript">
+        $(document).ready(function () {
+			$('#css-menu li.has-sub span ').on('click', function(){
+				$(this).removeAttr('href');
+				var element = $(this).parent('li');
+				if (element.hasClass('open')) {
+					element.removeClass('open');
+					element.find('li').removeClass('open');
+					element.find('ul').slideUp();
+				}
+				else {
+					element.addClass('open');
+					element.children('ul').slideDown();
+					element.siblings('li').children('ul').slideUp();
+					element.siblings('li').removeClass('open');
+					element.siblings('li').find('li').removeClass('open');
+					element.siblings('li').find('ul').slideUp();
+				}
+			});
+
+			$('#cssmenu>ul>li.has-sub>a').append('<span class="holder"></span>');
+        });
+    </script>
+    <style>
+        #cssmenu ul ul {
+        display: none;
+        }
+    </style>
     <script type="text/javascript">
     var params = window
                 .location

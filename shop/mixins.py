@@ -3,9 +3,9 @@ from django.db.models import Q
 
 
 class ObjectSortPaginate:
-    def get_pagination(self, products_all, count=12, obj_selected_category=None):
+    def get_pagination(self, all_products, count=12, obj_selected_category=None):
 
-        paginator = Paginator(products_all.filter(is_publish=True), count)
+        paginator = Paginator(all_products, count)
         number_page = self.request.GET.get('page', 1)
         products_page = paginator.get_page(number_page)
         is_has_other_page = products_page.has_other_pages()
