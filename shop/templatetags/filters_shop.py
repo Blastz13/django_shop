@@ -53,5 +53,5 @@ def widget_up_sells_products(obj_product):
 @register.inclusion_tag('shop/inclusion_html/widget-recent-products.html')
 def widget_recent_products(obj_product):
     recent_products = Product.objects.filter(category=obj_product.category).order_by('-date_publicate')\
-                                                                             .exclude(id=obj_product.id)
+                                                                             .exclude(id=obj_product.id)[4:]
     return {'recent_products': recent_products}
