@@ -8,6 +8,33 @@ from .cart import Cart
 from .forms import CartAddProductForm, OrderUnregisteredUserForm, OrderUserForm, ProductCommentForm
 from .mixins import ObjectSortPaginate
 from .models import Product, Category
+from django.db.models import Q
+
+
+class ProductSearch(ObjectSortPaginate, View):
+    def get(self, request):
+        query_search = self.request.GET.get('search', '')
+
+        try:
+            price_range_min_filter = float(request.GET['min-value'])
+        except:
+            price_range_min_filter = 0
+        try:
+            price_range_max_filter = float(request.GET['max-value'])
+        except:
+            price_range_max_filter = 10*100
+
+        sort_by = sort_by_key.setdefault(request.GET.get('sort_by', ''), 'order')
+
+        all_products = Product.objects.filter(is_publish=True,
+                                              price__gte=price_range_min_filter,
+                                              price__lte=price_range_max_filter).filter(Q(title__icontains=query_search)|Q(description__icontains=query_search)).order_by(sort_by)
+        context = self.get_pagination(all_products, 5)
+        context['all_category'] = Category.objects.all()
+        context['price_range'] = Product.objects.filter(is_publish=True).aggregate(Min('price'), Max('price'))
+        context['price_range']['price__min'] = str(context['price_range']['price__min'])
+        context['price_range']['price__max'] = str(context['price_range']['price__max'])
+        return render(request, 'shop/shop-list.html', context=context)
 
 
 class CategoryProductVertical(ObjectSortPaginate, View):

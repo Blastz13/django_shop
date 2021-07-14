@@ -144,8 +144,8 @@
 						{% widget_cart request %}
 						<!-- header-search start -->
 						<div class="header-search">
-							<form action="#">
-								<input type="text" placeholder="Search product..." />
+							<form action="{% url 'ProductSearch' %}" method="get">
+								<input type="text" placeholder="Search product..." name="search"/>
 								<button type="submit"><i class="fa fa-search"></i></button>
 							</form>
 						</div>
