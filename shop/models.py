@@ -16,7 +16,8 @@ class Product(models.Model):
                                       verbose_name='Изображения для предпросмотра')
     slug = models.SlugField(unique=True, verbose_name='Ссылка на товар')
     price = models.DecimalField(max_digits=10, decimal_places=2, verbose_name='Цена товара')
-    discount_price = models.DecimalField(max_digits=10, decimal_places=2, blank=True, null=True, verbose_name='Цена по скидке')
+    discount_price = models.DecimalField(max_digits=10, decimal_places=2, blank=True, null=True,
+                                         verbose_name='Цена по скидке')
     category = models.ForeignKey('Category', on_delete=models.CASCADE, related_name='product', verbose_name='Категория')
     quantity = models.PositiveIntegerField(default=0, verbose_name='Количество товара')
     is_available = models.BooleanField(verbose_name='Товар в наличии')
@@ -108,6 +109,12 @@ class Category(MPTTModel):
     def get_absolute_url(self):
         path = self.get_category_url()
         return reverse('CategoryProduct', kwargs={
+            'slug': path
+        })
+
+    def get_absolute_url_vertical(self):
+        path = self.get_category_url()
+        return reverse('CategoryProductVertical', kwargs={
             'slug': path
         })
 

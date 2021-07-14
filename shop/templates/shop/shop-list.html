@@ -3,14 +3,12 @@
 {% load mptt_tags %}
 {% load filters_shop %}
 {% block extra-scripts %}
-		<!-- jquery-ui CSS
-		============================================ -->
         <link rel="stylesheet" href="{% static 'core/css/jquery-ui.css' %}">
         <link rel="stylesheet" href="{% static 'shop/css/shop-filter.css' %}">
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 {% endblock %}
+	<!-- shop-header-area start -->
 {% block content %}
-	<!-- shop-header-area start -->	
 	<div class="shop-header-area">
 		<div class="container">
 			<div class="row">
@@ -19,7 +17,7 @@
 						<h1>Shop All Products</h1>
 						<div class="shop-menu">
 							<ul>
-								<li><a href="/shop/">All</a></li>
+								<li><a href="/shop/list/">All</a></li>
                                 {% recursetree all_category %}
                                     {% if node.is_root_node %}
                                         <li><a href="{{ node.get_absolute_url }}">{{ node.title }}</a></li>
@@ -40,6 +38,7 @@
         {% breadcrumb_area_shop %}
     {% endif %}
 	<!-- breadcrumb-area end -->
+	
 	<!-- blog-area start -->
 	<div class="shop-area">
 		<div class="container">
@@ -49,30 +48,16 @@
 					<!-- widget-categories start -->
 					<aside class="widget widget-categories" id="cssmenu">
 						<h3 class="sidebar-title">Categories</h3>
-                        <ul class="sidebar-menu" id="css-menu">
+						<ul class="sidebar-menu" id="css-menu">
                           {% for node in all_category %}
                               {% if node.is_root_node %}
                                   {% include "shop/include_html/accordion-menu.html" %}
                               {% endif %}
                           {% endfor %}
-                        </ul>
+						</ul>
+					</aside>
 
-                    {#            <ul class="sidebar-menu" id="css-menu">#}
-                    {#               <li class='active'><a href='index.html'><span>Товар</span></a></li>#}
-                    {#               <li class='has-sub'><strong style="display: flex; justify-content: space-between;"><a href=''><span>Телефон</span></a> <span style="color: black;">+++</span> </strong>#}
-                    {#                  <ul>#}
-                    {#                     <li class='has-sub'><strong style="display: flex; justify-content: space-between;"><a href=''><span>Смартфон</span></a> <span style="color: black;">+++</span> </strong>#}
-                    {#                        <ul>#}
-                    {#                           <li><a href='#'><span>Apple</span></a></li>#}
-                    {#                           <li><a href='#'><span>Xiaomi</span></a></li>#}
-                    {#                        </ul>#}
-                    {#                     </li>#}
-                    {#                  </ul>#}
-                    {#               </li>#}
-                    {#               <li><a href='#'><span>Ютуа</span></a></li>#}
-                    {#               <li><a href='#'><span>Фен</span></a></li>#}
-                    {#            </ul>#}
-                    </aside>
+
 					<!-- widget-categories end -->
 					<!-- shop-filter start -->
 					<aside class="widget shop-filter">
@@ -101,12 +86,11 @@
 					</aside>
 					<!-- shop-filter end -->
 					<!-- filter-by start -->
-
 					<!-- filter-by end -->
 					<!-- widget-tags start -->
 					<!-- widget-tags end -->					
 					<!-- widget-recent start -->
-                    {% widget_top_rated_products obj_selected_category%}
+					{% widget_top_rated_products obj_selected_category%}
 					<!-- widget-recent end -->
 				</div>
 				<!-- blog-left-sidebar end -->
@@ -114,8 +98,8 @@
 					<!-- toolbar start -->
 					<div class="toolbar">
 						<div class="view-mode">
-							<a class="active" href="/shop/"><i class="fa fa-th-large"></i></a>
-							<a class="list" href="/shop/list/"><i class="fa fa-th-list"></i></a>
+							<a class="" href="/shop/"><i class="fa fa-th-large"></i></a>
+							<a class="active" href="/shop/list"><i class="fa fa-th-list"></i></a>
 						</div>
 						<div class="show-result">
 							<p> Showing {{ products_all.start_index }}–{{ products_all.end_index }} of {{ products_all.paginator.count }} results</p>
@@ -138,66 +122,63 @@
 					<!-- toolbar end -->
 					<div class="clear"></div>
 					<div class="row">
-						<div class="grid-view">
+						<div class="list-view">
                             {% for product in products_all %}
-							<!-- single-product start -->
-                                <div class="col-lg-4 col-md-4 col-sm-4">
+                                <!-- single-product start -->
+                                <div class="product-list-wrapper">
                                     <div class="single-product">
-                                        {% if product.discount_price %}
-                                            <span class="sale-text">Sale</span>
-                                        {% endif %}
-{#                                        style="height: 340px; width: 270px; background: url({{ product.preview_image.url }}) no-repeat center / cover;"#}
-                                        <div class="product-img">
-{#                                          <img class="secondary-image" src="{{ product.preview_image.url }}" alt=""/>#}
-                                            <a href="{{ product.get_absolute_url }}">
-                                                <img class="primary-image" src="{% thumbnail product.preview_image 270x340 crop='smart' %}" alt="" />
-{#                                              <img class="secondary-image" src="{{ product.preview_image.url }}" alt="" style="width: 270px; height: 360px;"/>#}
-                                            </a>
-                                            <div class="actions">
-                                                <div class="action-buttons">
-                                                    <div class="add-to-cart">
-                                                        <a href="#">Add to cart</a>
-                                                    </div>
-                                                    <div class="add-to-links">
-                                                        <div class="add-to-wishlist">
-                                                            <a href="#" data-toggle="tooltip" title="Add to Wishlist"><i class="fa fa-star"></i>
-                                                            </a>
+                                        <div class="col-md-4 col-sm-4 col-xs-12">
+                                            <div class="product-img">
+                                                <a href="{{ product.get_absolute_url }}">
+                                                    <img class="primary-image" src="{{ product.preview_image.url }}" alt="" />
+                                                </a>
+                                                {% if product.discount_price %}
+                                                    <span class="sale-text">Sale</span>
+                                                {% endif %}
+                                            </div>
+                                        </div>
+                                        <div class="col-md-8 col-sm-8 col-xs-12">
+                                            <div class="product-content">
+                                                <h2 class="product-name"><a href="{{ product.get_absolute_url }}">{{ product.title }}</a></h2>
+                                                <div class="price-box">
+                                                    {% if product.discount_price %}
+                                                        <span class="new-price">£{{ product.discount_price }}</span>
+                                                        <span class="old-price">£{{ product.price }}</span>
+                                                    {% else %}
+                                                        <span class="new-price">£{{ product.price }}</span>
+                                                    {% endif %}
+                                                </div>
+                                                <div class="product-desc">
+                                                    <p>{{ product.description }}</p>
+                                                </div>
+                                                <div class="actions">
+                                                    <div class="action-buttons">
+                                                        <div class="add-to-cart">
+                                                            <a href="#">Add to cart</a>
                                                         </div>
-                                                        <div class="compare-button">
-                                                            <a href="#" data-toggle="tooltip" title="Compare"><i class="fa fa-exchange"></i></a>
+                                                        <div class="add-to-links">
+                                                            <div class="add-to-wishlist">
+                                                                <a href="#" data-toggle="tooltip" title="Add to Wishlist"><i class="fa fa-star"></i>
+                                                                </a>
+                                                            </div>
+                                                            <div class="compare-button">
+                                                                <a href="#" data-toggle="tooltip" title="Compare"><i class="fa fa-exchange"></i></a>
+                                                            </div>
                                                         </div>
-                                                    </div>
-                                                    <div class="quickviewbtn">
-                                                        <a href="#" data-toggle="tooltip" title="Quick View"><i class="fa fa-search-plus"></i></a>
+                                                        <div class="quickviewbtn">
+                                                            <a href="#" data-toggle="tooltip" title="Quick View"><i class="fa fa-search-plus"></i></a>
+                                                        </div>
                                                     </div>
                                                 </div>
                                             </div>
                                         </div>
-                                        <div class="product-content">
-                                            <h2 class="product-name"><a href="{{ product.get_absolute_url }}">{{ product.title }}</a></h2>
-{#                                            <div class="pro-rating">#}
-{#                                                <a href="#"><i class="fa fa-star"></i></a>#}
-{#                                                <a href="#"><i class="fa fa-star"></i></a>#}
-{#                                                <a href="#"><i class="fa fa-star"></i></a>#}
-{#                                                <a href="#"><i class="fa fa-star"></i></a>#}
-{#                                                <a href="#"><i class="fa fa-star"></i></a>#}
-{#                                            </div>#}
-                                            <div class="price-box">
-                                                {% if product.discount_price %}
-                                                    <span class="new-price">£{{ product.discount_price }}</span>
-                                                    <span class="old-price">£{{ product.price }}</span>
-                                                {% else %}
-                                                    <span class="new-price">£{{ product.price }}</span>
-                                                {% endif %}
-                                            </div>
-                                        </div>
                                     </div>
                                 </div>
-							<!-- single-product end -->
+                                <!-- single-product end -->
                             {% endfor %}
 						</div>
 					</div>
-                 {% if is_has_other_page %}
+					{% if is_has_other_page %}
                         <!-- pagination start -->
                         <div class="pagination">
                             <ul>
@@ -240,11 +221,12 @@
 			<!-- section-heading end -->		
 			<div class="row">
 				<div class="brand-curosel">
-				    {% our_brands %}
+					{% our_brands %}
 				</div>
 			</div>
 		</div>
 	</div>
+	<!-- brand-area end -->
     <script type="text/javascript">
         $(document).ready(function () {
 			$('#css-menu li.has-sub span ').on('click', function(){
@@ -2304,5 +2286,4 @@ $(document).ready(function() {
   window.wNumb = wNumb;
 }());
 </script>
-	<!-- brand-area end -->
 {% endblock %}

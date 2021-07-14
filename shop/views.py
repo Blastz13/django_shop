@@ -10,6 +10,84 @@ from .mixins import ObjectSortPaginate
 from .models import Product, Category
 
 
+class CategoryProductVertical(ObjectSortPaginate, View):
+    def get(self, request, slug):
+        try:
+            price_range_min_filter = float(request.GET['min-value'])
+        except:
+            price_range_min_filter = 0
+        try:
+            price_range_max_filter = float(request.GET['max-value'])
+        except:
+            price_range_max_filter = 10*100
+        user_slug = slug
+        category_slug = slug.split('/')
+        parent = None
+        root = Category.objects.all()
+
+        try:
+            for slug in category_slug[:-1]:
+                parent = root.get(parent=parent, slug=slug)
+        except:
+            return HttpResponse('404 - 1')
+
+        try:
+            category = get_object_or_404(Category, parent=parent, slug=category_slug[-1])
+
+        except:
+            product = get_object_or_404(Product, slug=category_slug[-1], is_publish=True)
+            product.count_views += 1
+            product.save()
+
+            if product.get_product_url() != user_slug:
+                return HttpResponse('404 - 2')
+            form = CartAddProductForm(request.POST or None, extra={'slug': category_slug[-1],
+                                                                   'cart': Cart(request)})
+            form_product_comment = ProductCommentForm()
+            return render(request, 'shop/product-virtual.html', context={'product': product,
+                                                                         'form': form,
+                                                                         'form_product_comment': form_product_comment})
+
+        else:
+            sort_by = sort_by_key.setdefault(request.GET.get('sort_by', ''), 'order')
+            products_by_category = Product.objects.filter(category__in=category.get_descendants(include_self=True),
+                                                          is_publish=True,
+                                                          price__gte=price_range_min_filter,
+                                                          price__lte=price_range_max_filter).order_by(sort_by)
+            context = self.get_pagination(products_by_category)
+            context['all_category'] = Category.objects.all()
+            context['price_range'] = Product.objects.filter(category__in=category.get_descendants(include_self=True),
+                                                            is_publish=True).aggregate(Min('price'), Max('price'))
+            context['price_range']['price__min'] = str(context['price_range']['price__min'])
+            context['price_range']['price__max'] = str(context['price_range']['price__max'])
+            context['obj_selected_category'] = category
+            return render(request, 'shop/shop-list.html', context=context)
+
+
+class ProductListVertical(ObjectSortPaginate, View):
+    def get(self, request):
+        try:
+            price_range_min_filter = float(request.GET['min-value'])
+        except:
+            price_range_min_filter = 0
+        try:
+            price_range_max_filter = float(request.GET['max-value'])
+        except:
+            price_range_max_filter = 10*100
+
+        sort_by = sort_by_key.setdefault(request.GET.get('sort_by', ''), 'order')
+
+        all_products = Product.objects.filter(is_publish=True,
+                                              price__gte=price_range_min_filter,
+                                              price__lte=price_range_max_filter).order_by(sort_by)
+        context = self.get_pagination(all_products, 5)
+        context['all_category'] = Category.objects.all()
+        context['price_range'] = Product.objects.filter(is_publish=True).aggregate(Min('price'), Max('price'))
+        context['price_range']['price__min'] = str(context['price_range']['price__min'])
+        context['price_range']['price__max'] = str(context['price_range']['price__max'])
+        return render(request, 'shop/shop-list.html', context=context)
+
+
 class ProductList(ObjectSortPaginate, View):
     def get(self, request):
         try:

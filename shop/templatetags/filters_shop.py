@@ -36,7 +36,8 @@ def widget_cart(request):
 @register.inclusion_tag('shop/inclusion_html/widget-top-rated-products.html')
 def widget_top_rated_products(obj_selected_category=None):
     if obj_selected_category:
-        top_rated_products = Product.objects.filter(category__in=obj_selected_category.get_descendants(include_self=True),
+        top_rated_products = Product.objects.filter(category__in=obj_selected_category
+                                                    .get_descendants(include_self=True),
                                                     is_publish=True).order_by('-count_views')[:5]
     else:
         top_rated_products = Product.objects.filter(is_publish=True).order_by('-count_views')[:5]
