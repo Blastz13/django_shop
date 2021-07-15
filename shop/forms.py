@@ -110,7 +110,7 @@ class OrderUserForm(forms.Form):
     city = forms.CharField()
     address = forms.CharField()
     phone = forms.CharField(max_length=12)
-    order_notes = forms.CharField(widget=forms.Textarea())
+    order_notes = forms.CharField(widget=forms.Textarea(attrs={"style": "width:100%; height: 42px"}))
 
 
 class OrderUnregisteredUserForm(forms.Form):

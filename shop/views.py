@@ -3,11 +3,12 @@ from django.http import HttpResponse
 from django.shortcuts import render, get_object_or_404, redirect
 from django.views.decorators.http import require_POST
 from django.views.generic import View
+from django.contrib import messages
 
 from .cart import Cart
-from .forms import CartAddProductForm, OrderUnregisteredUserForm, OrderUserForm, ProductCommentForm
+from .forms import CartAddProductForm, OrderUserForm, ProductCommentForm
 from .mixins import ObjectSortPaginate
-from .models import Product, Category
+from .models import Product, Category, Order, OrderItem
 from django.db.models import Q
 
 
@@ -232,13 +233,20 @@ class CartProduct(View):
 
 class Checkout(View):
     def get(self, request):
-        if request.user.is_authenticated:
-            form = OrderUserForm()
+        if not request.user.is_authenticated:
+            messages.error(request, 'Для оформления заказа нужно авторизоваться или создать аккаунт')
+            return redirect('Account')
         else:
-            form = OrderUnregisteredUserForm()
+            form = OrderUserForm()
         cart = Cart(request)
         return render(request, 'shop/checkout.html', context={'cart': cart,
                                                               'form': form})
+    def post(self, request):
+        form = OrderUserForm(request.POST)
+        if form.is_valid():
+            print(form.cleaned_data)
+        pass
+
 
 
 @require_POST

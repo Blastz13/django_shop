@@ -7,6 +7,10 @@
 				<div class="col-md-12">
 					<div class="entry-header">
 						<h1 class="entry-title">My Account</h1>
+                        {% for message in messages %}
+                            {{ message.tags }}
+                            {{ message|safe }}
+                        {% endfor %}
 					</div>
 				</div>
 			</div>
