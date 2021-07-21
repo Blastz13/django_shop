@@ -4,6 +4,7 @@ from django.views.decorators.http import require_POST
 from django.views.generic import View
 
 from .forms import CustomUserCreationForm, LoginForm
+from shop.models import Order
 
 
 class Account(View):
@@ -11,7 +12,7 @@ class Account(View):
         form_registration = CustomUserCreationForm()
         form_login = LoginForm()
         return render(request, 'users/login.html', context={'form_registration': form_registration,
-                                                                 'form_login': form_login})
+                                                            'form_login': form_login})
 
     def post(self, request):
         form_registration = CustomUserCreationForm()
@@ -25,9 +26,9 @@ class Account(View):
                 return redirect('HomePage')
             else:
                 return render(request, 'users/login.html', context={'form_registration': form_registration,
-                                                                         'form_login': form_login})
+                                                                    'form_login': form_login})
         return render(request, 'users/login.html', context={'form_registration': form_registration,
-                                                                 'form_login': form_login})
+                                                            'form_login': form_login})
 
 
 @require_POST
@@ -41,9 +42,15 @@ def sign_up(request):
         return redirect('HomePage')
     else:
         return render(request, 'users/login.html', {'form_registration': form_registration,
-                                                         'form_login': form_login})
+                                                    'form_login': form_login})
 
 
 def log_out(request):
     logout(request)
     return redirect('HomePage')
+
+
+class MyAccount(View):
+    def get(self, request):
+        orders = Order.objects.filter(buyer=request.user)
+        return render(request, 'users/my-account.html', context={'orders': orders})

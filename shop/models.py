@@ -50,11 +50,11 @@ class Product(models.Model):
     def save(self, *args, **kwargs):
         super(Product, self).save(*args, **kwargs)
         image = Image.open(self.preview_image.path)
-        if image.width < 270 or image.height < 340:
+        if image.width < 480 or image.height < 606:
             fill_color = '#A36FFF'
-            back = Image.new('RGB', (270, 340), fill_color)
-            w = int((270 - image.width) / 2)
-            h = int((340 - image.height) / 2)
+            back = Image.new('RGB', (480, 606), fill_color)
+            w = int((480 - image.width) / 2)
+            h = int((606 - image.height) / 2)
             back.paste(image, (w, h))
             back.save(self.preview_image.path, quality=70, optimize=True)
         else:

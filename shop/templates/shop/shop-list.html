@@ -1,6 +1,7 @@
 {% extends 'shop/extends/base.html' %}
 {% load static %}
 {% load mptt_tags %}
+{% load thumbnail %}
 {% load filters_shop %}
 {% block extra-scripts %}
         <link rel="stylesheet" href="{% static 'core/css/jquery-ui.css' %}">
@@ -51,7 +52,7 @@
 						<ul class="sidebar-menu" id="css-menu">
                           {% for node in all_category %}
                               {% if node.is_root_node %}
-                                  {% include "shop/include_html/accordion-menu.html" %}
+                                  {% include "shop/include_html/accordion-menu-vertical.html" %}
                               {% endif %}
                           {% endfor %}
 						</ul>
@@ -130,7 +131,7 @@
                                         <div class="col-md-4 col-sm-4 col-xs-12">
                                             <div class="product-img">
                                                 <a href="{{ product.get_absolute_url }}">
-                                                    <img class="primary-image" src="{{ product.preview_image.url }}" alt="" />
+                                                    <img class="primary-image" src="{% thumbnail product.preview_image 480x606 crop='smart' %}" alt="" />
                                                 </a>
                                                 {% if product.discount_price %}
                                                     <span class="sale-text">Sale</span>

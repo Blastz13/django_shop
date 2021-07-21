@@ -1,6 +1,7 @@
 {% extends 'shop/extends/base.html' %}
 {% load static %}
 {% load mptt_tags %}
+{% load thumbnail %}
 {% load filters_shop %}
 {% block extra-scripts %}
 		<!-- jquery-ui CSS
@@ -134,7 +135,6 @@
 							</form>								
 						</div>
 					</div>
-                    {% load thumbnail %}
 					<!-- toolbar end -->
 					<div class="clear"></div>
 					<div class="row">
@@ -150,7 +150,7 @@
                                         <div class="product-img">
 {#                                          <img class="secondary-image" src="{{ product.preview_image.url }}" alt=""/>#}
                                             <a href="{{ product.get_absolute_url }}">
-                                                <img class="primary-image" src="{% thumbnail product.preview_image 270x340 crop='smart' %}" alt="" />
+                                                <img class="primary-image" src="{% thumbnail product.preview_image 480x606 crop='smart' %}" alt="" />
 {#                                              <img class="secondary-image" src="{{ product.preview_image.url }}" alt="" style="width: 270px; height: 360px;"/>#}
                                             </a>
                                             <div class="actions">

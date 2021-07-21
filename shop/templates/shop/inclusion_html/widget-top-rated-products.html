@@ -1,3 +1,4 @@
+{% load thumbnail %}
 <!-- widget-recent start -->
 <aside class="widget top-product-widget">
     <h3 class="sidebar-title">Top rated products</h3>
@@ -7,7 +8,7 @@
             <div class="single-product">
                 <div class="product-img">
                     <a href="{{ top_rated_product.get_absolute_url }}">
-                        <img class="primary-image" src="{{ top_rated_product.preview_image.url}}" alt="" />
+                        <img class="primary-image" src="{% thumbnail top_rated_product.preview_image 480x606 crop='smart' %}" alt="" />
 {#                        <img class="secondary-image" src="../../static/core/img/product/16.jpg" alt="" />#}
                     </a>
                 </div>

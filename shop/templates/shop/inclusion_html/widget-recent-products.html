@@ -1,10 +1,11 @@
+{% load thumbnail %}
 <ul>
 {% for product in recent_products %}
     <li>
         <div class="single-product">
             <div class="product-img">
                 <a href="{{ product.get_absolute_url }}">
-                    <img class="primary-image" src="{{ product.preview_image.url }}" alt="" />
+                    <img class="primary-image" src="{% thumbnail product.preview_image 480x606 crop='smart' %}" alt="" />
                 </a>
             </div>
             <div class="product-content">
