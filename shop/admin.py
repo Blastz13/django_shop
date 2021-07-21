@@ -5,7 +5,7 @@ from mptt.admin import MPTTModelAdmin
 from .models import Product
 from .models import ProductComment
 from .models import Category
-from .models import ProductImage
+from .models import ProductImage, Order, OrderItem
 
 from django.contrib.postgres.fields import JSONField
 from django_json_widget.widgets import JSONEditorWidget
@@ -57,3 +57,19 @@ class AdminCategory(MPTTModelAdmin):
     list_display = ['title', 'slug', 'parent']
     list_display_links = ['title', 'slug', 'parent']
     search_fields = ['title', 'slug']
+
+
+class AdminOrderItem(admin.StackedInline):
+    model = OrderItem
+    list_display = ['date_create', 'quantity', 'total_amount']
+    list_display_links = ['date_create', 'quantity', 'total_amount']
+    extra = 0
+
+
+@admin.register(Order)
+class AdminOrder(admin.ModelAdmin):
+    list_display = ['city', 'address', 'phone', 'order_notes', 'date_create', 'is_paid', 'is_coupon_applied']
+    list_display_links = ['city', 'address', 'phone', 'order_notes', 'date_create', 'is_paid', 'is_coupon_applied']
+    search_fields = ('city', 'address', 'phone', 'order_notes', 'date_create', 'is_paid', 'is_coupon_applied')
+    readonly_fields = ('total_amount', )
+    inlines = [AdminOrderItem]

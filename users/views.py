@@ -10,7 +10,7 @@ class Account(View):
     def get(self, request):
         form_registration = CustomUserCreationForm()
         form_login = LoginForm()
-        return render(request, 'users/my-account.html', context={'form_registration': form_registration,
+        return render(request, 'users/login.html', context={'form_registration': form_registration,
                                                                  'form_login': form_login})
 
     def post(self, request):
@@ -24,9 +24,9 @@ class Account(View):
                 request.session.cycle_key()
                 return redirect('HomePage')
             else:
-                return render(request, 'users/my-account.html', context={'form_registration': form_registration,
+                return render(request, 'users/login.html', context={'form_registration': form_registration,
                                                                          'form_login': form_login})
-        return render(request, 'users/my-account.html', context={'form_registration': form_registration,
+        return render(request, 'users/login.html', context={'form_registration': form_registration,
                                                                  'form_login': form_login})
 
 
@@ -40,7 +40,7 @@ def sign_up(request):
         login(request, user)
         return redirect('HomePage')
     else:
-        return render(request, 'users/my-account.html', {'form_registration': form_registration,
+        return render(request, 'users/login.html', {'form_registration': form_registration,
                                                          'form_login': form_login})
 
 

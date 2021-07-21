@@ -133,49 +133,44 @@ class Category(MPTTModel):
         order_insertion_by = ['title']
 
 
-# class Order(models.Model):
-#     city = models.CharField(max_length=128, verbose_name='Город')
-#     address = models.CharField(max_length=128, verbose_name='Адрес')
-#     phone = models.CharField(max_length=12, verbose_name='Номер телефона')
-#     order_notes = models.CharField(max_length=512, verbose_name='Примечания к заказу')
-#     date_create = models.DateTimeField(auto_now_add=True)
-#     is_paid = models.BooleanField(default=False, verbose_name='Оплачен заказ')
-#     is_coupon_applied = models.BooleanField(default=False, verbose_name='Применен купон')
-#     buyer = models.ForeignKey(User, on_delete=models.CASCADE, related_name='orders')
-#
-#     @property
-#     def total_amount(self):
-#         amount = 0
-#         for order_item in self.order_items:
-#             amount += order_item.total_amount
-#         return amount
-#
-#     def __str__(self):
-#         return f'{self.buyer} - {self.date_create}'
-#
-#     class Meta:
-#         ordering = ['-date_create']
-#         verbose_name = 'Заказ'
-#         verbose_name_plural = 'Заказы'
-#
-#
-# class OrderItem(models.Model):
-#     order = models.ForeignKey(Order, related_name='order_items', on_delete=models.CASCADE)
-#     product = models.ForeignKey(Product, related_name='order_items', on_delete=models.CASCADE)
-#     date_create = models.DateTimeField(auto_now_add=True)
-#     quantity = models.PositiveIntegerField(verbose_name='Количество товара')
-#
-#     @property
-#     def total_amount(self):
-#         if self.product.discount_price:
-#             return self.product.discount_price * self.quantity
-#         else:
-#             return self.product.price * self.quantity
-#
-#     def __str__(self):
-#         return f'{self.product} - {self.quantity}'
-#
-#     class Meta:
-#         ordering = ['-date_create']
-#         verbose_name = 'Оформленный товар'
-#         verbose_name_plural = 'Оформленные товары'
+class Order(models.Model):
+    city = models.CharField(max_length=128, verbose_name='Город')
+    address = models.CharField(max_length=128, verbose_name='Адрес')
+    phone = models.CharField(max_length=12, verbose_name='Номер телефона')
+    order_notes = models.CharField(max_length=512, verbose_name='Примечания к заказу')
+    date_create = models.DateTimeField(auto_now_add=True)
+    is_paid = models.BooleanField(default=False, verbose_name='Оплачен заказ')
+    is_coupon_applied = models.BooleanField(default=False, verbose_name='Применен купон')
+    buyer = models.ForeignKey(User, on_delete=models.CASCADE, related_name='orders')
+
+    @property
+    def total_amount(self):
+        return sum([order_item.total_amount for order_item in self.order_items.all()])
+
+    def __str__(self):
+        return f'{self.buyer} - {self.date_create}'
+
+    class Meta:
+        ordering = ['-date_create']
+        verbose_name = 'Заказ'
+        verbose_name_plural = 'Заказы'
+
+
+class OrderItem(models.Model):
+    order = models.ForeignKey(Order, related_name='order_items', on_delete=models.CASCADE)
+    product = models.ForeignKey(Product, related_name='order_items', on_delete=models.CASCADE)
+    date_create = models.DateTimeField(auto_now_add=True)
+    price = models.DecimalField(max_digits=10, decimal_places=2, verbose_name='Цена товара')
+    quantity = models.PositiveIntegerField(verbose_name='Количество товара')
+
+    @property
+    def total_amount(self):
+        return self.price * self.quantity
+
+    def __str__(self):
+        return f'{self.product} - {self.quantity}'
+
+    class Meta:
+        ordering = ['-date_create']
+        verbose_name = 'Оформленный товар'
+        verbose_name_plural = 'Оформленные товары'

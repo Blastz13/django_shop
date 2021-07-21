@@ -101,7 +101,7 @@ class ProductListVertical(ObjectSortPaginate, View):
         try:
             price_range_max_filter = float(request.GET['max-value'])
         except:
-            price_range_max_filter = 10*100
+            price_range_max_filter = 10**100
 
         sort_by = sort_by_key.setdefault(request.GET.get('sort_by', ''), 'order')
 
@@ -125,13 +125,14 @@ class ProductList(ObjectSortPaginate, View):
         try:
             price_range_max_filter = float(request.GET['max-value'])
         except:
-            price_range_max_filter = 10*100
+            price_range_max_filter = 10**100
 
         sort_by = sort_by_key.setdefault(request.GET.get('sort_by', ''), 'order')
 
         all_products = Product.objects.filter(is_publish=True,
                                               price__gte=price_range_min_filter,
                                               price__lte=price_range_max_filter).order_by(sort_by)
+        print(all_products)
         context = self.get_pagination(all_products, 12)
         context['all_category'] = Category.objects.all()
         context['price_range'] = Product.objects.filter(is_publish=True).aggregate(Min('price'), Max('price'))
@@ -241,12 +242,16 @@ class Checkout(View):
         cart = Cart(request)
         return render(request, 'shop/checkout.html', context={'cart': cart,
                                                               'form': form})
+
     def post(self, request):
         form = OrderUserForm(request.POST)
+        cart = Cart(request)
         if form.is_valid():
-            print(form.cleaned_data)
-        pass
-
+            if cart.is_valid(request):
+                cart.create_order(request, form.cleaned_data)
+            return redirect('CartProduct')
+        else:
+            return render(request, 'shop/checkout.html', context={'cart': cart, 'form': form})
 
 
 @require_POST
@@ -260,6 +265,6 @@ sort_by_key = {
     'default': '-order',
     'views': '-count_views',
     'newness': '-date_publicate',
-    'price' : 'price',
+    'price': 'price',
     '-price': '-price'
 }
