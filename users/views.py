@@ -1,5 +1,6 @@
 from django.shortcuts import render, redirect
 from django.contrib.auth import authenticate, login, logout
+from django.core.exceptions import PermissionDenied
 from django.views.decorators.http import require_POST
 from django.views.generic import View
 
@@ -50,7 +51,16 @@ def log_out(request):
     return redirect('HomePage')
 
 
-class MyAccount(View):
+class OrdersUser(View):
     def get(self, request):
         orders = Order.objects.filter(buyer=request.user)
         return render(request, 'users/my-account.html', context={'orders': orders})
+
+
+class DetailOrder(View):
+    def get(self, request, pk):
+        try:
+            order = Order.objects.get(id=pk, buyer=request.user)
+        except Order.DoesNotExist:
+            raise PermissionDenied()
+        return render(request, 'users/detail-order.html', context={'order': order})

@@ -6,9 +6,9 @@ from django.views.generic import View
 from django.contrib import messages
 
 from .cart import Cart
-from .forms import CartAddProductForm, OrderUserForm, ProductCommentForm
+from .forms import CartAddProductForm, OrderUserForm, ProductCommentForm, ApplyCouponForm
 from .mixins import ObjectSortPaginate
-from .models import Product, Category, Order, OrderItem
+from .models import Product, Category
 from django.db.models import Q
 
 
@@ -132,7 +132,6 @@ class ProductList(ObjectSortPaginate, View):
         all_products = Product.objects.filter(is_publish=True,
                                               price__gte=price_range_min_filter,
                                               price__lte=price_range_max_filter).order_by(sort_by)
-        print(all_products)
         context = self.get_pagination(all_products, 12)
         context['all_category'] = Category.objects.all()
         context['price_range'] = Product.objects.filter(is_publish=True).aggregate(Min('price'), Max('price'))
@@ -229,7 +228,8 @@ class AddProductComment(View):
 class CartProduct(View):
     def get(self, requset):
         cart = Cart(requset)
-        return render(requset, 'shop/cart.html', context={'cart': cart})
+        form = ApplyCouponForm()
+        return render(requset, 'shop/cart.html', context={'cart': cart, 'form': form})
 
 
 class Checkout(View):
@@ -247,8 +247,8 @@ class Checkout(View):
         form = OrderUserForm(request.POST)
         cart = Cart(request)
         if form.is_valid():
-            if cart.is_valid(request):
-                cart.create_order(request, form.cleaned_data)
+            if cart.is_valid():
+                cart.create_order(form.cleaned_data)
             return redirect('CartProduct')
         else:
             return render(request, 'shop/checkout.html', context={'cart': cart, 'form': form})
@@ -258,6 +258,15 @@ class Checkout(View):
 def cart_del(request, slug):
     cart = Cart(request)
     cart.remove(slug)
+    return redirect('CartProduct')
+
+
+@require_POST
+def apply_coupon(request):
+    cart = Cart(request)
+    form = ApplyCouponForm(request.POST)
+    if form.is_valid():
+        cart.apply_coupon(form.cleaned_data['code'])
     return redirect('CartProduct')
 
 

@@ -54,14 +54,17 @@
 									</div>
 									<!-- single-product end -->
 									{% endfor %}
-
 								</div>
                                 <div style="display: flex; justify-content: space-between;margin-left: 15px; margin-top: 15px;">
-                                <div>
-                                    <div style="margin-top: 8px;"><span style="font-size: 16px; color: rgba(0,0,0,0.75);">Date order: {{ order.date_create }}</span></div>
-                                    <div style="margin-top: 8px;"><span style="font-size: 16px; color: rgba(0,0,0,0.75);">Is paid: {% if order.is_paid %} &#9989; {% else %} &#10060; {% endif %}</span></div>
-                                </div>
-                                    <div style="margin-top: 8px;"><span style="font-size: 16px; color: rgba(0,0,0,0.75);">Total amount: {{ order.total_amount }}</span></div>
+                                    <div>
+                                        <div style="margin-top: 8px;"><span style="font-size: 16px; color: rgba(0,0,0,0.75);">Date order: {{ order.date_create }}</span></div>
+                                        <div style="margin-top: 8px;"><span style="font-size: 16px; color: rgba(0,0,0,0.75);">Is paid: {% if order.is_paid %} &#9989; {% else %} &#10060; {% endif %}</span></div>
+                                        <div style="margin-top: 8px;"><span style="font-size: 16px; color: rgba(0,0,0,0.75);">Is apply coupon: {% if order.coupon %} &#9989; {% else %} &#10060; {% endif %}</span></div>
+                                    </div>
+                                    <div>
+                                        <div style="margin-top: 8px;"><span style="font-size: 16px; color: rgba(0,0,0,0.75);">Total amount: {{ order.total_amount }}</span></div>
+                                        <div class="buttons-cart" style="margin-top: 15px;"><a href="{{ order.get_absolute_url }}">Detail</a></div>
+                                    </div>
                                 </div>
 							</div>
 						</div>

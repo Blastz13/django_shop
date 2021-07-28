@@ -119,7 +119,6 @@
 							</form>								
 						</div>
 					</div>
-                    {% load thumbnail %}
 					<!-- toolbar end -->
 					<div class="clear"></div>
 					<div class="row">
@@ -150,7 +149,7 @@
                                                     {% endif %}
                                                 </div>
                                                 <div class="product-desc">
-                                                    <p>{{ product.description }}</p>
+                                                    <p>{{ product.description|truncatewords:70 }}</p>
                                                 </div>
                                                 <div class="actions">
                                                     <div class="action-buttons">

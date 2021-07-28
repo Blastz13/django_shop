@@ -61,7 +61,6 @@ class CartAddProductForm(forms.Form):
     def clean(self):
         quantity_cart = 0
         cleaned_data = super(CartAddProductForm, self).clean()
-
         quantity_select = cleaned_data['quantity']
         del cleaned_data['quantity']
 
@@ -96,7 +95,7 @@ class CartAddProductForm(forms.Form):
             else:
                 cleaned_data['total_price'] = str(Decimal(self.obj.price))
 
-            for key, product_cart in self.cart.cart.items():
+            for key, product_cart in self.cart.cart['products'].items():
                 if product_cart['product_slug'] == self.obj.slug:
                     quantity_cart = product_cart['quantity']
 
@@ -110,7 +109,7 @@ class OrderUserForm(forms.Form):
     city = forms.CharField()
     address = forms.CharField()
     phone = forms.CharField(max_length=12)
-    order_notes = forms.CharField(widget=forms.Textarea(attrs={"style": "width:100%; height: 42px"}))
+    order_notes = forms.CharField(widget=forms.Textarea(attrs={"style": "width:100%; height: 42px"}), required=False)
 
 
 class OrderUnregisteredUserForm(forms.Form):
@@ -142,3 +141,7 @@ class ProductCommentForm(forms.ModelForm):
             "name": forms.TextInput(attrs={'placeholder': 'Your name'}),
             "text": forms.Textarea(attrs={'placeholder': 'Your Rating',  'id': 'product-message'},)
         }
+
+
+class ApplyCouponForm(forms.Form):
+    code = forms.CharField(widget=forms.TextInput(attrs={'placeholder': 'Coupon code'}))

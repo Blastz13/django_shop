@@ -5,6 +5,8 @@ from django.contrib.postgres.fields import JSONField
 from mptt.models import MPTTModel, TreeForeignKey
 
 from PIL import Image
+from decimal import Decimal
+from django.utils import timezone
 
 from .utils import path_upload
 
@@ -133,19 +135,50 @@ class Category(MPTTModel):
         order_insertion_by = ['title']
 
 
+class Coupon(models.Model):
+    code = models.CharField(max_length=16, unique=True, verbose_name="Купон")
+    discount = models.PositiveIntegerField(max_length=100, verbose_name='Скидка %')
+    minimum_amount = models.DecimalField(max_digits=10, decimal_places=2, verbose_name='Минимальная сумма активации')
+    quantity_activation = models.PositiveIntegerField(verbose_name='Количество активаций')
+    active_from = models.DateTimeField(verbose_name='Активен от')
+    active_to = models.DateTimeField(verbose_name='Активен до')
+
+    @property
+    def is_valid(self):
+        if (self.active_from < timezone.now() < self.active_to) and (self.quantity_activation > 0):
+            return True
+        else:
+            return False
+
+    def __str__(self):
+        return f'{self.code} - {self.discount}'
+
+    class Meta:
+        ordering = ['-id']
+        verbose_name = 'Промокод'
+        verbose_name_plural = 'Промокоды'
+
+
 class Order(models.Model):
     city = models.CharField(max_length=128, verbose_name='Город')
     address = models.CharField(max_length=128, verbose_name='Адрес')
     phone = models.CharField(max_length=12, verbose_name='Номер телефона')
-    order_notes = models.CharField(max_length=512, verbose_name='Примечания к заказу')
+    order_notes = models.CharField(max_length=512, blank=True, verbose_name='Примечания к заказу')
     date_create = models.DateTimeField(auto_now_add=True)
-    is_paid = models.BooleanField(default=False, verbose_name='Оплачен заказ')
-    is_coupon_applied = models.BooleanField(default=False, verbose_name='Применен купон')
     buyer = models.ForeignKey(User, on_delete=models.CASCADE, related_name='orders')
+    coupon = models.ForeignKey(Coupon, on_delete=models.SET_NULL, null=True, blank=True, related_name='orders')
+    is_paid = models.BooleanField(default=False, verbose_name='Оплачен заказ')
+
+    def get_absolute_url(self):
+        return reverse('DetailOrder', kwargs={'pk': self.id})
 
     @property
     def total_amount(self):
-        return sum([order_item.total_amount for order_item in self.order_items.all()])
+        if self.coupon:
+            return (sum([order_item.total_amount for order_item in self.order_items.all()])*Decimal(
+                   (100-self.coupon.discount)/100)).quantize(Decimal("1.00"))
+        else:
+            return sum([order_item.total_amount for order_item in self.order_items.all()])
 
     def __str__(self):
         return f'{self.buyer} - {self.date_create}'

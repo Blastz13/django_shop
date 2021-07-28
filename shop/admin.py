@@ -2,10 +2,7 @@ from django.contrib import admin
 from django.utils.safestring import mark_safe
 from mptt.admin import MPTTModelAdmin
 
-from .models import Product
-from .models import ProductComment
-from .models import Category
-from .models import ProductImage, Order, OrderItem
+from .models import ProductImage, Order, OrderItem, Category, ProductComment, Product, Coupon
 
 from django.contrib.postgres.fields import JSONField
 from django_json_widget.widgets import JSONEditorWidget
@@ -68,8 +65,20 @@ class AdminOrderItem(admin.StackedInline):
 
 @admin.register(Order)
 class AdminOrder(admin.ModelAdmin):
-    list_display = ['city', 'address', 'phone', 'order_notes', 'date_create', 'is_paid', 'is_coupon_applied']
-    list_display_links = ['city', 'address', 'phone', 'order_notes', 'date_create', 'is_paid', 'is_coupon_applied']
-    search_fields = ('city', 'address', 'phone', 'order_notes', 'date_create', 'is_paid', 'is_coupon_applied')
+    list_display = ['city', 'address', 'phone', 'order_notes', 'date_create', 'is_paid', 'total_amount']
+    list_display_links = ['city', 'address', 'phone', 'order_notes', 'date_create', 'is_paid', 'total_amount']
+    search_fields = ('city', 'address', 'phone', 'order_notes', 'date_create', 'is_paid')
     readonly_fields = ('total_amount', )
     inlines = [AdminOrderItem]
+
+
+@admin.register(Coupon)
+class AdminCoupon(admin.ModelAdmin):
+    list_display = ['code', 'discount', 'minimum_amount', 'quantity_activation', 'active_from', 'active_to', 'is_valid']
+    list_display_links = ['code', 'discount', 'minimum_amount', 'quantity_activation', 'active_from', 'active_to']
+    search_fields = ['code', 'discount', 'minimum_amount', 'quantity_activation', 'active_from', 'active_to']
+
+    def is_valid(self, obj):
+        return obj.is_valid
+
+    is_valid.boolean = True
