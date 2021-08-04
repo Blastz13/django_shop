@@ -41,22 +41,22 @@ class CartAddProductForm(forms.Form):
         self.obj = Product.objects.get(slug=extra['slug'])
         self.cart = extra['cart']
 
-        if self.obj.property:
-            for field in self.obj.property:
-                CHOICES = []
-                DISABLED = []
-                PRICE = []
-                for value in self.obj.property[field]:
-                    if int(self.obj.property[field][value]['quantity']) <= 0:
-                        DISABLED.append(value)
-                    PRICE.append((value, self.obj.property[field][value]['price']))
-                    wrap = (value, value)
-                    CHOICES.append(wrap)
-
-                self.price_choices = PRICE
-                self.fields[field] = forms.CharField(label=field,  widget=CustomSelectWidget(choices=CHOICES,
-                                                                                             disabled_choices=DISABLED,
-                                                                                             price_choices=PRICE, attrs={'id': 'property'}))
+        # if self.obj.property:
+        #     for field in self.obj.property:
+        #         CHOICES = []
+        #         DISABLED = []
+        #         PRICE = []
+        #         for value in self.obj.property[field]:
+        #             if int(self.obj.property[field][value]['quantity']) <= 0:
+        #                 DISABLED.append(value)
+        #             PRICE.append((value, self.obj.property[field][value]['price']))
+        #             wrap = (value, value)
+        #             CHOICES.append(wrap)
+        #
+        #         self.price_choices = PRICE
+        #         self.fields[field] = forms.CharField(label=field,  widget=CustomSelectWidget(choices=CHOICES,
+        #                                                                                      disabled_choices=DISABLED,
+        #                                                                                      price_choices=PRICE, attrs={'id': 'property'}))
 
     def clean(self):
         quantity_cart = 0
