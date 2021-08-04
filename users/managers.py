@@ -10,7 +10,6 @@ class CustomUserManager(BaseUserManager):
         """
         Create and save a User with the given email and password.
         """
-        print('Create user')
         if not email:
             raise ValueError('The Email must be set')
 

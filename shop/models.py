@@ -26,13 +26,18 @@ class Product(models.Model):
                                          verbose_name='Цена по скидке')
     category = models.ForeignKey('Category', on_delete=models.CASCADE, related_name='product', verbose_name='Категория')
     quantity = models.PositiveIntegerField(default=0, verbose_name='Количество товара')
-    is_available = models.BooleanField(verbose_name='Товар в наличии')
+    # is_available = models.BooleanField(verbose_name='Товар в наличии')
     property = JSONField(blank=True, null=True, verbose_name='Свойства товара')
     date_publicate = models.DateTimeField(auto_now_add=True, verbose_name='Дата добавления товара')
     order = models.PositiveIntegerField(default=0, verbose_name='Порядок показа товара')
     is_publish = models.BooleanField(default=False, verbose_name='Опубликовать')
     count_views = models.PositiveBigIntegerField(default=0, verbose_name='Количество просмотров')
     count_buys = models.PositiveBigIntegerField(default=0, verbose_name='Количество покупок')
+
+    def is_available(self):
+        if self.quantity > 0:
+            return True
+        return False
 
     def get_product_image(self):
         return self.image.all()

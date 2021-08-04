@@ -214,6 +214,25 @@ class CategoryProduct(ObjectSortPaginate, View):
         return render(request, 'shop/product-virtual.html', context={'product': product, 'form': success_form})
 
 
+@require_POST
+def add_to_cart_alone_product(request, slug):
+    cart = Cart(request)
+
+    product = get_object_or_404(Product, slug=slug)
+    form = CartAddProductForm(request.POST, extra={'slug': slug,
+                                                   'cart': Cart(request)})
+    if form.is_valid():
+        cd = form.cleaned_data
+        price = cd.pop('total_price')
+        quantity = cd.pop('quantity')
+        cart.add(product=product,
+                 price=price,
+                 quantity=quantity,
+                 property=cd)
+        return HttpResponse(status=200)
+    return HttpResponse(status=404)
+
+
 class AddProductComment(View):
     def post(self, request, slug):
         form = ProductCommentForm(request.POST)

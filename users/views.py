@@ -4,7 +4,7 @@ from django.core.exceptions import PermissionDenied
 from django.views.decorators.http import require_POST
 from django.views.generic import View
 
-from .forms import CustomUserCreationForm, LoginForm
+from .forms import CustomUserCreationForm, LoginForm, EditProfileForm, ChangePasswordForm
 from shop.models import Order
 
 
@@ -64,3 +64,27 @@ class DetailOrder(View):
         except Order.DoesNotExist:
             raise PermissionDenied()
         return render(request, 'users/detail-order.html', context={'order': order})
+
+
+class EditProfile(View):
+    def get(self, request):
+        form = EditProfileForm(instance=request.user)
+        return render(request, 'users/edit-profile.html', context={'form': form})
+
+    def post(self, request):
+        form = EditProfileForm(request.POST, instance=request.user)
+        if form.is_valid():
+            form.save()
+        return render(request, 'users/edit-profile.html', context={'form': form})
+
+
+class ChangePasswordProfile(View):
+    def get(self, request):
+        form = ChangePasswordForm()
+        return render(request, 'users/edit-profile.html', context={'form': form})
+
+    def post(self, request):
+        form = ChangePasswordForm(request.POST, request=request)
+        if form.is_valid():
+            form.save()
+        return render(request, 'users/edit-profile.html', context={'form': form})
