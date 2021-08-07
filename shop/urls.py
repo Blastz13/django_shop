@@ -1,6 +1,6 @@
 from django.urls import path
-from .views import ProductList, add_to_cart_alone_product
-from .views import CategoryProduct, cart_del, CartProduct, Checkout, \
+from .views import ProductList, add_to_cart_alone_product, add_product_to_wish_list, del_product_to_wish_list
+from .views import CategoryProduct, cart_del, CartProduct, Checkout, WishListView, \
                    AddProductComment, ProductListVertical, CategoryProductVertical, ProductSearch, apply_coupon
 
 urlpatterns = [
@@ -13,6 +13,9 @@ urlpatterns = [
     path('cart/<str:slug>', add_to_cart_alone_product, name='add_to_cart_alone_product'),
     path('cart/del/<str:slug>/', cart_del, name='CartDel'),
     path('cart/apply-coupon/', apply_coupon, name='ApplyCoupon'),
+    path('wish-list/', WishListView.as_view(), name='WishList'),
+    path('wish-list/add/', add_product_to_wish_list, name='add_product_to_wish_list'),
+    path('wish-list/del/<str:slug>', del_product_to_wish_list, name='del_product_to_wish_list'),
     path('place-order/', Checkout.as_view(), name='Checkout'),
     path('add-product-comment/<str:slug>/', AddProductComment.as_view(), name='AddProductComment'),
 ]

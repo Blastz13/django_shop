@@ -132,4 +132,3 @@ class LeaveMessage(View):
 
             form.save()
         return redirect('HomePage')
-

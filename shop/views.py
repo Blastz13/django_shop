@@ -5,8 +5,9 @@ from django.views.decorators.http import require_POST
 from django.views.generic import View
 from django.contrib import messages
 
+from .wishlist import WishList
 from .cart import Cart
-from .forms import CartAddProductForm, OrderUserForm, ProductCommentForm, ApplyCouponForm
+from .forms import CartAddProductForm, OrderUserForm, ProductCommentForm, ApplyCouponForm, WishListAddProduct
 from .mixins import ObjectSortPaginate
 from .models import Product, Category
 from django.db.models import Q
@@ -245,10 +246,10 @@ class AddProductComment(View):
 
 
 class CartProduct(View):
-    def get(self, requset):
-        cart = Cart(requset)
+    def get(self, request):
+        cart = Cart(request)
         form = ApplyCouponForm()
-        return render(requset, 'shop/cart.html', context={'cart': cart, 'form': form})
+        return render(request, 'shop/cart.html', context={'cart': cart, 'form': form})
 
 
 class Checkout(View):
@@ -287,6 +288,30 @@ def apply_coupon(request):
     if form.is_valid():
         cart.apply_coupon(form.cleaned_data['code'])
     return redirect('CartProduct')
+
+
+class WishListView(View):
+    def get(self, request):
+        wish_list = WishList(request)
+        return render(request, 'shop/wishlist.html', context={'wish_list': wish_list})
+
+
+@require_POST
+def del_product_to_wish_list(request, slug):
+    wish_list = WishList(request)
+    wish_list.remove(slug)
+    return redirect('WishList')
+
+
+@require_POST
+def add_product_to_wish_list(request):
+    form = WishListAddProduct(request.POST)
+    if form.is_valid():
+        product = get_object_or_404(Product, slug=form.cleaned_data['slug'])
+        wish_list = WishList(request)
+        wish_list.add(product.slug)
+        return HttpResponse(status=200)
+    return HttpResponse(status=404)
 
 
 sort_by_key = {

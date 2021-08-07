@@ -3,9 +3,8 @@
 {% load filters_shop %}
 {% load mptt_tags %}
 {% block extra-scripts %}
-    <!-- jquery-ui CSS
-============================================ -->
-<link rel="stylesheet" href="{% static 'core/css/jquery-ui.css' %}">
+    <link rel="stylesheet" href="{% static 'core/css/jquery-ui.css' %}">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 {% endblock %}
 {% block content %}
 	<!-- breadcrumb-area start -->
@@ -76,10 +75,12 @@
 								<button type="submit">Add to cart</button>
 							</div>
 						</form>
-						<div class="add-to-wishlist">
-							<a href="#" data-toggle="tooltip" title="Add to Wishlist"><i class="fa fa-star"></i></a>
-							<a href="#" data-toggle="tooltip" title="Compare"><i class="fa fa-exchange"></i></a>
-						</div>
+						<div class="add-to-wishlist" id="123">
+                            <form action="{% url 'add_product_to_wish_list' %}" method="post" id="add_product_to_wish_list_form">{% csrf_token %}
+                                <input type="hidden" name="slug" value="{{ product.slug }}">
+                                <a href="#" data-toggle="tooltip" title="Add to Wishlist"><i class="fa fa-star"></i></a>
+						    </form>
+                        </div>
 						<div class="share_buttons">
 							<a href="#"><img src="../../../core/static/core/img/share-img.png" alt="" /></a>
 						</div>
@@ -191,7 +192,7 @@
 		</div>
 	</div>
 	<!-- brand-area end -->
-    <script>
+<script>
     let form = document.forms.price;
     let price_property = document.getElementById("property")
     try {
@@ -215,5 +216,191 @@
         }
     };
     calculate();
-    </script>
+</script>
+<style>
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+.toast {
+  max-width: 350px;
+  overflow: hidden;
+  font-size: 0.875rem;
+  background-color: rgba(255, 255, 255, 0.5);
+  background-clip: padding-box;
+  border: 1px solid rgba(0, 0, 0, 0.1);
+  border-radius: 0.25rem;
+  box-shadow: 0 0.25rem 0.75rem rgba(0, 0, 0, 0.1);
+  backdrop-filter: blur(10px);
+  display: none;
+}
+
+.toast:not(:last-child) {
+  margin-bottom: 0.75rem;
+}
+
+.toast_show {
+  display: block;
+}
+
+.toast__header {
+  display: flex;
+  align-items: center;
+  padding: 0.25rem 2rem 0.25rem 0.75rem;
+  color: #212529;
+  background-color: rgba(255, 255, 255, 0.5);
+  background-clip: padding-box;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.05);
+  position: relative;
+}
+.toast__body {
+    color: white;
+}
+.toast__close {
+  position: absolute;
+  top: 0;
+  right: 10px;
+  padding: 0;
+  background-color: transparent;
+  border: 0;
+  cursor: pointer;
+  float: right;
+  font-size: 1.5rem;
+  font-weight: 700;
+  line-height: 1;
+  color: #000;
+  text-shadow: 0 1px 0 #fff;
+  opacity: 0.6;
+  appearance: button;
+  margin: 0;
+  font-family: inherit;
+  border-radius: 0;
+}
+
+.toast__body {
+  padding: 0.75rem;
+}
+</style>
+<script>
+    'use strict';
+
+    var Toast = function (element, config) {
+      var
+        _this = this,
+        _element = element,
+        _config = {
+          autohide: true,
+          delay: 5000
+        };
+      for (var prop in config) {
+        _config[prop] = config[prop];
+      }
+      Object.defineProperty(this, 'element', {
+        get: function () {
+          return _element;
+        }
+      });
+      Object.defineProperty(this, 'config', {
+        get: function () {
+          return _config;
+        }
+      });
+      _element.addEventListener('click', function (e) {
+        if (e.target.classList.contains('toast__close')) {
+          _this.hide();
+        }
+      });
+    }
+
+    Toast.prototype = {
+      show: function () {
+        var _this = this;
+        this.element.classList.add('toast_show');
+        if (this.config.autohide) {
+          setTimeout(function () {
+            _this.hide();
+          }, this.config.delay)
+        }
+      },
+      hide: function () {
+        this.element.classList.remove('toast_show');
+      }
+    };
+
+    Toast.create = function (header, body, color) {
+      var
+        fragment = document.createDocumentFragment(),
+        toast = document.createElement('div'),
+        toastHeader = document.createElement('div'),
+        toastClose = document.createElement('button'),
+        toastBody = document.createElement('div');
+      toast.classList.add('toast');
+      toast.style.backgroundColor = 'rgba(' + parseInt(color.substr(1, 2), 16) + ',' + parseInt(color.substr(3, 2), 16) + ',' + parseInt(color.substr(5, 2), 16) + ',0.5)';
+      toastHeader.classList.add('toast__header');
+      toastHeader.textContent = header;
+      toastClose.classList.add('toast__close');
+      toastClose.setAttribute('type', 'button');
+      toastClose.textContent = '×';
+      toastBody.classList.add('toast__body');
+      toastBody.textContent = body;
+      toastHeader.appendChild(toastClose);
+      toast.appendChild(toastHeader);
+      toast.appendChild(toastBody);
+      fragment.appendChild(toast);
+      return fragment;
+    };
+
+    Toast.add = function (params) {
+      var config = {
+        header: 'Название заголовка',
+        body: 'Текст сообщения...',
+        color: '#ffffff',
+        autohide: true,
+        delay: 5000
+      };
+      if (params !== undefined) {
+        for (var item in params) {
+          config[item] = params[item];
+        }
+      }
+      if (!document.querySelector('.toasts')) {
+        var container = document.createElement('div');
+        container.classList.add('toasts');
+        container.style.cssText = 'position: fixed; top: 15px; right: 15px; width: 250px;';
+        document.body.appendChild(container);
+      }
+      document.querySelector('.toasts').appendChild(Toast.create(config.header, config.body, config.color));
+      var toasts = document.querySelectorAll('.toast');
+      var toast = new Toast(toasts[toasts.length - 1], { autohide: config.autohide, delay: config.delay });
+      toast.show();
+      return toast;
+    }
+  $('form#add_product_to_wish_list_form').click(function(e) {
+    var $form = $(this);
+    $.ajax({
+      type: $form.attr('method'),
+      url: $form.attr('action'),
+      data: $form.serialize()
+    }).done(function(e) {
+            Toast.add({
+            header: null,
+            body: 'Товар успешно добавлен в корзину',
+            color: '#49ff3a',
+            autohide: true,
+            delay: 2000
+          });
+    }).error(function(e) {
+            Toast.add({
+            header: null,
+            body: 'Данный товар недоступен',
+            color: '#ff2130',
+            autohide: true,
+            delay: 2000
+          });
+    });
+    e.preventDefault();
+  });
+</script>
 {% endblock %}

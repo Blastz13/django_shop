@@ -179,9 +179,8 @@
                                                         </form>
                                                     </div>
                                                     <div class="add-to-cart">
-                                                        <form action="{% url 'add_to_cart_alone_product' product.slug %}" method="post">{% csrf_token %}
-                                                            <input type="hidden" name="total_price" value="{% if product.discount_price %}{{ product.price }}{% else %}{{ product.price }}{% endif %}">
-                                                            <input type="hidden" name="quantity" value="1">
+                                                        <form action="{% url 'add_product_to_wish_list' %}" method="post" class="add-to-wish-list-form">{% csrf_token %}
+                                                            <input type="hidden" name="slug" value="{{ product.slug }}">
                                                             <input type="submit" value="to wishlist" id="add-to-cart-product">
                                                         </form>
                                                     </div>
@@ -2502,6 +2501,34 @@ input[type="submit"] :hover {
                                 Toast.add({
                                 header: null,
                                 body: 'Товар успешно добавлен в корзину',
+                                color: '#49ff3a',
+                                autohide: true,
+                                delay: 2000
+                              });
+                        }).error(function(e) {
+                                Toast.add({
+                                header: null,
+                                body: 'Данный товар недоступен',
+                                color: '#ff2130',
+                                autohide: true,
+                                delay: 2000
+                              });
+                        });
+                        //отмена действия по умолчанию для кнопки submit
+                        e.preventDefault();
+                      });
+                    });
+            $(function() {
+                      $('form.add-to-wish-list-form').submit(function(e) {
+                        var $form = $(this);
+                        $.ajax({
+                          type: $form.attr('method'),
+                          url: $form.attr('action'),
+                          data: $form.serialize()
+                        }).done(function(e) {
+                                Toast.add({
+                                header: null,
+                                body: 'Товар успешно добавлен в wishlist',
                                 color: '#49ff3a',
                                 autohide: true,
                                 delay: 2000

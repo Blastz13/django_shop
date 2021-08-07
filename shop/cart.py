@@ -145,6 +145,7 @@ class Cart(object):
     def __iter__(self):
         self.cart_order = copy.deepcopy(self.cart)
         for key in self.cart_order['products'].keys():
+            # TODO: try get object
             product = Product.objects.get(slug=self.cart['products'][key]['product_slug'])
             self.cart_order['products'][key]['product'] = product
 

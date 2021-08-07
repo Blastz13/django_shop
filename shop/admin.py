@@ -4,9 +4,6 @@ from mptt.admin import MPTTModelAdmin
 
 from .models import ProductImage, Order, OrderItem, Category, ProductComment, Product, Coupon
 
-from django.contrib.postgres.fields import JSONField
-from django_json_widget.widgets import JSONEditorWidget
-
 
 class ProductImageItemInline(admin.StackedInline):
     model = ProductImage
@@ -36,11 +33,15 @@ class AdminProduct(admin.ModelAdmin):
     list_display = ['title', 'category', 'price', 'discount_price', 'get_image', 'quantity', 'is_available',
                     'is_publish', 'slug']
     list_display_links = ['title', 'category', 'price', 'discount_price', 'slug']
+    list_filter = ['category', 'is_publish']
+    readonly_fields = ['is_available']
     search_fields = ('title', 'description', 'price', 'discount_price')
     inlines = [ProductImageItemInline, ProductCommentItemInline]
-    formfield_overrides = {
-        JSONField: {'widget': JSONEditorWidget},
-    }
+
+    def is_available(self, obj):
+        return obj.is_available
+    is_available.boolean = True
+    is_available.short_description = 'В наличии'
 
     def get_image(self, obj):
         if obj.preview_image:
@@ -82,3 +83,4 @@ class AdminCoupon(admin.ModelAdmin):
         return obj.is_valid
 
     is_valid.boolean = True
+    is_valid.short_description = 'Действительный'

@@ -145,3 +145,7 @@ class ProductCommentForm(forms.ModelForm):
 
 class ApplyCouponForm(forms.Form):
     code = forms.CharField(widget=forms.TextInput(attrs={'placeholder': 'Coupon code'}))
+
+
+class WishListAddProduct(forms.Form):
+    slug = forms.SlugField(widget=forms.TextInput)

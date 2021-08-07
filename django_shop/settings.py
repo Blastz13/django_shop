@@ -152,6 +152,7 @@ EMAIL_USE_TLS = True
 
 #settings request.session cart
 CART_SESSION_ID = 'cart'
+WISH_LIST_SESSION_ID = 'wish_list'
 
 AUTH_USER_MODEL = 'users.CustomUser'
 
