@@ -6,13 +6,9 @@ from django.utils import timezone
 from django.views.generic import View
 from django.conf import settings
 
-from .forms import CommentForm
-from .forms import MessageContactForm
+from .forms import CommentForm, MessageContactForm
 
-from .models import CategoryFeed
-from .models import Feed
-from .models import Tag
-from .models import ContactAddress
+from .models import CategoryFeed, Feed, Tag, ContactAddress
 
 from .mixins import ObjectSortPaginate
 
@@ -31,7 +27,7 @@ class HomePage(View):
 
         return render(request, 'core/index.html', context={"feeds": slider_feeds,
                                                            "small_feeds": small_feeds,
-                                                           })
+                                                           'special_categories_products': [1, 2, 3, 4, 5]})
 
 
 class FeedDetail(View):

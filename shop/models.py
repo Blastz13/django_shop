@@ -25,8 +25,6 @@ class Product(models.Model):
                                          verbose_name='Цена по скидке')
     category = models.ForeignKey('Category', on_delete=models.CASCADE, related_name='product', verbose_name='Категория')
     quantity = models.PositiveIntegerField(default=0, verbose_name='Количество товара')
-    # is_available = models.BooleanField(verbose_name='Товар в наличии')
-    # property = JSONField(blank=True, null=True, verbose_name='Свойства товара')
     date_publicate = models.DateTimeField(auto_now_add=True, verbose_name='Дата добавления товара')
     order = models.PositiveIntegerField(default=0, verbose_name='Порядок показа товара')
     is_publish = models.BooleanField(default=False, verbose_name='Опубликовать')
@@ -140,8 +138,13 @@ class Category(MPTTModel):
         order_insertion_by = ['title']
 
 
+# class SpecialCategoryProduct(models.Model):
+#     title = models.CharField(max_length=64, verbose_name='Заголовок')
+#     category = models.ForeignKey()
+
+
 class Coupon(models.Model):
-    code = models.CharField(max_length=16, unique=True, verbose_name="Купон")
+    code = models.CharField(max_length=16, unique=True, verbose_name='Купон')
     discount = models.PositiveIntegerField(max_length=100, verbose_name='Скидка %')
     minimum_amount = models.DecimalField(max_digits=10, decimal_places=2, verbose_name='Минимальная сумма активации')
     quantity_activation = models.PositiveIntegerField(verbose_name='Количество активаций')

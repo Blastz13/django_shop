@@ -2,10 +2,7 @@ from datetime import datetime, timezone
 
 from django import template
 
-from ..models import Feed
-from ..models import Tag
-from ..models import OurBrand
-from ..models import CategoryFeed
+from ..models import Feed, Tag, OurBrand, CategoryFeed
 
 register = template.Library()
 
@@ -35,3 +32,9 @@ def all_categories_feeds(slug_selected_category=None):
 @register.inclusion_tag('core/inclusion_html/widget-our-brands.html')
 def our_brands():
     return {'our_brands': OurBrand.objects.all()}
+
+
+@register.inclusion_tag('core/inclusion_html/widget-special-categories-products.html')
+def extra_categories_products(type_slider, special_category_products):
+    return {'type_slider': type_slider,
+            'special_category_products': special_category_products}
