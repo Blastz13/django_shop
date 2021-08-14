@@ -9,6 +9,7 @@ from django.conf import settings
 from .forms import CommentForm, MessageContactForm
 
 from .models import CategoryFeed, Feed, Tag, ContactAddress
+from shop.models import SpecialCategoryProduct
 
 from .mixins import ObjectSortPaginate
 
@@ -27,7 +28,8 @@ class HomePage(View):
 
         return render(request, 'core/index.html', context={"feeds": slider_feeds,
                                                            "small_feeds": small_feeds,
-                                                           'special_categories_products': [1, 2, 3, 4, 5]})
+                                                           'special_categories_products': SpecialCategoryProduct
+                                                                                          .objects.all()})
 
 
 class FeedDetail(View):

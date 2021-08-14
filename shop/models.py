@@ -138,9 +138,20 @@ class Category(MPTTModel):
         order_insertion_by = ['title']
 
 
-# class SpecialCategoryProduct(models.Model):
-#     title = models.CharField(max_length=64, verbose_name='Заголовок')
-#     category = models.ForeignKey()
+class SpecialCategoryProduct(models.Model):
+    CHOICES = (('row1', 'Строка тип 1'),
+               ('row2', 'Строка тип 2'),
+               ('grid', 'Сетка'))
+    title = models.CharField(max_length=64, verbose_name='Заголовок')
+    product = models.ManyToManyField(Product, related_name='special_categories', verbose_name='Продукт')
+    type_slider = models.CharField(max_length=16, choices=CHOICES, verbose_name='Тип слайдера')
+
+    def __str__(self):
+        return self.title
+
+    class Meta:
+        verbose_name = 'Специальная категория'
+        verbose_name_plural = 'Специальные категории'
 
 
 class Coupon(models.Model):

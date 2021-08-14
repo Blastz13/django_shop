@@ -64,7 +64,7 @@
 		</div>
 	</div>
 	<!-- END HOME SLIDER -->
-        {% for special_category_products in special_categories_products %}
+    {% for special_category_products in special_categories_products %}
         {% cycle 'row1' 'row2' 'grid' as type_slider silent %}
         {% extra_categories_products type_slider special_category_products %}
     {% endfor %}

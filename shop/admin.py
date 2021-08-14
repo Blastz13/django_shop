@@ -2,7 +2,7 @@ from django.contrib import admin
 from django.utils.safestring import mark_safe
 from mptt.admin import MPTTModelAdmin
 
-from .models import ProductImage, Order, OrderItem, Category, ProductComment, Product, Coupon
+from .models import ProductImage, Order, OrderItem, Category, ProductComment, Product, Coupon, SpecialCategoryProduct
 
 
 class ProductImageItemInline(admin.StackedInline):
@@ -84,3 +84,7 @@ class AdminCoupon(admin.ModelAdmin):
 
     is_valid.boolean = True
     is_valid.short_description = 'Действительный'
+
+@admin.register(SpecialCategoryProduct)
+class AdminSpecialCategoryProduct(admin.ModelAdmin):
+    pass
