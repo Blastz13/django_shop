@@ -28,8 +28,8 @@ class Product(models.Model):
     date_publicate = models.DateTimeField(auto_now_add=True, verbose_name='Дата добавления товара')
     order = models.PositiveIntegerField(default=0, verbose_name='Порядок показа товара')
     is_publish = models.BooleanField(default=False, verbose_name='Опубликовать')
-    count_views = models.PositiveBigIntegerField(default=0, verbose_name='Количество просмотров')
-    count_buys = models.PositiveBigIntegerField(default=0, verbose_name='Количество покупок')
+    count_views = models.PositiveIntegerField(default=0, verbose_name='Количество просмотров')
+    count_buys = models.PositiveIntegerField(default=0, verbose_name='Количество покупок')
 
     @property
     def is_available(self):
@@ -142,7 +142,7 @@ class SpecialCategoryProduct(models.Model):
     CHOICES = (('row1', 'Строка тип 1'),
                ('row2', 'Строка тип 2'),
                ('grid', 'Сетка'))
-    title = models.CharField(max_length=64, verbose_name='Заголовок')
+    title = models.CharField(max_length=128, verbose_name='Заголовок')
     product = models.ManyToManyField(Product, related_name='special_categories', verbose_name='Продукт')
     type_slider = models.CharField(max_length=16, choices=CHOICES, verbose_name='Тип слайдера')
 

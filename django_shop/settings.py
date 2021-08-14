@@ -87,10 +87,10 @@ WSGI_APPLICATION = 'django_shop.wsgi.application'
 
 DATABASES = {
      'default': {
-     'ENGINE': 'django.db.backends.postgresql',
-     'NAME': 'dj',
-     'USER': 'postgresu',
-     'PASSWORD': 'postgresu',
+     'ENGINE': 'django.db.backends.postgresql_psycopg2',
+     'NAME': 'django_shop_db',
+     'USER': 'django_shop',
+     'PASSWORD': 'password',
      'HOST': 'localhost',
      'PORT': '5432',
  }
@@ -125,7 +125,7 @@ USE_I18N = True
 
 USE_L10N = True
 
-USE_TZ = True
+USE_TZ = False
 
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/3.0/howto/static-files/
